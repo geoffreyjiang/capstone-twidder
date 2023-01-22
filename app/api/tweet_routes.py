@@ -24,8 +24,15 @@ def create_tweet():
 
     return new_tweet.to_dict()
 
-@tweet_routes.route("/<int:id>")
-def get_tweets_replies():
+@tweet_routes.route('/<int:id>')
+def get_biz_by_id(id):
+
+    tweet = Tweet.query.get(id)
+
+    return tweet.to_dict()
+
+@tweet_routes.route("/<int:id>/comments")
+def get_tweets_replies(id):
     comments = Reply.query.filter(Reply.tweet_id == id).all()
 
     return {comment.id: comment.to_dict() for comment in comments}

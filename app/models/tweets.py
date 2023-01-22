@@ -13,7 +13,7 @@ class Tweet(db.Model):
 
     tweet_owner = db.relationship("User", back_populates="tweet", cascade='all, delete')
     tweet_liked = db.relationship("Like", back_populates='liked_tweet', cascade='all, delete')
-
+    tweet_reply = db.relationship('Reply', back_populates='reply_tweet')
 
     def __repr__(self):
         return f"<Tweet id: {self.id}, body: {self.body}, image: {self.image}, user_id: {self.user_id}>"

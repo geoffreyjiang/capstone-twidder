@@ -2,7 +2,7 @@ from app.models import db, Tweet, environment, SCHEMA
 
 
 # Adds a demo user, you can add other users here if you want
-def seed_users():
+def seed_tweets():
     one = Tweet(
         body='First tweet!', image='null', user_id=2)
     two = Tweet(

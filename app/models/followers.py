@@ -11,8 +11,8 @@ class Follow(db.Model):
     follower_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
 
 
-    user_follow = db.relationship("User", back_populates='follow')
     user_follower = db.relationship("User", back_populates='follower')
+    user_follow = db.relationship("User", back_populates='follow')
 
     def __repr__(self):
         return f"<Reply id: {self.id}, user_id: {self.user_id}, follower_id: {self.follower_id}>"

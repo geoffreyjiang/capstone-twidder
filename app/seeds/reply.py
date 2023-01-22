@@ -2,7 +2,7 @@ from app.models import db, Reply, environment, SCHEMA
 
 
 # Adds a demo user, you can add other users here if you want
-def seed_users():
+def seed_replies():
     one = Reply(
         body='First reply!', image='null', user_id=3, tweet_id=1)
     two = Reply(

@@ -7,7 +7,7 @@ class Like(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('user_id.id')), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     tweet_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('tweets.id')))
 
     liked_tweet = db.relationship("Tweet", back_populates='tweet_liked')
