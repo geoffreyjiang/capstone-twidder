@@ -16,7 +16,7 @@ class Tweet(db.Model):
 
 
     def __repr__(self):
-        return f"<Tweet id: {self.id}, body: {self.body}, image: {self.image}, reply_id: {self.reply_id}, user_id: {self.user_id}>"
+        return f"<Tweet id: {self.id}, body: {self.body}, image: {self.image}, user_id: {self.user_id}>"
 
 
     def to_dict(self):
