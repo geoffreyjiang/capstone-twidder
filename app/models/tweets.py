@@ -24,6 +24,5 @@ class Tweet(db.Model):
             "id": self.id,
             "body": self.body,
             "image": self.image,
-            "reply_id": self.reply_id,
             "user_id": self.user_id,
         }
