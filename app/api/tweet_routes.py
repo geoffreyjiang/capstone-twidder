@@ -15,6 +15,7 @@ def get_tweets():
 
 
 @tweet_routes.route("", methods=['POST'])
+@login_required
 def create_tweet():
     data = request.json
     new_tweet = Tweet(**data,  user_id=current_user.id)
@@ -22,3 +23,26 @@ def create_tweet():
     db.session.commit()
 
     return new_tweet.to_dict()
+
+@tweet_routes.route("/<int:id>")
+def get_tweets_replies():
+    comments = Reply.query.filter(Reply.tweet_id == id).all()
+
+    return {comment.id: comment.to_dict() for comment in comments}
+
+
+@tweet_routes.route("/<int:id>", methods=['POST'])
+@login_required
+def create_tweets_replies():
+    current_user_id = int(current_user.get_id())
+
+    form = ReplyForm()
+    new_comment = Reply(
+        user_id = current_user_id,
+        body = form.data['body'],
+        image = form.data['image']
+    )
+
+    db.session.add(new_comment)
+    db.session.commit()
+    return new_comment.to_dict()
