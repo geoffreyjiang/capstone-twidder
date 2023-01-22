@@ -9,7 +9,6 @@ class Tweet(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String, nullable=False)
     image = db.Column(db.String, nullable=True)
-    reply_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('replies.id')))
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
 
     tweet_owner = db.relationship("User", back_populates="tweet", cascade='all, delete')
