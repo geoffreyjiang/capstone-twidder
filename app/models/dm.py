@@ -12,6 +12,9 @@ class Message(db.Model):
     body = db.Column(db.String, nullable=False)
 
 
+
+
+
     def __repr__(self):
         return f"<Reply id: {self.id}, body: {self.body}, sending_user_id: {self.sending_user_id}, receiving_user_id: {self.receiving_user_id}>"
 
