@@ -25,4 +25,5 @@ class Tweet(db.Model):
             "body": self.body,
             "image": self.image,
             "user_id": self.user_id,
+            "username": self.tweet_owner.to_dict()['username']
         }

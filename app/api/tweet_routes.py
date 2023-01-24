@@ -4,7 +4,7 @@ from app.models import Tweet, db, Reply
 from app.forms import TweetForm, ReplyForm
 
 
-tweet_routes = Blueprint('tweet', __name__)
+tweet_routes = Blueprint('tweet', __name__, )
 
 
 @tweet_routes.route("")

@@ -24,10 +24,7 @@ class User(db.Model, UserMixin):
     like = db.relationship('Like', back_populates='liked_user', cascade='all, delete')
     # follow = db.relationship('Follow', back_populates='user_follow')
     # follower = db.relationship('Follow', back_populates='user_follower')
-    # follow = db.relationship('Follow',
-    #     primaryjoin=lambda: User.id ==  'user_follower',
-    #     secondaryjoin=lambda: User.id == 'user_follow',
-    #     backref='followers')
+
     @property
     def password(self):
         return self.hashed_password
