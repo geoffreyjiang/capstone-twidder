@@ -31,7 +31,7 @@ const updateTweet = (tweet) => ({
 });
 
 const deleteTweet = (id) => ({
-    type: ADD_TWEET,
+    type: DELETE_TWEET,
     id,
 });
 

@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { getTweets } from "../../store/tweets";
+import {
+    getTweets,
+    getTweetId,
+    editTweet,
+    removeTweet,
+} from "../../store/tweets";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import "./index.css";
 
 const Tweets = () => {
@@ -19,6 +25,9 @@ const Tweets = () => {
                 {tweets?.map((el) => {
                     return (
                         <div className="tweet-container">
+                            <NavLink to={`/tweets/${el.id}`}>
+                                Go to tweet
+                            </NavLink>
                             <h3>
                                 {el.body} by: {el.username}
                             </h3>

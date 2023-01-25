@@ -16,7 +16,7 @@ class Like(db.Model):
     liked_user = db.relationship("User", back_populates='like')
 
     def __repr__(self):
-        return f"<Reply id: {self.id}, user_id: {self.user_id}, tweet_id: {self.tweet_id}, reply_id:{self.reply_id}, isLiked:{self.isLiked}>"
+        return f"<user_id: {self.user_id}, tweet_id: {self.tweet_id}, isLiked:{self.isLiked}>"
 
 
     def to_dict(self):
@@ -24,6 +24,5 @@ class Like(db.Model):
             "id": self.id,
             "user_id": self.user_id,
             "tweet_id": self.tweet_id,
-            "reply_id": self.reply_id,
             "isLiked": self.isLiked
         }

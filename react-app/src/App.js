@@ -9,6 +9,7 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./store/session";
 import Tweets from "./components/Tweet";
+import ViewTweet from "./components/ViewTweet";
 
 function App() {
     const [loaded, setLoaded] = useState(false);
@@ -43,6 +44,9 @@ function App() {
                 </ProtectedRoute>
                 <Route path="/" exact={true}>
                     <Tweets />
+                </Route>
+                <Route path="/tweets/:id" exact={true}>
+                    <ViewTweet />
                 </Route>
             </Switch>
         </BrowserRouter>
