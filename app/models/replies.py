@@ -12,7 +12,7 @@ class Reply(db.Model):
     tweet_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('tweets.id')), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
 
-    # reply_tweet = db.relationship("Tweet", back_populates='tweet_reply')
+    reply_tweet = db.relationship("Tweet", back_populates='tweet_reply')
     reply_owner = db.relationship("User", back_populates='reply')
 
     def __repr__(self):
@@ -26,4 +26,5 @@ class Reply(db.Model):
             "image": self.image,
             "tweet_id": self.tweet_id,
             "user_id": self.user_id,
+            "username": self.reply_owner.to_dict()['username']
         }

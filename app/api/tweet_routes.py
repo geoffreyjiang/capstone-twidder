@@ -1,8 +1,8 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
-# from app.models import Tweet, db, Reply
-# from app.forms import TweetForm, ReplyForm
-from app.models import Tweet, db
+from app.models import Tweet, db, Reply
+from app.forms import TweetForm, ReplyForm
+# from app.models import Tweet, db
 
 
 tweet_routes = Blueprint('tweet', __name__, )
@@ -47,18 +47,18 @@ def get_tweets_replies(id):
     return {comment.id: comment.to_dict() for comment in comments}
 
 
-# @tweet_routes.route("/<int:id>", methods=['POST'])
-# @login_required
-# def create_tweets_replies():
-#     current_user_id = int(current_user.get_id())
+@tweet_routes.route("/<int:id>", methods=['POST'])
+@login_required
+def create_tweets_replies():
+    current_user_id = int(current_user.get_id())
 
-#     form = ReplyForm()
-#     new_comment = Reply(
-#         user_id = current_user_id,
-#         body = form.data['body'],
-#         image = form.data['image']
-#     )
+    form = ReplyForm()
+    new_comment = Reply(
+        user_id = current_user_id,
+        body = form.data['body'],
+        image = form.data['image']
+    )
 
-#     db.session.add(new_comment)
-#     db.session.commit()
-#     return new_comment.to_dict()
+    db.session.add(new_comment)
+    db.session.commit()
+    return new_comment.to_dict()
