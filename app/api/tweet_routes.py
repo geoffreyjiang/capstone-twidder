@@ -32,6 +32,19 @@ def get_biz_by_id(id):
 
     return tweet.to_dict()
 
+@tweet_routes.route('<int:id>', methods=['PUT'])
+@login_required
+def edit_tweet(id):
+    tweet = Tweet.query.get(id)
+    form = TweetForm()
+
+    tweet.body = form.data['body']
+    tweet.image = form.data['image']
+
+    db.session.commit()
+
+    return tweet.to_dict()
+
 
 @tweet_routes.route('/<int:id>', methods=['DELETE'])
 def delete_tweet(id):

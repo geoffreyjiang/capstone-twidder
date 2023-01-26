@@ -31,6 +31,9 @@ const ViewTweet = () => {
             <div className="tweet-id-section">
                 <h2>{tweet.body}</h2>
                 <button onClick={() => deleteTweet(id)}>Delete</button>
+                <button onClick={() => history.push(`/tweets/${id}/edit`)}>
+                    Edit
+                </button>
             </div>
         </>
     );
