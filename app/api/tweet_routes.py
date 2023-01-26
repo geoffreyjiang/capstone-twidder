@@ -66,14 +66,15 @@ def get_tweets_replies(id):
 
 @tweet_routes.route("/<int:id>", methods=['POST'])
 @login_required
-def create_tweets_replies():
+def create_tweets_replies(id):
     current_user_id = int(current_user.get_id())
 
     form = ReplyForm()
     new_comment = Reply(
         user_id = current_user_id,
         body = form.data['body'],
-        image = form.data['image']
+        image = form.data['image'],
+        tweet_id = id
     )
 
     db.session.add(new_comment)

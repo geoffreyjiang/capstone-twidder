@@ -21,9 +21,7 @@ def edit_reply(id):
 
 @reply_route.route('/<int:id>', methods=['DELETE'])
 def deleteReview(id):
-    reply = Reply.query.get(id)
-
-    db.session.delete(reply)
+    reply_delete = Reply.query.get(id)
+    db.session.delete(reply_delete)
     db.session.commit()
-
     return {"message": "deleted successfully"}

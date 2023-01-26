@@ -43,7 +43,7 @@ export const getReplies = (id) => async (dispatch) => {
     }
 };
 
-export const createReply = (reply, id) => async (dispatch) => {
+export const createReply = (id, reply) => async (dispatch) => {
     const res = await fetch(`/api/tweets/${id}`, {
         method: "POST",
         headers: {
@@ -58,35 +58,35 @@ export const createReply = (reply, id) => async (dispatch) => {
 };
 
 export const getReplyId = (id) => async (dispatch) => {
-    const res = await fetch(`/api/tweets/${id}`);
+    const res = await fetch(`/reply/${id}`);
     if (res.ok) {
         const data = await res.json();
         dispatch(loadReplyId(data));
     }
 };
 
-// export const editReply = (data) => async (dispatch) => {
-//     const res = await fetch(`/api/tweets/${data.id}`, {
-//         method: "PUT",
-//         headers: {
-//             "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(data),
-//     });
-//     if (res.ok) {
-//         const reply = await res.json();
-//         dispatch(updateReply(reply));
-//     }
-// };
+export const editReply = (data) => async (dispatch) => {
+    const res = await fetch(`/api/reply/${data.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    });
+    if (res.ok) {
+        const reply = await res.json();
+        dispatch(updateReply(reply));
+    }
+};
 
-// export const removeReply = (id) => async (dispatch) => {
-//     const res = await fetch(`/comments/${id}`, {
-//         method: "DELETE",
-//     });
-//     if (res.ok) {
-//         dispatch(deleteReply(id));
-//     }
-// };
+export const removeReply = (id) => async (dispatch) => {
+    const res = await fetch(`/api/reply/${id}`, {
+        method: "DELETE",
+    });
+    if (res.ok) {
+        dispatch(deleteReply(id));
+    }
+};
 
 const replyReducer = (state = {}, action) => {
     const newState = { ...state };

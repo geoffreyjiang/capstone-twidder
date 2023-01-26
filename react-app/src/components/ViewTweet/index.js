@@ -5,6 +5,7 @@ import {
     editTweet,
     removeTweet,
 } from "../../store/tweets";
+
 import AllReplies from "../Reply";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams, useHistory } from "react-router-dom";
@@ -32,7 +33,9 @@ const ViewTweet = () => {
                 <button onClick={() => history.push(`/tweets/${id}/edit`)}>
                     Edit
                 </button>
-                <AllReplies />
+                <div className="replyArea">
+                    <AllReplies />
+                </div>
             </div>
         </>
     );
