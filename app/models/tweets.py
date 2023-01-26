@@ -12,7 +12,7 @@ class Tweet(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
 
     tweet_owner = db.relationship("User", back_populates="tweet", cascade='all, delete')
-    # tweet_liked = db.relationship("Like", back_populates='liked_tweet', cascade='all, delete')
+    tweet_liked = db.relationship("Like", back_populates='liked_tweet', cascade='all, delete')
     tweet_reply = db.relationship('Reply', back_populates='reply_tweet', cascade='all, delete')
 
     def __repr__(self):

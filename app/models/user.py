@@ -21,7 +21,7 @@ class User(db.Model, UserMixin):
 
     tweet = db.relationship('Tweet', back_populates='tweet_owner', cascade='all, delete')
     reply = db.relationship('Reply', back_populates='reply_owner', cascade='all, delete')
-    # like = db.relationship('Like', back_populates='liked_user', cascade='all, delete')
+    like = db.relationship('Like', back_populates='liked_user', cascade='all, delete')
     # follow = db.relationship('Follow', back_populates='user_follow', foreign_keys='Follow.user_id')
     # follower = db.relationship('Follow', back_populates='user_follower', foreign_keys='Follow.follower_id')
 
