@@ -5,6 +5,7 @@ import {
     editTweet,
     removeTweet,
 } from "../../store/tweets";
+import AllReplies from "../Reply";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams, useHistory } from "react-router-dom";
 
@@ -13,12 +14,9 @@ const ViewTweet = () => {
     const { id } = useParams();
     const tweet = useSelector((store) => store.tweets);
     const history = useHistory();
-
-    console.log(tweet);
-
     useEffect(() => {
         dispatch(getTweetId(id));
-    }, [dispatch]);
+    }, [dispatch, id]);
 
     const deleteTweet = (id) => {
         dispatch(removeTweet(id));
@@ -34,6 +32,7 @@ const ViewTweet = () => {
                 <button onClick={() => history.push(`/tweets/${id}/edit`)}>
                     Edit
                 </button>
+                <AllReplies />
             </div>
         </>
     );

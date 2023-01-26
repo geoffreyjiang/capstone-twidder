@@ -53,11 +53,15 @@ def delete_tweet(id):
     db.session.commit()
     return {"message": "tweet deleted"}
 
-@tweet_routes.route("/<int:id>/comments")
-def get_tweets_replies(id):
-    comments = Reply.query.filter(Reply.tweet_id == id).all()
 
-    return {comment.id: comment.to_dict() for comment in comments}
+
+
+# replies
+@tweet_routes.route("/<int:id>/replies")
+def get_tweets_replies(id):
+    reply = Reply.query.filter(Reply.tweet_id == id).all()
+
+    return {replys.id: replys.to_dict() for replys in reply}
 
 
 @tweet_routes.route("/<int:id>", methods=['POST'])

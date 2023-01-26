@@ -4,11 +4,11 @@ from app.models import db, Reply, environment, SCHEMA
 # Adds a demo user, you can add other users here if you want
 def seed_replies():
     one = Reply(
-        body='First reply!', image='null', user_id=3, tweet_id=1)
+        body='First reply!', image='null', tweet_id=1, user_id=3)
     two = Reply(
-        body='Second reply!', image='null', user_id=1, tweet_id=2)
+        body='Second reply!', image='null', tweet_id=2, user_id=1)
     three = Reply(
-        body='Third reply!', image='null', user_id=2, tweet_id=3)
+        body='Third reply!', image='null', tweet_id=3, user_id=2)
 
     db.session.add(one)
     db.session.add(two)
