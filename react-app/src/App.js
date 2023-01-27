@@ -11,7 +11,7 @@ import { authenticate } from "./store/session";
 import Tweets from "./components/Tweet";
 import ViewTweet from "./components/ViewTweet";
 import EditTweet from "./components/EditTweetModal/tweetForm";
-
+import EditReply from "./components/Reply/editReply";
 function App() {
     const [loaded, setLoaded] = useState(false);
     const dispatch = useDispatch();
@@ -51,6 +51,9 @@ function App() {
                 </Route>
                 <Route path="/tweets/:id/edit" exact={true}>
                     <EditTweet />
+                </Route>
+                <Route path="/reply/:id/" exact={true}>
+                    <EditReply />
                 </Route>
             </Switch>
         </BrowserRouter>

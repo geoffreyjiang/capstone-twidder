@@ -4,14 +4,13 @@ from app.models import db, Like , environment, SCHEMA
 # Adds a demo user, you can add other users here if you want
 def seed_likes():
     one = Like(
-        tweet_id=1, user_id=3)
+        tweet_id=1, user_id=3, isLiked=True)
     two =Like(
-        tweet_id=1, user_id=1)
+        tweet_id=1, user_id=1, isLiked=True)
     three = Like(
-        tweet_id=3, user_id=3)
+        tweet_id=3, user_id=3, isLiked=True)
     four = Like(
-        tweet_id=2, user_id=1
-    )
+        tweet_id=2, user_id=1, isLiked=True)
 
     db.session.add(one)
     db.session.add(two)

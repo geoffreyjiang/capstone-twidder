@@ -63,6 +63,13 @@ def get_tweets_replies(id):
 
     return {replys.id: replys.to_dict() for replys in reply}
 
+@tweet_routes.route('/reply/<int:id>')
+def get_reply_by_id(id):
+
+    reply = Reply.query.get(id)
+
+    return reply.to_dict()
+
 
 @tweet_routes.route("/<int:id>", methods=['POST'])
 @login_required

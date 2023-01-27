@@ -7,14 +7,15 @@ from app.forms import TweetForm, ReplyForm
 reply_route = Blueprint('reply', __name__, )
 
 
-reply_route.route('/reply/<int:id>', methods=['PUT'])
+@reply_route.route('/<int:id>', methods=['PUT'])
 @login_required
 def edit_reply(id):
     reply = Reply.query.get(id)
     form = ReplyForm()
 
-    reply.body =form.data['body']
+    reply.body = form.data['body']
     reply.image = form.data['image']
+
     db.session.commit()
 
     return reply.to_dict()
@@ -25,3 +26,10 @@ def deleteReview(id):
     db.session.delete(reply_delete)
     db.session.commit()
     return {"message": "deleted successfully"}
+
+@reply_route.route('/<int:id>')
+def get_reply_by_id(id):
+
+    tweet = Reply.query.get(id)
+
+    return tweet.to_dict()

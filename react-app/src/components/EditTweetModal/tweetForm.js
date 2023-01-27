@@ -10,14 +10,12 @@ import {
 
 const EditTweet = () => {
     const user = useSelector((state) => state.session.user);
-    // console.log(user);
     const { id } = useParams();
     const tweet = useSelector((store) => store.tweets);
     const dispatch = useDispatch();
     const history = useHistory();
     const [body, setBody] = useState(tweet.body);
     const [img, setImg] = useState(tweet.image);
-
     useEffect(() => {
         dispatch(getTweetId(id));
     }, [dispatch]);

@@ -23,15 +23,23 @@ const AllReplies = () => {
                 <h3>{el.body}</h3>
                 <h2>
                     {user.id == el.user_id ? (
-                        <button
-                            className="delete-reply-btn"
-                            onClick={() => {
-                                dispatch(removeReply(el.id));
-                                dispatch(getReplies(id));
-                            }}
-                        >
-                            Delete
-                        </button>
+                        <>
+                            <button
+                                className="delete-reply-btn"
+                                onClick={() => {
+                                    dispatch(removeReply(el.id));
+                                    dispatch(getReplies(id));
+                                }}
+                            >
+                                Delete
+                            </button>
+                            <button
+                                className="edit-reply-btn"
+                                onClick={() => history.push(`/reply/${el.id}`)}
+                            >
+                                Edit
+                            </button>
+                        </>
                     ) : null}
                 </h2>
             </div>

@@ -58,24 +58,24 @@ export const createReply = (id, reply) => async (dispatch) => {
 };
 
 export const getReplyId = (id) => async (dispatch) => {
-    const res = await fetch(`/reply/${id}`);
+    const res = await fetch(`/api/reply/${id}`);
     if (res.ok) {
         const data = await res.json();
         dispatch(loadReplyId(data));
     }
 };
 
-export const editReply = (data) => async (dispatch) => {
-    const res = await fetch(`/api/reply/${data.id}`, {
+export const editReply = (reply) => async (dispatch) => {
+    const res = await fetch(`/api/reply/${reply.id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(reply),
     });
     if (res.ok) {
-        const reply = await res.json();
-        dispatch(updateReply(reply));
+        const edited = await res.json();
+        dispatch(updateReply(edited));
     }
 };
 
