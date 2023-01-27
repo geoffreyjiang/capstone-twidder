@@ -5,6 +5,7 @@ import {
     editTweet,
     removeTweet,
 } from "../../store/tweets";
+import { getLikes, editLikes } from "../../store/likes";
 
 import AllReplies from "../Reply";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,9 +15,13 @@ const ViewTweet = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
     const tweet = useSelector((store) => store.tweets);
+    const likes = useSelector((store) => store.likes);
+    // const [like, setLike] = useState(likes.isLiked);
     const history = useHistory();
+
     useEffect(() => {
         dispatch(getTweetId(id));
+        dispatch(getLikes(id));
     }, [dispatch, id]);
 
     const deleteTweet = (id) => {

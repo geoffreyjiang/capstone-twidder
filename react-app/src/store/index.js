@@ -3,10 +3,12 @@ import thunk from "redux-thunk";
 import session from "./session";
 import tweetReducer from "./tweets";
 import replyReducer from "./reply";
+import likeReducer from "./likes";
 const rootReducer = combineReducers({
     session,
     tweets: tweetReducer,
     replies: replyReducer,
+    likes: likeReducer,
 });
 
 let enhancer;

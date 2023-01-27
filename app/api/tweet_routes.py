@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import Tweet, db, Reply, Like
-from app.forms import TweetForm, ReplyForm
+from app.forms import TweetForm, ReplyForm, LikeForm
 # from app.models import Tweet, db
 
 
@@ -97,4 +97,15 @@ def get_tweet_likes(id):
     likes = Like.query.filter(Like.tweet_id == id).all()
 
     return {like.id: like.to_dict() for like in likes}
+
+@tweet_routes.route('/<int:id>/likes')
+def post_tweet_likes(id):
+    form = LikeForm()
+    liked = Like(
+        isLiked = form.data['isLiked']
+    )
+
+    db.session.add(liked)
+    db.session.commit()
+    return liked.to_dict()
 
