@@ -15,10 +15,16 @@ const ViewTweet = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
     const tweet = useSelector((store) => store.tweets);
-    const likes = useSelector((store) => store.likes);
-    // const [like, setLike] = useState(likes.isLiked);
-    const history = useHistory();
+    const likes = useSelector((store) => Object.values(store.likes));
 
+    // const [like, setLike] = useState(likes.isLiked);
+
+    const history = useHistory();
+    let count = 0;
+    likes.forEach((el) => {
+        if (el.isLiked === true) count++;
+    });
+    console.log(count);
     useEffect(() => {
         dispatch(getTweetId(id));
         dispatch(getLikes(id));
@@ -34,6 +40,7 @@ const ViewTweet = () => {
         <>
             <div className="tweet-id-section">
                 <h2>{tweet.body}</h2>
+
                 <button onClick={() => deleteTweet(id)}>Delete</button>
                 <button onClick={() => history.push(`/tweets/${id}/edit`)}>
                     Edit

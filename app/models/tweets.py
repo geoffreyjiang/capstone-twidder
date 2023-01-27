@@ -11,6 +11,7 @@ class Tweet(db.Model):
     image = db.Column(db.String, nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
 
+
     tweet_owner = db.relationship("User", back_populates="tweet", cascade='all, delete')
     tweet_liked = db.relationship("Like", back_populates='liked_tweet', cascade='all, delete')
     tweet_reply = db.relationship('Reply', back_populates='reply_tweet', cascade='all, delete')
@@ -20,10 +21,14 @@ class Tweet(db.Model):
 
 
     def to_dict(self):
+        likes = [like.to_dict()['isLiked'] for like in self.tweet_liked]
+        total_likes = likes.count(True)
+
         return {
             "id": self.id,
             "body": self.body,
             "image": self.image,
             "user_id": self.user_id,
-            "username": self.tweet_owner.to_dict()['username']
+            "username": self.tweet_owner.to_dict()['username'],
+            "likes": total_likes
         }
