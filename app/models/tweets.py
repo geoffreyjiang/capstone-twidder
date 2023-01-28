@@ -21,8 +21,8 @@ class Tweet(db.Model):
 
 
     def to_dict(self):
-        likes = [like.to_dict()['isLiked'] for like in self.tweet_liked]
-        total_likes = likes.count(True)
+        likes = [like.to_dict()['user_id'] for like in self.tweet_liked]
+        total_likes = len(likes)
 
         return {
             "id": self.id,
@@ -30,5 +30,6 @@ class Tweet(db.Model):
             "image": self.image,
             "user_id": self.user_id,
             "username": self.tweet_owner.to_dict()['username'],
-            "likes": total_likes
+            "likes": total_likes,
+            "likedBy": [like.to_dict()['user_id'] for like in self.tweet_liked]
         }

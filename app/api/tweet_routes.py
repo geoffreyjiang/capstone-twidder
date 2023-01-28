@@ -109,3 +109,14 @@ def post_tweet_likes(id):
     db.session.commit()
     return liked.to_dict()
 
+@tweet_routes.route('/<int:id>/likes', methods=['PUT'])
+@login_required
+def edit_like(id):
+    like = Like.query.get(id)
+    form = LikeForm()
+
+    like.isLiked = form.data['isLiked']
+
+    db.session.commit()
+
+    return like.to_dict()

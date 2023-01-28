@@ -7,6 +7,16 @@ from app.forms import  LikeForm
 like_route = Blueprint('like', __name__, )
 
 
+
+@like_route.route('/<int:id>')
+def get_like_by_id(id):
+
+    like = Like.query.get(id)
+
+    return like.to_dict()
+
+
+
 @like_route.route('/<int:id>', methods=['PUT'])
 @login_required
 def edit_like(id):

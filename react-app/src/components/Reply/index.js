@@ -34,7 +34,7 @@ const AllReplies = () => {
                                 Delete
                             </button>
                             <button
-                                className="edit-reply-btn"
+                                className="edit-reply-btn "
                                 onClick={() => history.push(`/reply/${el.id}`)}
                             >
                                 Edit

@@ -27,7 +27,16 @@ export const getLikes = (id) => async (dispatch) => {
 };
 
 export const editLikes = (like) => async (dispatch) => {
-    const res = await fetch(`/api/likes/${like.id}`, {
+    // const res = await fetch(`/api/likes/${like.id}`, {
+    //     method: "PUT",
+    //     headers: {
+    //         "Content-Type": "applicaiton/json",
+    //         body: JSON.stringify(like),
+    //     },
+    // });
+    console.log(like, "EDIT LIKE THUNKKKKK");
+
+    const res = await fetch(`/api/tweets/${like.tweet_id}/likes`, {
         method: "PUT",
         headers: {
             "Content-Type": "applicaiton/json",

@@ -10,6 +10,7 @@ class Like(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     tweet_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('tweets.id')), nullable=False)
     isLiked = db.Column(db.Boolean, default=False)
+
     liked_tweet = db.relationship("Tweet", back_populates='tweet_liked')
     liked_user = db.relationship("User", back_populates='like')
 

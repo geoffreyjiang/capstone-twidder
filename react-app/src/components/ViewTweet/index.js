@@ -21,10 +21,7 @@ const ViewTweet = () => {
 
     const history = useHistory();
     let count = 0;
-    likes.forEach((el) => {
-        if (el.isLiked === true) count++;
-    });
-    console.log(count);
+
     useEffect(() => {
         dispatch(getTweetId(id));
         dispatch(getLikes(id));
