@@ -22,14 +22,13 @@ class Tweet(db.Model):
 
     def to_dict(self):
         likes = [like.to_dict()['user_id'] for like in self.tweet_liked]
-        total_likes = len(likes)
-
         return {
             "id": self.id,
             "body": self.body,
             "image": self.image,
             "user_id": self.user_id,
             "username": self.tweet_owner.to_dict()['username'],
-            "likes": total_likes,
+            # "totalLikes": len([like.to_dict()['user_id'] for like in self.tweet_liked]),
+            'likes': [like.to_dict() for like in self.tweet_liked],
             "likedBy": [like.to_dict()['user_id'] for like in self.tweet_liked]
         }
