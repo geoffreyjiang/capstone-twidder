@@ -24,6 +24,8 @@ def edit_like(id):
     form = LikeForm()
 
     like.isLiked = form.data['isLiked']
+    like.user_id = form.data['user_id']
+    like.tweet_id = form.data['tweet_id']
 
     db.session.commit()
 

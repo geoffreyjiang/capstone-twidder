@@ -11,7 +11,10 @@ class Like(db.Model):
     tweet_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('tweets.id')), nullable=False)
     isLiked = db.Column(db.Boolean, default=False)
 
+    #turn table into many to many
     liked_tweet = db.relationship("Tweet", back_populates='tweet_liked')
+
+    #user and tweets need relationship together secondary = likes
     liked_user = db.relationship("User", back_populates='like')
 
     def __repr__(self):

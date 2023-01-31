@@ -1,5 +1,5 @@
 const LOAD_LIKE = "likes/LOAD_LIKE";
-// ADD_LIKE = "likes/ADD_LIKE";
+const ADD_LIKE = "likes/ADD_LIKE";
 const UPDATE_LIKE = "likes/UPDATE_LIKE";
 const GET_LIKE_ID = "like/GET_LIKE_ID";
 
@@ -13,6 +13,10 @@ const loadLikeId = (like) => ({
     like,
 });
 
+const addLike = (like) => ({
+    type: ADD_LIKE,
+    like,
+});
 const updateLike = (like) => ({
     type: UPDATE_LIKE,
     like,
@@ -23,6 +27,21 @@ export const getLikes = (id) => async (dispatch) => {
     if (res.ok) {
         const likes = await res.json();
         dispatch(loadLike(likes));
+    }
+};
+
+export const createLike = (id, like) => async (dispatch) => {
+    console.log(like, "LIKE DUNKKKKKKKKKKKKKKK");
+    const res = await fetch(`/api/tweets/${id}/likes`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(like),
+    });
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(addLike(data));
     }
 };
 
@@ -38,7 +57,6 @@ export const editLikes = (like) => async (dispatch) => {
     //     const liked = await res.json();
     //     dispatch(updateLike(liked));
     // }
-    // console.log(like, "EDIT LIKE THUNKKKKK");
     const res = await fetch(`/api/tweets/${like.tweet_id}/likes`, {
         method: "PUT",
         headers: {
@@ -58,6 +76,9 @@ const likeReducer = (state = {}, action) => {
         case LOAD_LIKE:
             return action.like;
         case UPDATE_LIKE:
+            newState[action.like.id] = action.like;
+            return newState;
+        case ADD_LIKE:
             newState[action.like.id] = action.like;
             return newState;
         default:

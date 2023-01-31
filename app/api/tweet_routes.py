@@ -98,11 +98,15 @@ def get_tweet_likes(id):
 
     return {like.id: like.to_dict() for like in likes}
 
-@tweet_routes.route('/<int:id>/likes')
+@tweet_routes.route('/<int:id>/likes', methods=['POST'])
 def post_tweet_likes(id):
+    current_user_id = int(current_user.get_id())
+
     form = LikeForm()
     liked = Like(
-        isLiked = form.data['isLiked']
+        isLiked = form.data['isLiked'],
+        tweet_id = id,
+        user_id = current_user_id,
     )
 
     db.session.add(liked)
@@ -116,7 +120,8 @@ def edit_like(id):
     form = LikeForm()
 
     like.isLiked = form.data['isLiked']
-
+    like.user_id = form.data['user_id']
+    like.tweet_id = form.data['tweet_id']
     db.session.commit()
 
     return like.to_dict()

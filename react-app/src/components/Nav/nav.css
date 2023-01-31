@@ -1,0 +1,15 @@
+nav {
+    width: 33%;
+    height: 100%;
+}
+
+nav > ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 60px;
+}
+
+nav > ul > li {
+    display: block;
+}

@@ -22,13 +22,19 @@ class Tweet(db.Model):
 
     def to_dict(self):
         likes = [like.to_dict()['user_id'] for like in self.tweet_liked]
+
+        try:
+            total = len(likes)
+        except ZeroDivisionError:
+            total = 0
+
         return {
             "id": self.id,
             "body": self.body,
             "image": self.image,
             "user_id": self.user_id,
             "username": self.tweet_owner.to_dict()['username'],
-            # "totalLikes": len([like.to_dict()['user_id'] for like in self.tweet_liked]),
+            "totalLikes": total,
             'likes': [like.to_dict() for like in self.tweet_liked],
             "likedBy": [like.to_dict()['user_id'] for like in self.tweet_liked]
         }
