@@ -52,17 +52,23 @@ const Tweets = () => {
         <>
             <div className="tweet-section">
                 <CreateTweet />
-                {tweets?.map((el, i) => {
-                    // console.log(el.totalLikes);
-                    console.log(el.likes);
-                    return (
-                        <div className="tweet-container" key={i}>
-                            <NavLink to={`/tweets/${el.id}`}> To tweet</NavLink>
-                            <h3>
-                                {el.body} by: {el.username}
-                            </h3>
-                            <h3>Likes: {el?.totalLikes}</h3>
-                            {/* {!el.likedBy.includes(user.id) ? (
+                {tweets
+                    ?.slice(0)
+                    .reverse()
+                    .map((el, i) => {
+                        // console.log(el.totalLikes);
+                        // console.log(el.likes);
+                        return (
+                            <div className="tweet-container" key={i}>
+                                <NavLink to={`/tweets/${el.id}`}>
+                                    {" "}
+                                    To tweet
+                                </NavLink>
+                                <h3>
+                                    {el.body} by: {el.username}
+                                </h3>
+                                <h3>Likes: {el?.totalLikes}</h3>
+                                {/* {!el.likedBy.includes(user.id) ? (
                                 <>
                                     <button
                                         onClick={() =>
@@ -79,10 +85,10 @@ const Tweets = () => {
                             ) : (
                                 <></>
                             )} */}
-                            <NavLink to={`/tweets/${el.id}`}> </NavLink>
-                        </div>
-                    );
-                })}
+                                <NavLink to={`/tweets/${el.id}`}> </NavLink>
+                            </div>
+                        );
+                    })}
             </div>
         </>
     );
