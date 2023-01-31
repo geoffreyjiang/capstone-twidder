@@ -32,15 +32,26 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 nav > ul {
     list-style-type: none;
 }
 
-nav > li {
+nav > ul > li {
     display: inline-block;
     padding: 5px 15px;
-    font-size: 0.9em;
+    font-size: 30px;
+}
+
+nav > ul > li > button {
+    display: inline-block;
+    padding: 5px 15px;
+    font-size: 20px;
+    border-radius: 40%;
+}
+
+button {
+    cursor: pointer;
 }

@@ -10,7 +10,7 @@ import { getLikes, editLikes } from "../../store/likes";
 import AllReplies from "../Reply";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams, useHistory } from "react-router-dom";
-
+import "./index.css";
 const ViewTweet = () => {
     const dispatch = useDispatch();
     const { id } = useParams();

@@ -1,40 +1,86 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import "./nav.css";
+import { useSelector, useDispatch } from "react-redux";
+import { login } from "../../store/session";
 
 const NavBar = () => {
-    return (
-        <nav>
+    const sessionUser = useSelector((state) => state.session.user);
+    const history = useHistory();
+    const dispatch = useDispatch();
+    console.log(sessionUser);
+    let session;
+    if (sessionUser) {
+        session = (
             <ul>
-                <li>
-                    <NavLink to="/" exact={true} activeClassName="active">
+                <li className="list-item">
+                    <NavLink to="/" exact={true}>
+                        Home
+                    </NavLink>
+                    {/* <button
+                        className="icon-btn"
+                        onClick={() => history.push("/")}
+                    >
+                        <h3>Home</h3>
+                    </button> */}
+                </li>
+                <li className="list-item">Explore </li>
+                <li className="list-item">Profile </li>
+                <li className="list-item">
+                    <LogoutButton />
+                </li>
+            </ul>
+        );
+    } else {
+        session = (
+            <ul>
+                <li className="list-item">
+                    <NavLink to="/" exact={true}>
                         Home
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/login" exact={true} activeClassName="active">
+                    <button
+                        className="demo-btn"
+                        onClick={(e) => history.push("/login")}
+                    >
                         Login
-                    </NavLink>
+                    </button>
                 </li>
                 <li>
-                    <NavLink
-                        to="/sign-up"
-                        exact={true}
-                        activeClassName="active"
+                    <button
+                        className="demo-btn"
+                        onClick={(e) => history.push("/sign-up")}
                     >
                         Sign Up
-                    </NavLink>
+                    </button>
                 </li>
+
                 <li>
-                    <NavLink to="/users" exact={true} activeClassName="active">
-                        Users
-                    </NavLink>
-                </li>
-                <li>
-                    <LogoutButton />
+                    <button
+                        onClick={async (e) => {
+                            const credential = "demo@aa.io";
+                            const password = "password";
+                            // history.push("/");
+                            console.log(credential);
+                            const data = await dispatch(
+                                login(credential, password)
+                            );
+                            if (data) history.push("/");
+                        }}
+                    >
+                        Demo Login
+                    </button>
                 </li>
             </ul>
+        );
+    }
+    return (
+        <nav>
+            <i class="fa-brands fa-twitter"></i>
+            <h2>Twidder</h2>
+            {session}
         </nav>
     );
 };

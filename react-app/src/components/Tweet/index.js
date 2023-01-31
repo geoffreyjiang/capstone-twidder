@@ -60,14 +60,14 @@ const Tweets = () => {
                         // console.log(el.likes);
                         return (
                             <div className="tweet-container" key={i}>
-                                <NavLink to={`/tweets/${el.id}`}>
+                                {/* <NavLink to={`/tweets/${el.id}`}>
                                     {" "}
                                     To tweet
-                                </NavLink>
+                                </NavLink> */}
                                 <h3>
                                     {el.body} by: {el.username}
                                 </h3>
-                                <h3>Likes: {el?.totalLikes}</h3>
+                                <h4>Likes: {el?.totalLikes}</h4>
                                 {/* {!el.likedBy.includes(user.id) ? (
                                 <>
                                     <button
