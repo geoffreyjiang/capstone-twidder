@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { createTweet } from "../../store/tweets";
+import { createTweet, getTweets } from "../../store/tweets";
 
 const CreateTweet = () => {
     const user = useSelector((state) => state.session.user);
@@ -25,6 +25,7 @@ const CreateTweet = () => {
             history.push(`/`);
             setBody("");
             setImage("");
+            dispatch(getTweets());
         }
     };
     return (

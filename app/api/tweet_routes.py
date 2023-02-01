@@ -26,7 +26,7 @@ def create_tweet():
     return new_tweet.to_dict()
 
 @tweet_routes.route('/<int:id>')
-def get_biz_by_id(id):
+def get_tweet_by_id(id):
 
     tweet = Tweet.query.get(id)
 
@@ -47,9 +47,10 @@ def edit_tweet(id):
 
 
 @tweet_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
 def delete_tweet(id):
-    delete_tweet = Tweet.query.get(id)
-    db.session.delete(delete_tweet)
+    deleted = Tweet.query.get(id)
+    db.session.delete(deleted)
     db.session.commit()
     return {"message": "tweet deleted"}
 

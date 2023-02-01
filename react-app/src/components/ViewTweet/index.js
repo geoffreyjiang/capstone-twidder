@@ -16,32 +16,43 @@ const ViewTweet = () => {
     const { id } = useParams();
     const tweet = useSelector((store) => store.tweets);
     const likes = useSelector((store) => Object.values(store.likes));
+    const user = useSelector((state) => state.session.user);
 
     // const [like, setLike] = useState(likes.isLiked);
 
     const history = useHistory();
     let count = 0;
+    console.log(id);
 
     useEffect(() => {
         dispatch(getTweetId(id));
-        dispatch(getLikes(id));
-    }, [dispatch, id]);
+        // dispatch(getLikes(id));
+    }, [dispatch]);
 
-    const deleteTweet = (id) => {
-        dispatch(removeTweet(id));
+    const deleteTweet = () => {
+        dispatch(removeTweet(tweet.id));
         dispatch(getTweets());
         history.push("/");
     };
+    // console.log(tweet.user_id);
+    // console.log(user.id);
 
     return (
         <>
             <div className="tweet-id-section">
-                <h2>{tweet.body}</h2>
-
-                <button onClick={() => deleteTweet(id)}>Delete</button>
-                <button onClick={() => history.push(`/tweets/${id}/edit`)}>
-                    Edit
-                </button>
+                <h2>{tweet?.body}</h2>
+                {user?.id == tweet?.user_id ? (
+                    <>
+                        <button onClick={() => deleteTweet(tweet.id)}>
+                            Delete
+                        </button>
+                        <button
+                            onClick={() => history.push(`/tweets/${id}/edit`)}
+                        >
+                            Edit
+                        </button>
+                    </>
+                ) : null}
                 <div className="replyArea">
                     <AllReplies />
                 </div>

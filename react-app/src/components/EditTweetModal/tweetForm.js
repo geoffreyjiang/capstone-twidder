@@ -7,7 +7,7 @@ import {
     editTweet,
     removeTweet,
 } from "../../store/tweets";
-
+import "./index.css";
 const EditTweet = () => {
     const user = useSelector((state) => state.session.user);
     const { id } = useParams();

@@ -56,14 +56,12 @@ const NavBar = () => {
                         Sign Up
                     </button>
                 </li>
-
                 <li>
                     <button
                         onClick={async (e) => {
                             const credential = "demo@aa.io";
                             const password = "password";
                             // history.push("/");
-                            console.log(credential);
                             const data = await dispatch(
                                 login(credential, password)
                             );
@@ -73,6 +71,9 @@ const NavBar = () => {
                         Demo Login
                     </button>
                 </li>
+                {/* <li className="list-item">
+                    <LogoutButton />
+                </li> */}
             </ul>
         );
     }

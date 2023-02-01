@@ -17,9 +17,9 @@ const AllReplies = () => {
         dispatch(getReplies(id));
     }, [dispatch, id]);
 
-    const data = replies.map((el) => {
+    const data = replies.map((el, i) => {
         return (
-            <div className="reply-box">
+            <div className="reply-box" key={i}>
                 <h3>{el.body}</h3>
                 <h2>
                     {user.id == el.user_id ? (

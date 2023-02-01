@@ -21,7 +21,7 @@ def edit_reply(id):
     return reply.to_dict()
 
 @reply_route.route('/<int:id>', methods=['DELETE'])
-def deleteReview(id):
+def deleteReply(id):
     reply_delete = Reply.query.get(id)
     db.session.delete(reply_delete)
     db.session.commit()
@@ -30,6 +30,6 @@ def deleteReview(id):
 @reply_route.route('/<int:id>')
 def get_reply_by_id(id):
 
-    tweet = Reply.query.get(id)
+    reply = Reply.query.get(id)
 
-    return tweet.to_dict()
+    return reply.to_dict()

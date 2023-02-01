@@ -6,7 +6,7 @@ import {
     removeTweet,
 } from "../../store/tweets";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import "./index.css";
 import CreateTweet from "./createTweet";
 import { getLikes, editLikes, createLike } from "../../store/likes";
@@ -16,6 +16,7 @@ const Tweets = () => {
     const dispatch = useDispatch();
     const [like, setLike] = useState();
     const [id, setId] = useState("");
+    const history = useHistory();
     const [tweetId, setTweetId] = useState("");
     const user = useSelector((state) => state.session.user);
     const tweets = useSelector((store) => {
@@ -45,9 +46,9 @@ const Tweets = () => {
         // }
     };
 
-    const handleChange = () => {
-        setLike(!like);
-    };
+    // const handleChange = () => {
+    //     setLike(!like);
+    // };
     return (
         <>
             <div className="tweet-section">
@@ -60,32 +61,27 @@ const Tweets = () => {
                         // console.log(el.likes);
                         return (
                             <div className="tweet-container" key={i}>
-                                {/* <NavLink to={`/tweets/${el.id}`}>
-                                    {" "}
-                                    To tweet
-                                </NavLink> */}
-                                <h3>
-                                    {el.body} by: {el.username}
-                                </h3>
-                                <h4>Likes: {el?.totalLikes}</h4>
-                                {/* {!el.likedBy.includes(user.id) ? (
-                                <>
-                                    <button
-                                        onClick={() =>
-                                            dispatch(
-                                                createLike(el.id, {
-                                                    tweet_id: el.id,
-                                                    user_id: user.id,
-                                                    isLiked: true,
-                                                })
-                                            )
+                                {!el.profile_pic ? (
+                                    <img
+                                        src={
+                                            "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
                                         }
-                                    ></button>
-                                </>
-                            ) : (
-                                <></>
-                            )} */}
-                                <NavLink to={`/tweets/${el.id}`}> </NavLink>
+                                        className="tweet-user-img"
+                                        alt="no img"
+                                    ></img>
+                                ) : (
+                                    <img
+                                        src={el.profile_pic}
+                                        className="tweet-user-img"
+                                        alt="no img"
+                                    ></img>
+                                )}
+
+                                <NavLink to={`/tweets/${el.id}`}>
+                                    @{el.username}
+                                </NavLink>
+                                <h3>{el.body}</h3>
+                                <h4>Likes: {el?.totalLikes}</h4>
                             </div>
                         );
                     })}
@@ -99,35 +95,55 @@ export default Tweets;
 {
     /* <form onSubmit={submit}>
 <button
-    type="submit"
-    className="like-btn"
-    onClick={() => {
+type="submit"
+className="like-btn"
+onClick={() => {
         // setLike(false);
         // setTweetId(el.id);
         el.likes.forEach((x) => {
             if (
                 x.user_id === user.id &&
                 el.isLiked === true
-            ) {
-                setId(x.id);
-                setLike(false);
-                setTweetId(el.id);
-                editTweet({
-                    id: x.id,
-                });
-            }
-        });
-        if (el.likedBy.length !== -1) {
-            el.likedBy.splice(
-                el.likedBy.indexOf(
-                    el.id
-                ),
-                1
-            );
-        }
-    }}
->
-    unlike
-</button>
-</form> */
+                ) {
+                    setId(x.id);
+                    setLike(false);
+                    setTweetId(el.id);
+                    editTweet({
+                        id: x.id,
+                    });
+                }
+            });
+            if (el.likedBy.length !== -1) {
+                el.likedBy.splice(
+                    el.likedBy.indexOf(
+                        el.id
+                        ),
+                        1
+                        );
+                    }
+                }}
+                >
+                unlike
+                </button>
+                </form> */
+}
+
+{
+    /* {!el.likedBy.includes(user.id) ? (
+            <>
+                <button
+                    onClick={() =>
+                        dispatch(
+                            createLike(el.id, {
+                                tweet_id: el.id,
+                                user_id: user.id,
+                                isLiked: true,
+                            })
+                        )
+                    }
+                ></button>
+            </>
+            ) : (
+            <></>
+            )} */
 }
