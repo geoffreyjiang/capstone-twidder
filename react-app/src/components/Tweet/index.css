@@ -31,15 +31,16 @@
     border: 1px solid rgb(235, 235, 235);
 }
 .tweet-container > .tweet-text > h3 {
-    /* padding-left: 10%; */
-    color: red;
+    text-align: center;
 }
 
 .tweet-user-img {
     display: inline-block;
-    width: 40px;
-    height: 40px;
+    width: 20%;
+    height: 50px;
     border-radius: 50%;
+    padding-left: 5px;
+    padding-top: 5px;
 
     background-repeat: no-repeat;
     background-position: center center;
