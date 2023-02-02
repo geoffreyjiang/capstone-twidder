@@ -15,7 +15,10 @@ const CreateTweet = () => {
         if (!user) {
             alert("Please login!");
         }
-
+        // if (body.length > 180) {
+        //     setBody("");
+        //     alert("tweet must be less than 180 characters");
+        // }
         const data = {
             image,
             body,

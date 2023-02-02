@@ -62,13 +62,18 @@ const Tweets = () => {
                         return (
                             <div className="tweet-container" key={i}>
                                 {!el.profile_pic ? (
-                                    <img
-                                        src={
-                                            "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                                        }
-                                        className="tweet-user-img"
-                                        alt="no img"
-                                    ></img>
+                                    <div className="user-things">
+                                        <img
+                                            src={
+                                                "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                                            }
+                                            className="tweet-user-img"
+                                            alt="no img"
+                                        ></img>
+                                        <NavLink to={`/tweets/${el.id}`}>
+                                            @{el.username}
+                                        </NavLink>
+                                    </div>
                                 ) : (
                                     <img
                                         src={el.profile_pic}
@@ -76,11 +81,9 @@ const Tweets = () => {
                                         alt="no img"
                                     ></img>
                                 )}
-
-                                <NavLink to={`/tweets/${el.id}`}>
-                                    @{el.username}
-                                </NavLink>
-                                <h3>{el.body}</h3>
+                                <div className="tweet-text">
+                                    <h3>{el.body}</h3>
+                                </div>
                                 <h4>Likes: {el?.totalLikes}</h4>
                             </div>
                         );
@@ -91,59 +94,3 @@ const Tweets = () => {
 };
 
 export default Tweets;
-
-{
-    /* <form onSubmit={submit}>
-<button
-type="submit"
-className="like-btn"
-onClick={() => {
-        // setLike(false);
-        // setTweetId(el.id);
-        el.likes.forEach((x) => {
-            if (
-                x.user_id === user.id &&
-                el.isLiked === true
-                ) {
-                    setId(x.id);
-                    setLike(false);
-                    setTweetId(el.id);
-                    editTweet({
-                        id: x.id,
-                    });
-                }
-            });
-            if (el.likedBy.length !== -1) {
-                el.likedBy.splice(
-                    el.likedBy.indexOf(
-                        el.id
-                        ),
-                        1
-                        );
-                    }
-                }}
-                >
-                unlike
-                </button>
-                </form> */
-}
-
-{
-    /* {!el.likedBy.includes(user.id) ? (
-            <>
-                <button
-                    onClick={() =>
-                        dispatch(
-                            createLike(el.id, {
-                                tweet_id: el.id,
-                                user_id: user.id,
-                                isLiked: true,
-                            })
-                        )
-                    }
-                ></button>
-            </>
-            ) : (
-            <></>
-            )} */
-}

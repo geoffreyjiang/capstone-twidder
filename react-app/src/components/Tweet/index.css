@@ -20,21 +20,28 @@
     justify-content: center; */
     /* padding: 15px; */
     display: grid;
-    justify-content: center;
-    grid-template-columns: 50% 1fr;
-    width: 100%;
+    /* justify-content: center; */
+    /* grid-template-columns: 50% 1fr; */
+    width: 315px;
+    max-height: 1000px;
+    /* width: 100%; */
     border-left: none;
     border-right: none;
     border-bottom: none;
     border: 1px solid rgb(235, 235, 235);
 }
-
-.tweet-container > h3 {
-    display: inline-block;
-    width: auto;
+.tweet-container > .tweet-text > h3 {
+    /* padding-left: 10%; */
+    color: red;
 }
 
 .tweet-user-img {
     display: inline-block;
-    width: 43px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
