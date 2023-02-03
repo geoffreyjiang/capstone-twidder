@@ -4,12 +4,11 @@ import LogoutButton from "../auth/LogoutButton";
 import "./nav.css";
 import { useSelector, useDispatch } from "react-redux";
 import { login } from "../../store/session";
-
+import LoginModal from "../Login/LoginModal";
 const NavBar = () => {
     const sessionUser = useSelector((state) => state.session.user);
     const history = useHistory();
     const dispatch = useDispatch();
-    console.log(sessionUser);
     let session;
     if (sessionUser) {
         session = (
@@ -34,47 +33,50 @@ const NavBar = () => {
         );
     } else {
         session = (
-            <ul>
-                <li className="list-item">
-                    <NavLink to="/" exact={true}>
-                        Home
-                    </NavLink>
-                </li>
-                <li>
-                    <button
-                        className="demo-btn"
-                        onClick={(e) => history.push("/login")}
-                    >
-                        Login
-                    </button>
-                </li>
-                <li>
-                    <button
-                        className="demo-btn"
-                        onClick={(e) => history.push("/sign-up")}
-                    >
-                        Sign Up
-                    </button>
-                </li>
-                <li>
-                    <button
-                        onClick={async (e) => {
-                            const credential = "demo@aa.io";
-                            const password = "password";
-                            // history.push("/");
-                            const data = await dispatch(
-                                login(credential, password)
-                            );
-                            if (data) history.push("/");
-                        }}
-                    >
-                        Demo Login
-                    </button>
-                </li>
-                {/* <li className="list-item">
+            <>
+                <ul>
+                    <li className="list-item">
+                        <NavLink to="/" exact={true}>
+                            Home
+                        </NavLink>
+                    </li>
+                    <li>
+                        <button
+                            className="demo-btn"
+                            onClick={(e) => history.push("/login")}
+                        >
+                            Login
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            className="demo-btn"
+                            onClick={(e) => history.push("/sign-up")}
+                        >
+                            Sign Up
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            onClick={async (e) => {
+                                const credential = "demo@aa.io";
+                                const password = "password";
+                                // history.push("/");
+                                const data = await dispatch(
+                                    login(credential, password)
+                                );
+                                if (data) history.push("/");
+                            }}
+                        >
+                            Demo Login
+                        </button>
+                    </li>
+                    {/* <li className="list-item">
                     <LogoutButton />
                 </li> */}
-            </ul>
+                    <LoginModal />
+                </ul>
+            </>
         );
     }
     return (

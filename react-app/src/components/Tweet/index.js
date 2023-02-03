@@ -28,27 +28,6 @@ const Tweets = () => {
         dispatch(getTweets());
     }, [dispatch]);
 
-    const submit = async (e) => {
-        e.preventDefault();
-        let num = Number(id);
-        if (!user) {
-            alert("Please login!");
-        }
-
-        const data = {
-            user_id: user.id,
-            tweet_id: tweetId,
-            isLiked: like,
-        };
-        dispatch(editLikes(data));
-        // if (liked) {
-        //     dispatch(getTweets(data.id));
-        // }
-    };
-
-    // const handleChange = () => {
-    //     setLike(!like);
-    // };
     return (
         <>
             <div className="tweet-section">
@@ -61,7 +40,7 @@ const Tweets = () => {
                         // console.log(el.likes);
                         return (
                             <div className="tweet-container" key={i}>
-                                {!el.profile_pic ? (
+                                {!el?.profile_pic ? (
                                     <div className="user-things">
                                         <img
                                             src={
@@ -70,33 +49,33 @@ const Tweets = () => {
                                             className="tweet-user-img"
                                             alt="no img"
                                         ></img>
-                                        <NavLink to={`/tweets/${el.id}`}>
-                                            @{el.username}
+                                        <NavLink to={`/tweets/${el?.id}`}>
+                                            @{el?.username}
                                         </NavLink>
                                     </div>
                                 ) : (
                                     <div className="user-things">
                                         <img
-                                            src={el.profile_pic}
+                                            src={el?.profile_pic}
                                             className="tweet-user-img"
                                             alt="no img"
                                         ></img>
                                         <NavLink to={`/tweets/${el.id}`}>
-                                            @{el.username}
+                                            @{el?.username}
                                         </NavLink>
                                     </div>
                                 )}
-                                {el.image ? (
+                                {el?.image ? (
                                     <div className="tweet-text">
-                                        <h3>{el.body}</h3>
+                                        <h3>{el?.body}</h3>
                                         <img
-                                            src={el.image}
+                                            src={el?.image}
                                             className="tweet-img"
                                         ></img>
                                     </div>
                                 ) : (
                                     <div className="tweet-text">
-                                        <h3>{el.body}</h3>
+                                        <h3>{el?.body}</h3>
                                     </div>
                                 )}
                                 {/*
