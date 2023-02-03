@@ -1,0 +1,9 @@
+.create-tweet-container {
+    display: grid;
+    width: 350px;
+    max-height: 10000px;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    border: 1px solid rgb(235, 235, 235);
+}

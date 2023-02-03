@@ -24,7 +24,9 @@ const Tweets = () => {
     return (
         <>
             <div className="tweet-section">
-                <CreateTweet />
+                <div className="tweet-container">
+                    <CreateTweet />
+                </div>
                 {tweets
                     ?.slice(0)
                     .reverse()

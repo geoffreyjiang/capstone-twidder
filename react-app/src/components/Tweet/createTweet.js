@@ -53,7 +53,7 @@ const CreateTweet = () => {
                             type="input"
                             value={image}
                             name="image"
-                            placeholder="Whats on your mind?"
+                            placeholder="img"
                             onChange={(e) => setImage(e.target.value)}
                         ></input>
                     </div>

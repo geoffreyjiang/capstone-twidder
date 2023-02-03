@@ -11,20 +11,9 @@
 }
 
 .tweet-container {
-    /* display: grid;
-    grid-template-columns: 60px 220px; */
-    /* display: grid;
-    border: solid 1px;
-    height: 250px;
-    width: 300px;
-    justify-content: center; */
-    /* padding: 15px; */
     display: grid;
-    /* justify-content: center; */
-    /* grid-template-columns: 50% 1fr; */
     width: 350px;
     max-height: 10000px;
-    /* width: 100%; */
     border-left: none;
     border-right: none;
     border-bottom: none;
