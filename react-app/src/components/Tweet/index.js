@@ -1,16 +1,9 @@
 import React, { useState, useEffect } from "react";
-import {
-    getTweets,
-    getTweetId,
-    editTweet,
-    removeTweet,
-} from "../../store/tweets";
+import { getTweets } from "../../store/tweets";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import "./index.css";
 import CreateTweet from "./createTweet";
-import { getLikes, editLikes, createLike } from "../../store/likes";
-import CreateLike from "../Likes/createLike";
 
 const Tweets = () => {
     const dispatch = useDispatch();

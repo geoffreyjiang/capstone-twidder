@@ -27,7 +27,7 @@ const CreateTweet = () => {
         let newTweet = dispatch(createTweet(data));
         if (newTweet) {
             history.push(`/`);
-            dispatch(getTweets());
+            // dispatch(getTweets());
             setBody("");
             setImage("");
         }

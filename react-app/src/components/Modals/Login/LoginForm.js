@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { login } from "../../store/session";
+import { login } from "../../../store/session";
 import "./index.css";
-const LoginForm = () => {
+const LoginForm = ({ setOpen }) => {
     const [errors, setErrors] = useState([]);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -33,6 +33,7 @@ const LoginForm = () => {
     return (
         <div className="login-form">
             <form onSubmit={onLogin}>
+                <button onClick={() => setOpen(false)}>x</button>
                 <div>
                     {errors.map((error, ind) => (
                         <div key={ind}>{error}</div>

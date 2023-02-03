@@ -4,7 +4,8 @@ import LogoutButton from "../auth/LogoutButton";
 import "./nav.css";
 import { useSelector, useDispatch } from "react-redux";
 import { login } from "../../store/session";
-import LoginModal from "../Login/LoginModal";
+import LoginModal from "../Modals/Login/LoginModal";
+
 const NavBar = () => {
     const sessionUser = useSelector((state) => state.session.user);
     const history = useHistory();
@@ -81,7 +82,7 @@ const NavBar = () => {
     }
     return (
         <nav>
-            <i class="fa-brands fa-twitter"></i>
+            <i className="fa-brands fa-twitter"></i>
             <h2>Twidder</h2>
             {session}
         </nav>
