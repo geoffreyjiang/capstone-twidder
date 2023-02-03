@@ -7,3 +7,6 @@
     border-bottom: none;
     border: 1px solid rgb(235, 235, 235);
 }
+.create-tweet-container > .tweet-form > .input-tweet > textarea {
+    width: 350px;
+}
