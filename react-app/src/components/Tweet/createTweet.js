@@ -19,6 +19,7 @@ const CreateTweet = () => {
         //     setBody("");
         //     alert("tweet must be less than 180 characters");
         // }
+        console.log(image);
         const data = {
             image,
             body,
@@ -26,11 +27,12 @@ const CreateTweet = () => {
         let newTweet = dispatch(createTweet(data));
         if (newTweet) {
             history.push(`/`);
+            dispatch(getTweets());
             setBody("");
             setImage("");
-            dispatch(getTweets());
         }
     };
+
     return (
         <>
             <div className="create-tweet-container">
@@ -39,19 +41,20 @@ const CreateTweet = () => {
                         <textarea
                             type="text"
                             value={body}
-                            name="question"
+                            name="text"
                             placeholder="Whats on your mind?"
                             required
-                            className="question-text"
                             onChange={(e) => setBody(e.target.value)}
                         ></textarea>
                     </div>
 
                     <div className="input-tweet">
                         <input
-                            type="text"
+                            type="input"
                             value={image}
-                            onChange={(e) => setImage(e.target.vaue)}
+                            name="image"
+                            placeholder="Whats on your mind?"
+                            onChange={(e) => setImage(e.target.value)}
                         ></input>
                     </div>
                     <div>

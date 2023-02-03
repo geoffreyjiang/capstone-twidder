@@ -75,16 +75,44 @@ const Tweets = () => {
                                         </NavLink>
                                     </div>
                                 ) : (
-                                    <img
-                                        src={el.profile_pic}
-                                        className="tweet-user-img"
-                                        alt="no img"
-                                    ></img>
+                                    <div className="user-things">
+                                        <img
+                                            src={el.profile_pic}
+                                            className="tweet-user-img"
+                                            alt="no img"
+                                        ></img>
+                                        <NavLink to={`/tweets/${el.id}`}>
+                                            @{el.username}
+                                        </NavLink>
+                                    </div>
                                 )}
+                                {el.image ? (
+                                    <div className="tweet-text">
+                                        <h3>{el.body}</h3>
+                                        <img
+                                            src={el.image}
+                                            className="tweet-img"
+                                        ></img>
+                                    </div>
+                                ) : (
+                                    <div className="tweet-text">
+                                        <h3>{el.body}</h3>
+                                    </div>
+                                )}
+                                {/*
                                 <div className="tweet-text">
                                     <h3>{el.body}</h3>
-                                </div>
-                                <h4>Likes: {el?.totalLikes}</h4>
+                                    {el.image ? (
+                                        <div className="tweet-img">
+                                            <img
+                                                src={el.image}
+                                                className="tweet-img"
+                                            ></img>
+                                        </div>
+                                    ) : null}
+                                    <h4>Likes: {el?.totalLikes}</h4>
+                                </div> */}
+                                <h4>{el?.totalLikes}</h4>
                             </div>
                         );
                     })}

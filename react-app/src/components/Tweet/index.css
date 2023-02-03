@@ -22,15 +22,16 @@
     display: grid;
     /* justify-content: center; */
     /* grid-template-columns: 50% 1fr; */
-    width: 315px;
-    max-height: 1000px;
+    width: 350px;
+    max-height: 10000px;
     /* width: 100%; */
     border-left: none;
     border-right: none;
     border-bottom: none;
     border: 1px solid rgb(235, 235, 235);
 }
-.tweet-container > .tweet-text > h3 {
+.tweet-container > .tweet-text > h3,
+h4 {
     text-align: center;
 }
 
@@ -45,4 +46,18 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+}
+
+.tweet-text {
+    vertical-align: middle;
+}
+.tweet-img {
+    width: 60%;
+    height: 70%;
+    position: relative;
+    margin-left: 75px;
+    /* justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column; */
 }
