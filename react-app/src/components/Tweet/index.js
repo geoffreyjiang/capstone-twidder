@@ -38,14 +38,18 @@ const Tweets = () => {
                             <div className="tweet-container" key={i}>
                                 {el?.profilePic ? (
                                     <div className="user-things">
-                                        <img
-                                            src={el.profilePic}
-                                            className="tweet-user-img"
-                                            alt="no img"
-                                        ></img>
-                                        <NavLink to={`/tweets/${el.id}`}>
-                                            @{el?.username}
-                                        </NavLink>
+                                        <div className="profileImg">
+                                            <img
+                                                src={el.profilePic}
+                                                className="tweet-user-img"
+                                                alt="no img"
+                                            ></img>
+                                        </div>
+                                        <div className="username-container">
+                                            <NavLink to={`/tweets/${el.id}`}>
+                                                {el.firstName} @{el?.username}
+                                            </NavLink>
+                                        </div>
                                     </div>
                                 ) : (
                                     <div className="user-things">
@@ -68,13 +72,14 @@ const Tweets = () => {
                                             src={el?.image}
                                             className="tweet-img"
                                         ></img>
+                                        <h4>Likes:{el?.totalLikes}</h4>
                                     </div>
                                 ) : (
                                     <div className="tweet-text">
                                         <h3>{el?.body}</h3>
+                                        <h4>Likes:{el?.totalLikes}</h4>
                                     </div>
                                 )}
-                                <h4>{el?.totalLikes}</h4>
                             </div>
                         );
                     })}

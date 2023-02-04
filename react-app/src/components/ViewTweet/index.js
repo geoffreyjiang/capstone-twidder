@@ -41,7 +41,8 @@ const ViewTweet = () => {
         <>
             <div className="tweet-id-section">
                 <h2>{tweet?.body}</h2>
-                {user?.id == tweet?.user_id ? (
+
+                {user && user?.id == tweet?.user_id ? (
                     <>
                         <button onClick={() => deleteTweet(tweet.id)}>
                             Delete
