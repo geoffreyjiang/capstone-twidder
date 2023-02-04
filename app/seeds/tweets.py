@@ -4,11 +4,11 @@ from app.models import db, Tweet, environment, SCHEMA
 # Adds a demo user, you can add other users here if you want
 def seed_tweets():
     one = Tweet(
-        body='First tweet!', image='null', user_id=2)
+        body='First tweet!', image='', user_id=2)
     two = Tweet(
-        body='Second tweet!', image='null', user_id=3)
+        body='Second tweet!', image='', user_id=3)
     three = Tweet(
-        body='Third tweet!', image='null', user_id=1)
+        body='Third tweet!', image='', user_id=1)
 
     db.session.add(one)
     db.session.add(two)
