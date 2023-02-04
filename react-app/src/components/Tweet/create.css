@@ -5,8 +5,13 @@
     border-left: none;
     border-right: none;
     border-bottom: none;
-    border: 1px solid rgb(235, 235, 235);
+    justify-content: center;
+    align-content: center;
 }
-.create-tweet-container > .tweet-form > .input-tweet > textarea {
+.create-tweet-container > .tweet-form > .input-tweet > textarea,
+input {
+    width: 350px;
+}
+.input-tweet {
     width: 350px;
 }

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { createTweet, getTweets } from "../../store/tweets";
-
+import "./create.css";
 const CreateTweet = () => {
     const user = useSelector((state) => state.session.user);
     // console.log(user);
@@ -32,20 +32,39 @@ const CreateTweet = () => {
             setImage("");
         }
     };
-
+    // console.log(user);
     return (
         <>
+            {!user?.profile_pic ? (
+                <div className="user-things">
+                    <img
+                        src={
+                            "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                        }
+                        className="tweet-user-img"
+                        alt="no img"
+                    ></img>
+                </div>
+            ) : (
+                <div className="user-things">
+                    <img
+                        src={user?.profile_pic}
+                        className="tweet-user-img"
+                    ></img>
+                </div>
+            )}
             <div className="create-tweet-container">
                 <form className="tweet-form" onSubmit={handleSubmit}>
                     <div className="input-tweet">
-                        <textarea
+                        <input
                             type="text"
                             value={body}
                             name="text"
-                            placeholder="Whats on your mind?"
+                            id="tweet-text"
+                            placeholder="What's happening?"
                             required
                             onChange={(e) => setBody(e.target.value)}
-                        ></textarea>
+                        ></input>
                     </div>
 
                     <div className="input-tweet">
