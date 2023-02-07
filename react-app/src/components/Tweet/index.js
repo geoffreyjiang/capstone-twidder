@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import "./index.css";
 import CreateTweet from "./createTweet";
-
+import TopNav from "../Nav/topNav";
 const Tweets = () => {
     const dispatch = useDispatch();
     const [like, setLike] = useState();
@@ -25,6 +25,19 @@ const Tweets = () => {
         <>
             <div className="tweet-section">
                 <div className="tweet-container">
+                    <div className="top-nav">
+                        <ul>
+                            <div className="top">
+                                <li>All</li>
+                            </div>
+                            ||
+                            <div className="top">
+                                <li>Following</li>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+                <div className="tweet-container">
                     <CreateTweet />
                 </div>
                 {tweets
@@ -33,6 +46,7 @@ const Tweets = () => {
                     .map((el, i) => {
                         // console.log(el.totalLikes);
                         // console.log(el.likes);
+                        console.log(el.firstName);
                         // console.log(el.body);
                         return (
                             <div className="tweet-container" key={i}>
@@ -61,7 +75,7 @@ const Tweets = () => {
                                             alt="no img"
                                         ></img>
                                         <NavLink to={`/tweets/${el?.id}`}>
-                                            @{el?.username}
+                                            {el.firstName} @{el?.username}
                                         </NavLink>
                                     </div>
                                 )}

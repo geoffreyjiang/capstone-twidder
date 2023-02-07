@@ -33,7 +33,7 @@ const LoginForm = ({ setOpen }) => {
     return (
         <div className="login-form">
             <form onSubmit={onLogin}>
-                <button onClick={() => setOpen(false)}>x</button>
+                {/* <button onClick={() => setOpen(false)}>x</button> */}
                 <div>
                     {errors.map((error, ind) => (
                         <div key={ind}>{error}</div>

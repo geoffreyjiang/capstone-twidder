@@ -10,20 +10,20 @@ const LoginModal = () => {
         <>
             <button onClick={() => setOpen(true)}>Login</button>
             {open && (
-                // <Modal onClose={() => setOpen(false)}>
-                //     <LoginForm />
-                // </Modal>
-                <>
-                    <div id="modal">
-                        <div
-                            id="modal-background"
-                            onClick={() => setOpen(false)}
-                        />
-                        <div id="modal-content">
-                            <LoginForm setOpen={setOpen} />
-                        </div>
-                    </div>
-                </>
+                <Modal onClose={() => setOpen(false)}>
+                    <LoginForm />
+                </Modal>
+                // <>
+                //     <div id="modal">
+                //         <div
+                //             id="modal-background"
+                //             onClick={() => setOpen(false)}
+                //         />
+                //         <div id="modal-content">
+                //             <LoginForm setOpen={setOpen} />
+                //         </div>
+                //     </div>
+                // </>
             )}
         </>
     );

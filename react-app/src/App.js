@@ -12,6 +12,7 @@ import Tweets from "./components/Tweet";
 import ViewTweet from "./components/ViewTweet";
 import EditTweet from "./components/EditTweetModal/tweetForm";
 import EditReply from "./components/Reply/editReply";
+import TopNav from "./components/Nav/topNav";
 function App() {
     const [loaded, setLoaded] = useState(false);
     const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function App() {
     return (
         <BrowserRouter>
             <NavBar />
+            {/* <TopNav /> */}
             <Switch>
                 <Route path="/login" exact={true}>
                     <LoginForm />

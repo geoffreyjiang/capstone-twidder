@@ -22,7 +22,7 @@ body {
     margin: 0;
 }
 
-nav {
+.left-nav {
     position: fixed;
     top: 0;
     left: 0;
@@ -35,17 +35,17 @@ nav {
     /* justify-content: center; */
 }
 
-nav > ul {
+.left-nav > ul {
     list-style-type: none;
 }
 
-nav > ul > li {
+.left-nav > ul > li {
     /* display: inline-block; */
     padding: 5px 15px;
     font-size: 30px;
 }
 
-nav > ul > li > button {
+.left-nav > ul > li > button {
     /* display: inline-block; */
     padding: 5px 15px;
     font-size: 20px;

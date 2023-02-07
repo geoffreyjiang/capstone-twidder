@@ -81,7 +81,7 @@ const NavBar = () => {
         );
     }
     return (
-        <nav>
+        <nav className="left-nav">
             <i className="fa-brands fa-twitter"></i>
             <h2>Twidder</h2>
             {session}

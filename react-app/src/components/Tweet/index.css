@@ -52,3 +52,10 @@
     align-items: center;
     flex-direction: column; */
 }
+
+.tweet-container > .top-nav > ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    position: relative;
+}
