@@ -9,7 +9,6 @@ const LoginForm = ({ setOpen }) => {
     const [password, setPassword] = useState("");
     const user = useSelector((state) => state.session.user);
     const dispatch = useDispatch();
-    console.log("YOOOOOOOOOOOOOOO");
     const onLogin = async (e) => {
         e.preventDefault();
         const data = await dispatch(login(email, password));
@@ -27,7 +26,7 @@ const LoginForm = ({ setOpen }) => {
     };
 
     if (user) {
-        return <Redirect to="/" />;
+        return <Redirect to="/tweets" />;
     }
 
     return (

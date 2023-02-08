@@ -15,8 +15,8 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     firstName =  db.Column(db.String(50), nullable=False)
     lastName = db.Column(db.String(50), nullable=False)
-    profile_pic = db.Column(db.String(50))
-    bio = db.Column(db.String(140))
+    profile_pic = db.Column(db.String(50), nullable=True)
+    bio = db.Column(db.String(140), nullable=True)
 
 
     tweet = db.relationship('Tweet', back_populates='tweet_owner', cascade='all, delete')

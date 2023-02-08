@@ -38,5 +38,5 @@ class Tweet(db.Model):
             "totalLikes": total,
             'likes': [like.to_dict() for like in self.tweet_liked],
             "likedBy": [like.to_dict()['user_id'] for like in self.tweet_liked],
-            "profilePic": self.tweet_owner.to_dict()['profile_pic'],
+            "profile_pic": self.tweet_owner.to_dict()['profile_pic'],
         }

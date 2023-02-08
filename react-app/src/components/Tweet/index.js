@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getTweets } from "../../store/tweets";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink, useHistory, Redirect } from "react-router-dom";
 import "./index.css";
 import CreateTweet from "./createTweet";
 import TopNav from "../Nav/topNav";
@@ -21,6 +21,9 @@ const Tweets = () => {
         dispatch(getTweets());
     }, [dispatch]);
 
+    if (!user) {
+        return <Redirect to="/" />;
+    }
     return (
         <>
             <div className="tweet-section">
@@ -47,14 +50,14 @@ const Tweets = () => {
                         // console.log(el.totalLikes);
                         // console.log(el.likes);
                         console.log(el.firstName);
-                        // console.log(el.body);
+                        console.log(el);
                         return (
                             <div className="tweet-container" key={i}>
-                                {el?.profilePic ? (
+                                {el?.profile_pic ? (
                                     <div className="user-things">
-                                        <div className="profileImg">
+                                        <div className="profile_pic">
                                             <img
-                                                src={el.profilePic}
+                                                src={el.profile_pic}
                                                 className="tweet-user-img"
                                                 alt="no img"
                                             ></img>
