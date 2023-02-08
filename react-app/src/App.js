@@ -10,7 +10,7 @@ import User from "./components/User";
 import { authenticate } from "./store/session";
 import Tweets from "./components/Tweet";
 import ViewTweet from "./components/ViewTweet";
-import EditTweet from "./components/EditTweetModal/tweetForm";
+// import EditTweet from "./components/EditTweetModal/tweetForm";
 import EditReply from "./components/Reply/editReply";
 import TopNav from "./components/Nav/topNav";
 import SplashPage from "./components/Splash";
@@ -56,9 +56,9 @@ function App() {
                     <NavBar />
                     <ViewTweet />
                 </Route>
-                <Route path="/tweets/:id/edit" exact={true}>
+                {/* <Route path="/tweets/:id/edit" exact={true}>
                     <EditTweet />
-                </Route>
+                </Route> */}
                 <Route path="/reply/:id/" exact={true}>
                     <EditReply />
                 </Route>

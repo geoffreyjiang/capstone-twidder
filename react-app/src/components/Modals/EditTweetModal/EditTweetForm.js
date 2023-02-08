@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import {
-    getTweets,
-    getTweetId,
-    editTweet,
-    removeTweet,
-} from "../../store/tweets";
-import "./index.css";
-const EditTweet = () => {
+// import {
+//     getTweets,
+//     getTweetId,
+//     editTweet,
+//     removeTweet,
+// } from "../../store/tweets";
+
+import { getTweetId, editTweet } from "../../../store/tweets";
+// import "./index.css";
+const EditTweet = ({ setOpen }) => {
     const user = useSelector((state) => state.session.user);
     const { id } = useParams();
     const tweet = useSelector((store) => store.tweets);
@@ -34,10 +36,11 @@ const EditTweet = () => {
         };
         const newTweet = dispatch(editTweet(data));
         if (newTweet) {
+            setOpen(false);
             history.push(`/tweets/${id}`);
-            dispatch(getTweetId(id));
             setBody("");
         }
+        dispatch(getTweetId(id));
     };
     return (
         <>

@@ -6,7 +6,7 @@ import {
     removeTweet,
 } from "../../store/tweets";
 import { getLikes, editLikes } from "../../store/likes";
-
+import EditTweetModal from "../Modals/EditTweetModal/EditTweetModal";
 import AllReplies from "../Reply";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams, useHistory } from "react-router-dom";
@@ -47,11 +47,7 @@ const ViewTweet = () => {
                         <button onClick={() => deleteTweet(tweet.id)}>
                             Delete
                         </button>
-                        <button
-                            onClick={() => history.push(`/tweets/${id}/edit`)}
-                        >
-                            Edit
-                        </button>
+                        <EditTweetModal />
                     </>
                 ) : null}
                 <div className="replyArea">
