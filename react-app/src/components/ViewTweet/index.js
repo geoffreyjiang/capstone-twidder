@@ -17,7 +17,6 @@ const ViewTweet = () => {
     const tweet = useSelector((store) => store.tweets);
     const likes = useSelector((store) => Object.values(store.likes));
     const user = useSelector((state) => state.session.user);
-
     // const [like, setLike] = useState(likes.isLiked);
 
     const history = useHistory();
