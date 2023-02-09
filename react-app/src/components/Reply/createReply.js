@@ -43,13 +43,13 @@ const CreateReply = () => {
                         ></textarea>
                     </div>
 
-                    {/* <div className="input-reply">
+                    <div className="input-reply">
                         <input
                             type="text"
                             value={image}
-                            onChange={(e) => setImage(e.target.vaue)}
+                            onChange={(e) => setImage(e.target.value)}
                         ></input>
-                    </div> */}
+                    </div>
                     <div>
                         <button className="submitBtn" type="submit">
                             Post

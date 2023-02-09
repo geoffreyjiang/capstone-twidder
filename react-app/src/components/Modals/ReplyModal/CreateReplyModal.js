@@ -9,7 +9,7 @@ const CreateReplyModal = () => {
             <button onClick={() => setOpen(true)}>Reply</button>
             {open && (
                 <Modal onClose={() => setOpen(false)}>
-                    <CreateReply />
+                    <CreateReply setOpen={setOpen} />
                 </Modal>
             )}
         </>

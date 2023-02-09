@@ -10,7 +10,7 @@ const EditReplyModal = () => {
 
             {open && (
                 <Modal onClose={() => setOpen(false)}>
-                    <EditReply />
+                    <EditReply setOpen={setOpen} />
                 </Modal>
             )}
         </>

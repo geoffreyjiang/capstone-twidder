@@ -60,6 +60,8 @@ function App() {
                     <EditTweet />
                 </Route> */}
                 <Route path="/reply/:id/" exact={true}>
+                    <NavBar />
+
                     <EditReply />
                 </Route>
             </Switch>
