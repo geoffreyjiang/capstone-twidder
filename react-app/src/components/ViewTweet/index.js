@@ -18,7 +18,7 @@ const ViewTweet = () => {
     const likes = useSelector((store) => Object.values(store.likes));
     const user = useSelector((state) => state.session.user);
     // const [like, setLike] = useState(likes.isLiked);
-
+    const [body, setBody] = useState(tweet?.body);
     const history = useHistory();
 
     useEffect(() => {
@@ -67,7 +67,7 @@ const ViewTweet = () => {
                             </NavLink>
                         </div>
                     )}
-                    <h3>{tweet?.body}</h3>
+                    <h3>{tweet.body}</h3>
 
                     {user && user?.id == tweet?.user_id ? (
                         <>

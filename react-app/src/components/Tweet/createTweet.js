@@ -42,7 +42,7 @@ const CreateTweet = () => {
                             "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
                         }
                         className="tweet-user-img"
-                        alt="no img"
+                        alt="img"
                     ></img>
                 </div>
             ) : (
@@ -50,6 +50,7 @@ const CreateTweet = () => {
                     <img
                         src={user?.profile_pic}
                         className="tweet-user-img"
+                        alt="img"
                     ></img>
                 </div>
             )}

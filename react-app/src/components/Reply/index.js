@@ -53,7 +53,11 @@ const AllReplies = () => {
                     {el?.image ? (
                         <div className="tweet-text">
                             <h3>{el?.body}</h3>
-                            <img src={el?.image} className="tweet-img"></img>
+                            <img
+                                src={el?.image}
+                                className="tweet-img"
+                                alt="img"
+                            ></img>
                             <h4>Likes:{el?.totalLikes}</h4>
                             {user.id == el.user_id ? (
                                 <>
