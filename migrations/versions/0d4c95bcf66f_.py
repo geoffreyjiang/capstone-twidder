@@ -1,18 +1,18 @@
 """empty message
 
-Revision ID: 69142cc2554c
+Revision ID: 0d4c95bcf66f
 Revises:
-Create Date: 2023-02-08 20:40:30.227990
+Create Date: 2023-02-08 21:03:40.142473
 
 """
 from alembic import op
 import sqlalchemy as sa
 import os
 environment = os.getenv("FLASK_ENV")
-SCHEMA = os.environ.get("SCHEMA")
+SCHEMA = os.environ.get('SCHEMA')
 
 # revision identifiers, used by Alembic.
-revision = '69142cc2554c'
+revision = '0d4c95bcf66f'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -27,7 +27,7 @@ def upgrade():
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
     sa.Column('firstName', sa.String(length=50), nullable=False),
     sa.Column('lastName', sa.String(length=50), nullable=False),
-    sa.Column('profile_pic', sa.String(length=50), nullable=True),
+    sa.Column('profile_pic', sa.String(length=99999), nullable=True),
     sa.Column('bio', sa.String(length=140), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
@@ -60,7 +60,7 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == "production":
+if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE tweets SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE likes SET SCHEMA {SCHEMA};")
