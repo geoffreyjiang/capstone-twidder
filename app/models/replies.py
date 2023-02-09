@@ -26,5 +26,6 @@ class Reply(db.Model):
             "image": self.image,
             "tweet_id": self.tweet_id,
             "user_id": self.user_id,
-            "username": self.reply_owner.to_dict()['username']
+            "username": self.reply_owner.to_dict()['username'],
+            "profile_pic": self.reply_owner.to_dict()['profile_pic'],
         }

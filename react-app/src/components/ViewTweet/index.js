@@ -21,8 +21,6 @@ const ViewTweet = () => {
     // const [like, setLike] = useState(likes.isLiked);
 
     const history = useHistory();
-    let count = 0;
-    console.log(id);
 
     useEffect(() => {
         dispatch(getTweetId(id));
@@ -39,20 +37,50 @@ const ViewTweet = () => {
 
     return (
         <>
-            <div className="tweet-id-section">
-                <h2>{tweet?.body}</h2>
+            <div className="tweet-section">
+                <div className="tweet-container">
+                    {tweet?.profile_pic ? (
+                        <div className="user-things">
+                            <div className="profile_pic">
+                                <img
+                                    src={tweet.profile_pic}
+                                    className="tweet-user-img"
+                                    alt="no img"
+                                ></img>
+                            </div>
+                            <div className="username-container">
+                                <NavLink to={`/tweets/${tweet.id}`}>
+                                    {tweet.firstName} @{tweet?.username}
+                                </NavLink>
+                            </div>
+                        </div>
+                    ) : (
+                        <div className="user-things">
+                            <img
+                                src={
+                                    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                                }
+                                className="tweet-user-img"
+                                alt="no img"
+                            ></img>
+                            <NavLink to={`/tweets/${tweet?.id}`}>
+                                {tweet.firstName} @{tweet?.username}
+                            </NavLink>
+                        </div>
+                    )}
+                    <h3>{tweet?.body}</h3>
 
-                {user && user?.id == tweet?.user_id ? (
-                    <>
-                        <button onClick={() => deleteTweet(tweet.id)}>
-                            Delete
-                        </button>
-                        <EditTweetModal />
-                    </>
-                ) : null}
-                <div className="replyArea">
-                    <AllReplies />
+                    {user && user?.id == tweet?.user_id ? (
+                        <>
+                            <EditTweetModal />
+                        </>
+                    ) : null}
                 </div>
+
+                {/* <div className="replyArea">
+                    <AllReplies />
+                </div> */}
+                <AllReplies />
             </div>
         </>
     );

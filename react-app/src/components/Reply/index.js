@@ -3,7 +3,8 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 // import { getBusinesses } from "../../store/business";
 import { getReplies, removeReply } from "../../store/reply";
-import CreateReply from "./createReply";
+import CreateReplyModal from "../Modals/ReplyModal/CreateReplyModal";
+import EditReplyModal from "../Modals/EditReplyModal/EditReplyModal";
 const AllReplies = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
@@ -19,38 +20,48 @@ const AllReplies = () => {
 
     const data = replies.map((el, i) => {
         return (
-            <div className="reply-box" key={i}>
+            <div className="tweet-container" key={i}>
+                {el?.profile_pic ? (
+                    <div className="user-things">
+                        <div className="profile_pic">
+                            <img
+                                src={el.profile_pic}
+                                className="tweet-user-img"
+                                alt="no img"
+                            ></img>
+                        </div>
+                        <div className="username-container">
+                            {el.firstName} @{el?.username}
+                        </div>
+                    </div>
+                ) : (
+                    <div className="user-things">
+                        <img
+                            src={
+                                "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                            }
+                            className="tweet-user-img"
+                            alt="no img"
+                        ></img>
+                        {el.firstName} @{el?.username}
+                    </div>
+                )}
                 <h3>{el.body}</h3>
-                <h2>
+                <div className="edit-modal">
                     {user.id == el.user_id ? (
                         <>
-                            <button
-                                className="delete-reply-btn"
-                                onClick={() => {
-                                    dispatch(removeReply(el.id));
-                                    dispatch(getReplies(id));
-                                }}
-                            >
-                                Delete
-                            </button>
-                            <button
-                                className="edit-reply-btn "
-                                onClick={() => history.push(`/reply/${el.id}`)}
-                            >
-                                Edit
-                            </button>
+                            <EditReplyModal replyId={el.id} />
                         </>
                     ) : null}
-                </h2>
+                </div>
             </div>
         );
     });
 
     return (
         <>
-            <h3 className="reply-title">REPLIES</h3>
-            <CreateReply />
-            <div className="reply-container">{data} </div>
+            <CreateReplyModal />
+            {data}
         </>
     );
 };

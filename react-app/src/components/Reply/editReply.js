@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { editReply, getReplies, getReplyId } from "../../store/reply";
+import {
+    editReply,
+    getReplies,
+    getReplyId,
+    removeReply,
+} from "../../store/reply";
 import { getTweetId } from "../../store/tweets";
 const EditReply = () => {
     const user = useSelector((state) => state.session.user);
@@ -11,16 +16,15 @@ const EditReply = () => {
     const history = useHistory();
     const [text, setText] = useState(reply?.body);
     const [image, setImage] = useState(reply?.image);
-    console.log(reply.body);
     // setText(reply.body);
-    useEffect(() => {
-        dispatch(getReplyId(id));
-    }, [dispatch, text]);
-
-    useEffect(() => {
-        setText(reply.body);
-        setImage(reply.image);
-    }, [reply.body, reply.image]);
+    // useEffect(() => {
+    //     dispatch(getReplyId(reply.id));
+    // }, [dispatch]);
+    // console.log(reply);
+    // useEffect(() => {
+    //     setText(reply.body);
+    //     setImage(reply.image);
+    // }, [reply.body, reply.image]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();

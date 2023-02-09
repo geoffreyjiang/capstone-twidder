@@ -8,7 +8,12 @@ import { useHistory, useParams } from "react-router-dom";
 //     removeTweet,
 // } from "../../store/tweets";
 
-import { getTweetId, editTweet } from "../../../store/tweets";
+import {
+    getTweetId,
+    editTweet,
+    removeTweet,
+    getTweets,
+} from "../../../store/tweets";
 // import "./index.css";
 const EditTweet = ({ setOpen }) => {
     const user = useSelector((state) => state.session.user);
@@ -68,6 +73,16 @@ const EditTweet = ({ setOpen }) => {
                     <div>
                         <button className="submitBtn" type="submit">
                             Post
+                        </button>
+                        <button
+                            onClick={() => {
+                                dispatch(removeTweet(id));
+
+                                history.push("/tweets");
+                                dispatch(getTweets());
+                            }}
+                        >
+                            Delete
                         </button>
                     </div>
                 </form>

@@ -1,20 +1,19 @@
 import { React, useState } from "react";
 import { Modal } from "../../../context/modal";
-import EditTweet from "./EditTweetForm";
+import CreateReply from "../../Reply/createReply";
 
-const EditTweetModal = () => {
+const CreateReplyModal = () => {
     const [open, setOpen] = useState(false);
     return (
         <>
-            <i class="fa-solid fa-ellipsis" onClick={() => setOpen(true)}></i>
-
+            <button onClick={() => setOpen(true)}>Reply</button>
             {open && (
                 <Modal onClose={() => setOpen(false)}>
-                    <EditTweet setOpen={setOpen} />
+                    <CreateReply />
                 </Modal>
             )}
         </>
     );
 };
 
-export default EditTweetModal;
+export default CreateReplyModal;
