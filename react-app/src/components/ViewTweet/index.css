@@ -3,8 +3,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    /* width: 50%; */
-    width: 80%;
+    width: 50%;
     height: 100%;
     /* padding: 10px; */
     margin-left: 20%;
@@ -20,12 +19,20 @@
     word-break: break-all;
     white-space: pre-wrap;
     border: 1px solid rgb(235, 235, 235);
+    position: sticky;
 }
 
-.tweet-container > .tweet-text > h3 {
+.tweet-id-container > .tweet-text > h1 {
     text-align: left;
-    margin-left: 70px;
+    margin-left: 40px;
+    padding-right: 15px;
 }
-.user-things {
-    justify-content: space-around;
+
+.tweet-id-container > .user-things > .username-container {
+    align-content: start;
+}
+
+.tweet-id-container > .user-things > .user-modal {
+    justify-content: flex-end;
+    display: flex;
 }

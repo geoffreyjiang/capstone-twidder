@@ -40,24 +40,24 @@ const ViewTweet = () => {
                 <div className="tweet-id-container">
                     {tweet?.profile_pic ? (
                         <div className="user-things">
-                            <div className="profile_pic">
-                                <img
-                                    src={tweet.profile_pic}
-                                    className="tweet-user-img"
-                                    alt="no img"
-                                ></img>
-                            </div>
-                            <div className="username-container">
-                                <NavLink to={`/tweets/${tweet.id}`}>
-                                    {tweet.firstName} @{tweet?.username}
-                                </NavLink>
-                            </div>
+                            {/* <div className="profile_pic"> */}
                             <div className="user-modal">
                                 {user && user?.id == tweet?.user_id ? (
                                     <>
                                         <EditTweetModal />
                                     </>
                                 ) : null}
+                            </div>
+                            <div className="username-container">
+                                <img
+                                    src={tweet.profile_pic}
+                                    className="tweet-user-img"
+                                    alt="no img"
+                                ></img>
+                                {/* </div> */}
+                                <NavLink to={`/tweets/${tweet.id}`}>
+                                    {tweet.firstName} @{tweet?.username}
+                                </NavLink>
                             </div>
                         </div>
                     ) : (
