@@ -73,7 +73,6 @@ const AllReplies = () => {
                     ) : (
                         <div className="tweet-text">
                             <h3>{el?.body}</h3>
-                            <h4>Likes:{el?.totalLikes}</h4>
                             {user.id == el.user_id ? (
                                 <>
                                     <i

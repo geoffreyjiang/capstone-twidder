@@ -36,8 +36,8 @@ const ViewTweet = () => {
 
     return (
         <>
-            <div className="tweet-section">
-                <div className="tweet-container">
+            <div className="tweet-id-section">
+                <div className="tweet-id-container">
                     {tweet?.profile_pic ? (
                         <div className="user-things">
                             <div className="profile_pic">
@@ -51,6 +51,13 @@ const ViewTweet = () => {
                                 <NavLink to={`/tweets/${tweet.id}`}>
                                     {tweet.firstName} @{tweet?.username}
                                 </NavLink>
+                            </div>
+                            <div className="user-modal">
+                                {user && user?.id == tweet?.user_id ? (
+                                    <>
+                                        <EditTweetModal />
+                                    </>
+                                ) : null}
                             </div>
                         </div>
                     ) : (
@@ -67,13 +74,9 @@ const ViewTweet = () => {
                             </NavLink>
                         </div>
                     )}
-                    <h3>{tweet.body}</h3>
-
-                    {user && user?.id == tweet?.user_id ? (
-                        <>
-                            <EditTweetModal />
-                        </>
-                    ) : null}
+                    <div className="tweet-text">
+                        <h1>{tweet.body}</h1>
+                    </div>
                 </div>
 
                 {/* <div className="replyArea">

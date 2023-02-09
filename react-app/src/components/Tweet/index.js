@@ -49,8 +49,8 @@ const Tweets = () => {
                     .map((el, i) => {
                         // console.log(el.totalLikes);
                         // console.log(el.likes);
-                        console.log(el.firstName);
-                        console.log(el);
+                        // console.log(el.firstName);
+                        // console.log(el);
                         return (
                             <div className="tweet-container" key={i}>
                                 {el?.profile_pic ? (
