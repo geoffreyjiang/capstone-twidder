@@ -8,7 +8,7 @@ import {
     removeReply,
 } from "../../store/reply";
 import { getTweetId } from "../../store/tweets";
-const EditReply = ({ setOpen }) => {
+const EditReply = () => {
     const user = useSelector((state) => state.session.user);
     const { id } = useParams();
     const reply = useSelector((store) => store.replies);
@@ -42,7 +42,6 @@ const EditReply = ({ setOpen }) => {
         const newReply = dispatch(editReply(data));
         if (newReply) {
             history.push(`/tweets/${num}`);
-            setOpen(false);
 
             setText("");
         }

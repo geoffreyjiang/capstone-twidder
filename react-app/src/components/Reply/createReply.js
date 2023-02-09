@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { createReply } from "../../store/reply";
-const CreateReply = () => {
+const CreateReply = ({ setOpen }) => {
     const user = useSelector((state) => state.session.user);
     // console.log(user);
     const { id } = useParams();
@@ -25,6 +25,7 @@ const CreateReply = () => {
             history.push(`/tweets/${id}`);
             setBody("");
             setImage("");
+            setOpen(false);
         }
     };
     return (
