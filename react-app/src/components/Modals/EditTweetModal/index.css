@@ -1,3 +1,23 @@
 .edit-tweet-container {
-    margin-left: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 500px;
+    /* margin: 2rem auto; */
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+    padding-right: 2rem;
+}
+
+.edit-prof-img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    padding-left: 5px;
+    padding-top: 5px;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    cursor: pointer;
 }

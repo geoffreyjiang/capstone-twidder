@@ -27,7 +27,9 @@ const NavBar = () => {
                         <h3>Home</h3>
                     </button> */}
                     </li>
-                    <li className="list-item">Explore </li>
+                    <li className="list-item">
+                        <i class="fa-solid fa-hashtag"> Explore</i>{" "}
+                    </li>
                     <li className="list-item">
                         <i class="fa-solid fa-user"> Profile</i>
                     </li>
@@ -92,8 +94,8 @@ const NavBar = () => {
     }
     return (
         <nav className="left-nav">
-            <i className="fa-brands fa-twitter"></i>
-            <h2>Twidder</h2>
+            <i className="fa-brands fa-twitter fa-3x"></i>
+            <h1>Twidder</h1>
             {session}
         </nav>
     );

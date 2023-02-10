@@ -55,3 +55,20 @@ export function SignUpMod({ onClose, children }) {
         modalNode
     );
 }
+
+export function EModal({ onClose, children }) {
+    const modalNode = useContext(ModalContext);
+    // console.log(modalNode, "LINE 27");
+    if (!modalNode) return null;
+    // console.log("YOOOOOOOOOOOOOOOOOoo");
+    return ReactDOM.createPortal(
+        <div id="modal">
+            <div id="emodal-background" onClick={onClose} />
+            <div id="emodal-content">
+                <i className="emodal-icon fa-brands fa-twitter fa-3x"></i>
+                {children}
+            </div>
+        </div>,
+        modalNode
+    );
+}

@@ -26,6 +26,12 @@ const EditTweet = ({ setOpen }) => {
     useEffect(() => {
         dispatch(getTweetId(id));
     }, [dispatch]);
+    let pImg;
+    if (!user.profile_pic)
+        pImg =
+            "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
+    else pImg = user.profile_pic;
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!user) {
@@ -49,20 +55,24 @@ const EditTweet = ({ setOpen }) => {
     return (
         <>
             <div className="edit-tweet-container">
+                {/* <img className="edit-prof-img" src={pImg} alt="prof"></img> */}
+
                 <form
                     method="POST"
                     className="edit-tweet-form"
                     onSubmit={handleSubmit}
                 >
                     <h2 className="edit-label">Edit Tweet</h2>
-                    <textarea
+                    <label>Tweet</label>
+                    <input
                         type="text"
                         value={body}
                         name="tweet"
                         required
                         className="tweet-text"
                         onChange={(e) => setBody(e.target.value)}
-                    ></textarea>
+                    ></input>
+                    <label>Image Url</label>
                     <input
                         className="tweet-text"
                         type="text"
