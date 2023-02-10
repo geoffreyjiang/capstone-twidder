@@ -31,8 +31,8 @@ const ViewTweet = () => {
     }, [dispatch, editBody]);
     let edit;
     edit = tweet.body;
-    console.log(tweet.body);
-    console.log(editBody);
+    // console.log(tweet.body);
+    // console.log(editBody);
     const deleteTweet = () => {
         dispatch(removeTweet(tweet.id));
         dispatch(getTweets());
@@ -40,6 +40,8 @@ const ViewTweet = () => {
     };
     // console.log(tweet.user_id);
     // console.log(user.id);
+    console.log(user.id);
+    console.log(tweet.user_id);
 
     return (
         <>
@@ -49,7 +51,7 @@ const ViewTweet = () => {
                         <div className="user-things">
                             {/* <div className="profile_pic"> */}
                             <div className="user-modal">
-                                {user && user?.id == tweet?.user_id ? (
+                                {user.id === tweet.user_id ? (
                                     <>
                                         <EditTweetModal />
                                     </>
@@ -61,6 +63,7 @@ const ViewTweet = () => {
                                     className="tweet-user-img"
                                     alt="no img"
                                 ></img>
+
                                 {/* </div> */}
                                 <NavLink to={`/tweets/${tweet.id}`}>
                                     {tweet.firstName} @{tweet?.username}
@@ -69,6 +72,13 @@ const ViewTweet = () => {
                         </div>
                     ) : (
                         <div className="user-things">
+                            <div className="user-modal">
+                                {user.id === tweet.user_id ? (
+                                    <>
+                                        <EditTweetModal />
+                                    </>
+                                ) : null}
+                            </div>
                             <img
                                 src={
                                     "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"

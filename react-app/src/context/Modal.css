@@ -25,3 +25,45 @@
     width: 450px;
     height: 450px;
 }
+
+.login-header,
+.modal-icon {
+    display: flex;
+    justify-content: center;
+}
+
+.modal-icon {
+    padding-top: 20px;
+}
+
+#smodal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#smodal-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#smodal-content {
+    position: absolute;
+    background-color: white;
+    border-radius: 20px;
+    width: 450px;
+    height: 500px;
+}
+
+.smodal-icon {
+    padding-top: 20px;
+}

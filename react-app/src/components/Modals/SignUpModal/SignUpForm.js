@@ -133,18 +133,22 @@ const SignUpForm = () => {
                         name="profilePic"
                         onChange={(e) => setProfilePic(e.target.value)}
                         value={profilePic}
+                        placeholder="optional"
                     ></input>
                 </div>
                 <div>
-                    <label>Bio</label>
+                    <label>Biography</label>
                     <input
                         type="text"
                         name="bio"
+                        placeholder="optional"
                         onChange={(e) => setBio(e.target.value)}
                         value={bio}
                     ></input>
                 </div>
-                <button type="submit">Sign Up</button>
+                <button className="signup-btn" type="submit">
+                    Sign Up
+                </button>
             </form>
         </div>
     );

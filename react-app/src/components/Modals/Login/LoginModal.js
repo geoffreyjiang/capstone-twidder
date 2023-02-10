@@ -11,7 +11,10 @@ const LoginModal = () => {
             {open && (
                 <>
                     <Modal onClose={() => setOpen(false)}>
-                        <i className="fa-brands fa-twitter fa-3x"></i>
+                        {/* <i className="fa-brands fa-twitter fa-3x"></i> */}
+                        <div className="login-header">
+                            <h1>Login to Twitter</h1>
+                        </div>
                         <LoginForm />
                     </Modal>
                 </>

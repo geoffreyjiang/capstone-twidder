@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { Modal } from "../../../context/modal";
+import { SignUpMod } from "../../../context/modal";
 import SignUpForm from "./SignUpForm";
 
 const SignUpModal = () => {
@@ -8,9 +8,9 @@ const SignUpModal = () => {
         <>
             <button onClick={() => setOpen(true)}>Sign Up</button>
             {open && (
-                <Modal onClose={() => setOpen(false)}>
+                <SignUpMod onClose={() => setOpen(false)}>
                     <SignUpForm />
-                </Modal>
+                </SignUpMod>
             )}
         </>
     );

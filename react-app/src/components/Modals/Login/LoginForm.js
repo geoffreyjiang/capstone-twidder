@@ -57,7 +57,9 @@ const LoginForm = ({ setOpen }) => {
                         value={password}
                         onChange={updatePassword}
                     />
-                    <button type="submit">Login</button>
+                    <button className="login-btn" type="submit">
+                        Login
+                    </button>
                 </div>
             </form>
         </div>
