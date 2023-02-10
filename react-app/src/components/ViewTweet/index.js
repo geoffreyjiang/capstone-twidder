@@ -18,14 +18,21 @@ const ViewTweet = () => {
     const likes = useSelector((store) => Object.values(store.likes));
     const user = useSelector((state) => state.session.user);
     // const [like, setLike] = useState(likes.isLiked);
-    const [body, setBody] = useState(tweet?.body);
+    const [editBody, setEditBody] = useState("");
     const history = useHistory();
 
     useEffect(() => {
-        dispatch(getTweetId(id));
+        let func = async () => {
+            setEditBody(tweet.body);
+            dispatch(getTweetId(id));
+        };
+        func();
         // dispatch(getLikes(id));
-    }, [dispatch]);
-
+    }, [dispatch, editBody]);
+    let edit;
+    edit = tweet.body;
+    console.log(tweet.body);
+    console.log(editBody);
     const deleteTweet = () => {
         dispatch(removeTweet(tweet.id));
         dispatch(getTweets());

@@ -5,6 +5,7 @@ import "./nav.css";
 import { useSelector, useDispatch } from "react-redux";
 import { login } from "../../store/session";
 import LoginModal from "../Modals/Login/LoginModal";
+import LogOutModal from "../Modals/Logout/LogoutModal";
 
 const NavBar = () => {
     const sessionUser = useSelector((state) => state.session.user);
@@ -13,24 +14,33 @@ const NavBar = () => {
     let session;
     if (sessionUser) {
         session = (
-            <ul>
-                <li className="list-item">
-                    <NavLink to="/" exact={true}>
-                        Home
-                    </NavLink>
-                    {/* <button
+            <>
+                <ul>
+                    <li className="list-item">
+                        <NavLink to="/" exact={true}>
+                            <i class="fa-solid fa-house"> Home</i>
+                        </NavLink>
+                        {/* <button
                         className="icon-btn"
                         onClick={() => history.push("/")}
                     >
                         <h3>Home</h3>
                     </button> */}
-                </li>
-                <li className="list-item">Explore </li>
-                <li className="list-item">Profile </li>
-                <li className="list-item">
-                    <LogoutButton />
-                </li>
-            </ul>
+                    </li>
+                    <li className="list-item">Explore </li>
+                    <li className="list-item">
+                        <i class="fa-solid fa-user"> Profile</i>
+                    </li>
+                </ul>
+                <div className="list-end">
+                    {/* <img
+                        src={sessionUser.profile_pic}
+                        onClick={<LogOutModal />}
+                    ></img> */}
+                    <LogOutModal />
+                    {/* <LogoutButton /> */}
+                </div>
+            </>
         );
     } else {
         session = (

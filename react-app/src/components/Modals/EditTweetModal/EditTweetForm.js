@@ -26,7 +26,6 @@ const EditTweet = ({ setOpen }) => {
     useEffect(() => {
         dispatch(getTweetId(id));
     }, [dispatch]);
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!user) {
@@ -39,13 +38,13 @@ const EditTweet = ({ setOpen }) => {
             body,
             image: img,
         };
-        const newTweet = dispatch(editTweet(data));
+        let newTweet = dispatch(editTweet(data));
         if (newTweet) {
             setOpen(false);
-            history.push(`/tweets/${id}`);
+            history.push(`/tweets`);
             setBody("");
+            // dispatch(getTweetId(id));
         }
-        dispatch(getTweetId(id));
     };
     return (
         <>

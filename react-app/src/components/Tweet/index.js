@@ -52,7 +52,11 @@ const Tweets = () => {
                         // console.log(el.firstName);
                         // console.log(el);
                         return (
-                            <div className="tweet-container" key={i}>
+                            <div
+                                className="tweet-container"
+                                key={i}
+                                onClick={() => history.push(`/tweets/${el.id}`)}
+                            >
                                 {el?.profile_pic ? (
                                     <div className="user-things">
                                         <div className="profile_pic">

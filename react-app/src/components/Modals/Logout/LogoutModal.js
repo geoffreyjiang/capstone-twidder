@@ -1,16 +1,20 @@
 import { React, useState } from "react";
 import { Modal } from "../../../context/modal";
-import LoginForm from "./LoginForm";
-
-import "./index.css";
-const LoginModal = () => {
+import LogoutButton from "../../auth/LogoutButton";
+import { useSelector } from "react-redux";
+const LogOutModal = () => {
     const [open, setOpen] = useState(false);
+    const sessionUser = useSelector((state) => state.session.user);
+
     return (
         <>
-            <button onClick={() => setOpen(true)}>Login</button>
+            <img
+                src={sessionUser.profile_pic}
+                onClick={() => setOpen(true)}
+            ></img>
             {open && (
                 <Modal onClose={() => setOpen(false)}>
-                    <LoginForm />
+                    <LogoutButton />
                 </Modal>
                 // <>
                 //     <div id="modal">
@@ -28,4 +32,4 @@ const LoginModal = () => {
     );
 };
 
-export default LoginModal;
+export default LogOutModal;
