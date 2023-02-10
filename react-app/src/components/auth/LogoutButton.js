@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
 import { useHistory } from "react-router-dom";
+import "./logout.css";
 const LogoutButton = ({ setOpen }) => {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -12,8 +13,13 @@ const LogoutButton = ({ setOpen }) => {
 
     return (
         <>
-            <button onClick={onLogout}>Logout</button>
-            <button onClick={() => setOpen(false)}>Cancel</button>
+            <h1>Log Out?</h1>
+            <button className="logout-btn" onClick={onLogout}>
+                Logout
+            </button>
+            <button className="logout-btn" onClick={() => setOpen(false)}>
+                Cancel
+            </button>
         </>
     );
 };

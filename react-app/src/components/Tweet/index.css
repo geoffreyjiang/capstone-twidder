@@ -12,7 +12,7 @@
 
 .tweet-container {
     display: grid;
-    width: 450px;
+    width: 480px;
     max-height: 10000px;
     border-left: none;
     border-right: none;
@@ -20,6 +20,7 @@
     word-break: break-all;
     white-space: pre-wrap;
     cursor: pointer;
+    /* border-top: 1px solid black; */
     border: 1px solid rgb(235, 235, 235);
 }
 .tweet-container > .tweet-text > h3 {
