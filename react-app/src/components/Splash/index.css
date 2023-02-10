@@ -1,4 +1,67 @@
-.splash-container {
-    display: flex;
+/* .splash-img {
     height: 100%;
+    width: 500px;
+}
+
+.splash-things {
+    display: flex-end;
+} */
+.splash-container {
+    height: 100%;
+    width: 100%;
+    /* display: flex; */
+}
+
+/* .splash-img {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+} */
+
+.splash-things {
+    margin-left: 63%;
+    width: 30%;
+    display: inline-block;
+    margin-top: 10%;
+    justify-content: center;
+}
+
+.splash-things > .fa-twitter {
+    margin-left: 20%;
+}
+
+.splash-things > h2 {
+    margin-left: 10%;
+}
+
+.splash-img-container {
+    position: absolute;
+    /* top: 10px; */
+    right: 50%;
+    width: 50% !important;
+    height: 100%;
+    background-image: url("https://images.unsplash.com/photo-1617653017137-7f8ceffe96af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGJsdWUlMjBiaXJkfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.splash-buttons {
+    display: flex;
+    margin-left: 55%;
+    width: 30%;
+    flex-direction: column;
+}
+
+.splash-buttons > button {
+    background-color: #ddd;
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
 }
