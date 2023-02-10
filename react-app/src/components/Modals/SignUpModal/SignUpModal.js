@@ -9,6 +9,9 @@ const SignUpModal = () => {
             <button onClick={() => setOpen(true)}>Sign Up</button>
             {open && (
                 <SignUpMod onClose={() => setOpen(false)}>
+                    <div className="login-header">
+                        <h2>Sign up for Twidder</h2>
+                    </div>
                     <SignUpForm />
                 </SignUpMod>
             )}

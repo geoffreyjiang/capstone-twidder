@@ -61,11 +61,13 @@
     background-color: white;
     border-radius: 20px;
     width: 450px;
-    height: 500px;
+    height: 520px;
 }
 
 .smodal-icon {
     padding-top: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 #emodal {
@@ -98,4 +100,29 @@
 }
 .emodal-icon {
     padding-top: 20px;
+}
+
+#lomodal-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#lomodal-content {
+    position: absolute;
+    background-color: white;
+    border-radius: 20px;
+    width: 200px;
+    height: 200px;
+
+    padding-left: 10px;
+}
+.lomodal-icon,
+.logout-header,
+.logout-btn-container {
+    display: flex;
+    justify-content: center;
 }

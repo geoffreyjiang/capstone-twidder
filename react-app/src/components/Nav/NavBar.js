@@ -94,7 +94,7 @@ const NavBar = () => {
     }
     return (
         <nav className="left-nav">
-            <i className="fa-brands fa-twitter fa-3x"></i>
+            <i className="fa-brands fa-twitter nav-icon fa-3x"></i>
             <h1>Twidder</h1>
             {session}
         </nav>

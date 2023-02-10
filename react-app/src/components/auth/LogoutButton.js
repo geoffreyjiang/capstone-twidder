@@ -13,13 +13,17 @@ const LogoutButton = ({ setOpen }) => {
 
     return (
         <>
-            <h1>Log Out?</h1>
-            <button className="logout-btn" onClick={onLogout}>
-                Logout
-            </button>
-            <button className="logout-btn" onClick={() => setOpen(false)}>
-                Cancel
-            </button>
+            <div className="logout-header">
+                <h1>Log Out?</h1>
+            </div>
+            <div className="logout-btn-container">
+                <button className="logout-btn" onClick={onLogout}>
+                    Logout
+                </button>
+                <button className="logout-btn" onClick={() => setOpen(false)}>
+                    Cancel
+                </button>
+            </div>
         </>
     );
 };

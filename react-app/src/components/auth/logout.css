@@ -10,3 +10,8 @@
     border-radius: 16px;
     text-align: center;
 }
+
+.logot-header {
+    display: flex;
+    align-items: center;
+}

@@ -11,7 +11,7 @@
 
 .tweet-id-container {
     display: grid;
-    width: 450px;
+    width: 480px;
     max-height: 10000px;
     border-left: none;
     border-right: none;

@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { Modal } from "../../../context/modal";
+import { LogoutMod } from "../../../context/modal";
 import LogoutButton from "../../auth/LogoutButton";
 import { useSelector } from "react-redux";
 const LogOutModal = () => {
@@ -16,9 +16,9 @@ const LogOutModal = () => {
         <>
             <img src={img} onClick={() => setOpen(true)}></img>
             {open && (
-                <Modal onClose={() => setOpen(false)}>
+                <LogoutMod onClose={() => setOpen(false)}>
                     <LogoutButton setOpen={setOpen} />
-                </Modal>
+                </LogoutMod>
                 // <>
                 //     <div id="modal">
                 //         <div
