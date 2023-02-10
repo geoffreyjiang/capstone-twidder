@@ -9,9 +9,12 @@ const LoginModal = () => {
         <>
             <button onClick={() => setOpen(true)}>Login</button>
             {open && (
-                <Modal onClose={() => setOpen(false)}>
-                    <LoginForm />
-                </Modal>
+                <>
+                    <Modal onClose={() => setOpen(false)}>
+                        <i className="fa-brands fa-twitter fa-3x"></i>
+                        <LoginForm />
+                    </Modal>
+                </>
                 // <>
                 //     <div id="modal">
                 //         <div
