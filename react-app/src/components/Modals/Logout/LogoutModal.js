@@ -14,7 +14,7 @@ const LogOutModal = () => {
             ></img>
             {open && (
                 <Modal onClose={() => setOpen(false)}>
-                    <LogoutButton />
+                    <LogoutButton setOpen={setOpen} />
                 </Modal>
                 // <>
                 //     <div id="modal">
