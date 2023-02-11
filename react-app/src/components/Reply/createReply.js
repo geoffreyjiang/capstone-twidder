@@ -31,28 +31,29 @@ const CreateReply = ({ setOpen }) => {
     return (
         <>
             <div className="create-reply-container">
+                <h2>Tweet your reply</h2>
                 <form className="reply-form" onSubmit={handleSubmit}>
                     <div className="input-reply">
-                        <textarea
+                        <input
                             type="text"
                             value={body}
-                            name="question"
+                            name="reply"
                             placeholder="Tweet your reply"
                             required
-                            className="question-text"
                             onChange={(e) => setBody(e.target.value)}
-                        ></textarea>
+                        ></input>
                     </div>
 
                     <div className="input-reply">
                         <input
                             type="text"
                             value={image}
+                            placeholder="Image (optional)"
                             onChange={(e) => setImage(e.target.value)}
                         ></input>
                     </div>
                     <div>
-                        <button className="submitBtn" type="submit">
+                        <button className="reply-btn" type="submit">
                             Post
                         </button>
                     </div>

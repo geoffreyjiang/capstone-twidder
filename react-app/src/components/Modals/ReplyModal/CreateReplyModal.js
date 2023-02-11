@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { Modal } from "../../../context/modal";
+import { RModal } from "../../../context/modal";
 import CreateReply from "../../Reply/createReply";
 
 const CreateReplyModal = () => {
@@ -8,9 +8,9 @@ const CreateReplyModal = () => {
         <>
             <button onClick={() => setOpen(true)}>Reply</button>
             {open && (
-                <Modal onClose={() => setOpen(false)}>
+                <RModal onClose={() => setOpen(false)}>
                     <CreateReply setOpen={setOpen} />
-                </Modal>
+                </RModal>
             )}
         </>
     );

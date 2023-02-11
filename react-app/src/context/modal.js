@@ -89,3 +89,20 @@ export function LogoutMod({ onClose, children }) {
         modalNode
     );
 }
+
+export function RModal({ onClose, children }) {
+    const modalNode = useContext(ModalContext);
+    // console.log(modalNode, "LINE 27");
+    if (!modalNode) return null;
+    // console.log("YOOOOOOOOOOOOOOOOOoo");
+    return ReactDOM.createPortal(
+        <div id="modal">
+            <div id="rmodal-background" onClick={onClose} />
+            <div id="rmodal-content">
+                <i className="rmodal-icon fa-brands fa-twitter fa-3x"></i>
+                {children}
+            </div>
+        </div>,
+        modalNode
+    );
+}

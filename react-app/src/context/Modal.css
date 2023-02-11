@@ -126,3 +126,40 @@
     display: flex;
     justify-content: center;
 }
+
+#rmodal-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#rmodal-content {
+    position: absolute;
+    background-color: white;
+    border-radius: 20px;
+    width: 380px;
+    height: 220px;
+
+    padding-left: 10px;
+}
+
+.rmodal-icon {
+    display: flex;
+    justify-content: center;
+}
+
+.reply-btn {
+    background-color: #ddd;
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+    text-align: center;
+}
