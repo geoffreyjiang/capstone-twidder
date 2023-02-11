@@ -3,7 +3,6 @@
     flex-wrap: wrap;
     justify-content: center;
     max-width: 500px;
-    /* margin: 2rem auto; */
     padding-left: 2rem;
     padding-bottom: 2rem;
     padding-right: 2rem;
@@ -20,4 +19,8 @@
     cursor: pointer;
     border-radius: 16px;
     text-align: center;
+}
+
+.login-form > input {
+    width: 220px;
 }

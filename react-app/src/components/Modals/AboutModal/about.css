@@ -1,0 +1,18 @@
+/* .about-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+.about-text > h2 {
+    text-align: center;
+}
+
+.about-text > a {
+    justify-content: center;
+    display: flex;
+}
+
+.about-icon {
+    cursor: pointer;
+}

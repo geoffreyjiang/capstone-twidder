@@ -18,7 +18,8 @@ const SignUpForm = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         const err = [];
-        // if (!username.length) err.push("Username required");
+        if (!username.length < 4)
+            err.push("Username must be atleast 4 characters");
         // if (!email.length) err.push("Email required");
 
         // if (!firstName.length) err.push("First name required");
@@ -90,6 +91,7 @@ const SignUpForm = () => {
                 )}
                 <div>
                     <label>User Name</label>
+                    <br></br>
                     <input
                         type="text"
                         name="username"
@@ -100,6 +102,8 @@ const SignUpForm = () => {
                 </div>
                 <div>
                     <label>First Name</label>
+                    <br></br>
+
                     <input
                         type="text"
                         required
@@ -110,6 +114,8 @@ const SignUpForm = () => {
                 </div>
                 <div>
                     <label>Last Name</label>
+                    <br></br>
+
                     <input
                         type="text"
                         name="last-name"
@@ -120,6 +126,8 @@ const SignUpForm = () => {
                 </div>
                 <div>
                     <label>Email</label>
+                    <br></br>
+
                     <input
                         type="email"
                         name="email"
@@ -130,6 +138,8 @@ const SignUpForm = () => {
                 </div>
                 <div>
                     <label>Password</label>
+                    <br></br>
+
                     <input
                         type="password"
                         name="password"
@@ -140,6 +150,8 @@ const SignUpForm = () => {
                 </div>
                 <div>
                     <label>Repeat Password</label>
+                    <br></br>
+
                     <input
                         type="password"
                         name="repeat_password"
@@ -149,7 +161,9 @@ const SignUpForm = () => {
                     ></input>
                 </div>
                 <div>
-                    <label>Profile Image</label>
+                    <label>Profile Image Url</label>
+                    <br></br>
+
                     <input
                         type="text"
                         name="profilePic"
@@ -160,6 +174,8 @@ const SignUpForm = () => {
                 </div>
                 <div>
                     <label>Biography</label>
+                    <br></br>
+
                     <input
                         type="text"
                         name="bio"

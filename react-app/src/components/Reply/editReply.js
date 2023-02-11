@@ -48,44 +48,47 @@ const EditReply = ({ replyId, setOpen }) => {
 
     return (
         <>
-            <div className="tweet-section">
-                <div className="tweet-container">
-                    <form
-                        method="POST"
-                        className="edit-reply-form"
-                        onSubmit={handleSubmit}
-                    >
-                        <h2 className="edit-label">Edit Reply</h2>
-                        <textarea
-                            type="text"
-                            name="text"
-                            value={text}
-                            required
-                            className="reply-text"
-                            onChange={(e) => setText(e.target.value)}
-                        ></textarea>
-                        <input
-                            className="reply-text"
-                            type="text"
-                            name="image"
-                            value={image}
-                            onChange={(e) => setImage(e.target.value)}
-                        ></input>
-                        <div>
-                            <button className="submitBtn" type="submit">
-                                Post
-                            </button>
-                            <button
-                                className="delete-reply-btn"
-                                onClick={() => {
-                                    dispatch(removeReply(replyId));
-                                }}
-                            >
-                                Delete
-                            </button>
-                        </div>
-                    </form>
-                </div>
+            <div className="edit-tweet-container">
+                <form
+                    method="POST"
+                    className="edit-tweet-form"
+                    onSubmit={handleSubmit}
+                >
+                    <h2 className="edit-label">Edit Reply</h2>
+                    <label>Reply</label>
+
+                    <input
+                        type="text"
+                        name="text"
+                        value={text}
+                        required
+                        className="reply-text"
+                        onChange={(e) => setText(e.target.value)}
+                    ></input>
+                    <label>Image Url</label>
+
+                    <input
+                        className="reply-text"
+                        type="text"
+                        name="image"
+                        value={image}
+                        placeholder="optional"
+                        onChange={(e) => setImage(e.target.value)}
+                    ></input>
+                    <div>
+                        <button className="editTweet-btn" type="submit">
+                            Post
+                        </button>
+                        <button
+                            className="editTweet-btn"
+                            onClick={() => {
+                                dispatch(removeReply(replyId));
+                            }}
+                        >
+                            Delete
+                        </button>
+                    </div>
+                </form>
             </div>
         </>
     );

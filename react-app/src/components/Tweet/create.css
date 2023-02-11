@@ -9,3 +9,17 @@
     width: 350px;
     display: inline-block;
 }
+
+.postTweet-btn {
+    background-color: #ddd;
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+    text-align: end;
+    background-color: #26a7de;
+}

@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { Modal } from "../../../context/modal";
+import { EModal } from "../../../context/modal";
 import EditReply from "../../Reply/editReply";
 const EditReplyModal = ({ replyId }) => {
     const [open, setOpen] = useState(false);
@@ -9,9 +9,9 @@ const EditReplyModal = ({ replyId }) => {
             <i class="fa-solid fa-ellipsis" onClick={() => setOpen(true)}></i>
 
             {open && (
-                <Modal onClose={() => setOpen(false)}>
+                <EModal onClose={() => setOpen(false)}>
                     <EditReply setOpen={setOpen} replyId={replyId} />
-                </Modal>
+                </EModal>
             )}
         </>
     );

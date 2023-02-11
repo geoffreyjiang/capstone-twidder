@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { login } from "../../store/session";
 import LoginModal from "../Modals/Login/LoginModal";
 import LogOutModal from "../Modals/Logout/LogoutModal";
+import AboutModal from "../Modals/AboutModal/AboutModal";
 
 const NavBar = () => {
     const sessionUser = useSelector((state) => state.session.user);
@@ -32,6 +33,9 @@ const NavBar = () => {
                     </li>
                     <li className="list-item">
                         <i class="fa-solid fa-user"> Profile</i>
+                    </li>
+                    <li className="list-item">
+                        <AboutModal />
                     </li>
                 </ul>
                 <div className="list-end">

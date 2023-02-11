@@ -31,7 +31,9 @@ const EditTweet = ({ setOpen }) => {
         pImg =
             "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
     else pImg = user.profile_pic;
-
+    if (!tweet) {
+        history.push("/tweets");
+    }
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!user) {
@@ -88,8 +90,9 @@ const EditTweet = ({ setOpen }) => {
                             className="editTweet-btn"
                             onClick={() => {
                                 dispatch(removeTweet(id));
-
+                                // history.push("/tweets");
                                 history.push("/tweets");
+                                dispatch(getTweets());
                             }}
                         >
                             Delete

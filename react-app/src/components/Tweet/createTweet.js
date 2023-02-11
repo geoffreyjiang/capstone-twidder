@@ -68,7 +68,7 @@ const CreateTweet = () => {
                                 ></input>
                             </div>
                             <div>
-                                <button className="submitBtn" type="submit">
+                                <button className="postTweet-btn" type="submit">
                                     Post
                                 </button>
                             </div>
@@ -112,7 +112,10 @@ const CreateTweet = () => {
                                     ></input>
                                 </div>
                                 <div>
-                                    <button className="submitBtn" type="submit">
+                                    <button
+                                        className="postTweet-btn"
+                                        type="submit"
+                                    >
                                         Post
                                     </button>
                                 </div>
