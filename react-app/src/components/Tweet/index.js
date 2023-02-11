@@ -76,16 +76,24 @@ const Tweets = () => {
                                     </>
                                 ) : (
                                     <div className="user-things">
-                                        <img
-                                            src={
-                                                "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                                            }
-                                            className="tweet-user-img"
-                                            alt="no img"
-                                        ></img>
-                                        <NavLink to={`/tweets/${el?.id}`}>
-                                            {el.firstName} @{el?.username}
-                                        </NavLink>
+                                        <div className="tweet-user-img-container">
+                                            <img
+                                                src={
+                                                    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                                                }
+                                                className="tweet-user-img"
+                                                alt="no img"
+                                            ></img>
+                                            <div className="username-container">
+                                                <NavLink
+                                                    to={`/tweets/${el?.id}`}
+                                                    id="user-text"
+                                                >
+                                                    {el.firstName} @
+                                                    {el?.username}
+                                                </NavLink>
+                                            </div>
+                                        </div>
                                     </div>
                                 )}
                                 {el?.image ? (
