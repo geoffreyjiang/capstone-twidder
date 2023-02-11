@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import { Modal } from "../../../context/modal";
 import EditReply from "../../Reply/editReply";
-const EditReplyModal = () => {
+const EditReplyModal = ({ replyId }) => {
     const [open, setOpen] = useState(false);
     return (
         <>
@@ -10,7 +10,7 @@ const EditReplyModal = () => {
 
             {open && (
                 <Modal onClose={() => setOpen(false)}>
-                    <EditReply setOpen={setOpen} />
+                    <EditReply setOpen={setOpen} replyId={replyId} />
                 </Modal>
             )}
         </>

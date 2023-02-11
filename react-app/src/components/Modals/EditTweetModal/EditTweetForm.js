@@ -18,16 +18,16 @@ import {
 const EditTweet = ({ setOpen }) => {
     const user = useSelector((state) => state.session.user);
     const { id } = useParams();
-    const tweet = useSelector((store) => store.tweets);
+    const tweet = useSelector((store) => store.tweets[id]);
     const dispatch = useDispatch();
     const history = useHistory();
-    const [body, setBody] = useState(tweet.body);
-    const [img, setImg] = useState(tweet.image);
+    const [body, setBody] = useState(tweet?.body);
+    const [img, setImg] = useState(tweet?.image);
     useEffect(() => {
         dispatch(getTweetId(id));
     }, [dispatch]);
     let pImg;
-    if (!user.profile_pic)
+    if (!user?.profile_pic)
         pImg =
             "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
     else pImg = user.profile_pic;
@@ -47,7 +47,7 @@ const EditTweet = ({ setOpen }) => {
         let newTweet = dispatch(editTweet(data));
         if (newTweet) {
             setOpen(false);
-            history.push(`/tweets`);
+            // history.push(`/tweets`);
             setBody("");
             // dispatch(getTweetId(id));
         }
@@ -77,18 +77,19 @@ const EditTweet = ({ setOpen }) => {
                         className="tweet-text"
                         type="text"
                         value={img}
+                        placeholder="optional"
                         onChange={(e) => setImg(e.target.value)}
                     ></input>
                     <div>
-                        <button className="submitBtn" type="submit">
+                        <button className="editTweet-btn" type="submit">
                             Post
                         </button>
                         <button
+                            className="editTweet-btn"
                             onClick={() => {
                                 dispatch(removeTweet(id));
 
                                 history.push("/tweets");
-                                dispatch(getTweets());
                             }}
                         >
                             Delete

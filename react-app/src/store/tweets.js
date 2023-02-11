@@ -92,9 +92,9 @@ const tweetReducer = (state = {}, action) => {
     const newState = { ...state };
     switch (action.type) {
         case LOAD_TWEET:
-            return action.tweet;
+            return { ...newState, ...action.tweet };
         case GET_TWEET_BY_ID:
-            return action.tweet;
+            return { ...newState, [action.tweet.id]: action.tweet };
         case LOAD_MY_TWEETS:
             return action.tweet;
         case ADD_TWEET:

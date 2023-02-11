@@ -14,25 +14,19 @@ import "./index.css";
 const ViewTweet = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
-    const tweet = useSelector((store) => store.tweets);
+    const tweet = useSelector((store) => store.tweets[id]);
     const likes = useSelector((store) => Object.values(store.likes));
     const user = useSelector((state) => state.session.user);
     // const [like, setLike] = useState(likes.isLiked);
-    const [editBody, setEditBody] = useState("");
+    const [editBody, setEditBody] = useState(tweet?.body);
     const history = useHistory();
 
     useEffect(() => {
-        let func = async () => {
-            setEditBody(tweet.body);
-            dispatch(getTweetId(id));
-        };
-        func();
+        dispatch(getTweetId(id));
+
         // dispatch(getLikes(id));
-    }, [dispatch, editBody]);
-    let edit;
-    edit = tweet.body;
-    // console.log(tweet.body);
-    // console.log(editBody);
+    }, [dispatch]);
+
     const deleteTweet = () => {
         dispatch(removeTweet(tweet.id));
         dispatch(getTweets());
@@ -40,8 +34,6 @@ const ViewTweet = () => {
     };
     // console.log(tweet.user_id);
     // console.log(user.id);
-    console.log(user.id);
-    console.log(tweet.user_id);
 
     return (
         <>
@@ -60,11 +52,11 @@ const ViewTweet = () => {
                                 <div className="username-container">
                                     {/* </div> */}
                                     <NavLink to={`/tweets/${tweet.id}`}>
-                                        {tweet.firstName} @{tweet?.username}
+                                        {tweet?.firstName} @{tweet?.username}
                                     </NavLink>
                                 </div>
                                 <div className="user-modal">
-                                    {user.id === tweet.user_id ? (
+                                    {user?.id === tweet?.user_id ? (
                                         <>
                                             <EditTweetModal />
                                         </>
@@ -75,7 +67,7 @@ const ViewTweet = () => {
                     ) : (
                         <div className="user-things">
                             <div className="user-modal">
-                                {user.id === tweet.user_id ? (
+                                {user?.id === tweet?.user_id ? (
                                     <>
                                         <EditTweetModal />
                                     </>
@@ -89,12 +81,12 @@ const ViewTweet = () => {
                                 alt="no img"
                             ></img>
                             <NavLink to={`/tweets/${tweet?.id}`}>
-                                {tweet.firstName} @{tweet?.username}
+                                {tweet?.firstName} @{tweet?.username}
                             </NavLink>
                         </div>
                     )}
                     <div className="tweet-text">
-                        <h1>{tweet.body}</h1>
+                        <h1>{tweet?.body}</h1>
                     </div>
                 </div>
 

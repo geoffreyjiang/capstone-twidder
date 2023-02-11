@@ -94,7 +94,7 @@ const replyReducer = (state = {}, action) => {
         case LOAD_REPLY:
             return action.reply;
         case GET_REPLY_BY_ID:
-            return action.reply;
+            return { ...newState, [action.reply.id]: action.reply };
         case LOAD_MY_REPLY:
             return action.reply;
         case ADD_REPLY:

@@ -94,14 +94,19 @@
     position: absolute;
     background-color: white;
     border-radius: 20px;
-    width: 370px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     padding-left: 10px;
 }
 .emodal-icon {
-    padding-top: 20px;
+    display: flex;
+    justify-content: center;
 }
 
+.edit-label {
+    display: flex;
+    justify-content: center;
+}
 #lomodal-background {
     position: fixed;
     top: 0;

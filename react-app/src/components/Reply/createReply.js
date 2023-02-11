@@ -19,6 +19,7 @@ const CreateReply = ({ setOpen }) => {
         const data = {
             image,
             body,
+            tweet_id: id,
         };
         let reply = dispatch(createReply(id, data));
         if (reply) {

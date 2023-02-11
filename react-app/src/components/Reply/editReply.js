@@ -8,19 +8,17 @@ import {
     removeReply,
 } from "../../store/reply";
 import { getTweetId } from "../../store/tweets";
-const EditReply = () => {
+const EditReply = ({ replyId, setOpen }) => {
     const user = useSelector((state) => state.session.user);
     const { id } = useParams();
-    const reply = useSelector((store) => store.replies);
+    const reply = useSelector((store) => store.replies[replyId]);
     const dispatch = useDispatch();
     const history = useHistory();
     const [text, setText] = useState(reply?.body);
     const [image, setImage] = useState(reply?.image);
-    // setText(reply.body);
-    useEffect(() => {
-        dispatch(getReplyId(id));
-    }, [dispatch, text]);
-
+    // useEffect(() => {
+    //     dispatch(getReplyId(replyId));
+    // }, [dispatch, text]);
     useEffect(() => {
         setText(reply.body);
         setImage(reply.image);
@@ -33,7 +31,7 @@ const EditReply = () => {
             alert("Please login!");
         }
         const data = {
-            id,
+            id: replyId,
             userId: user.id,
             body: text,
             image,
@@ -41,9 +39,10 @@ const EditReply = () => {
         };
         const newReply = dispatch(editReply(data));
         if (newReply) {
-            history.push(`/tweets/${num}`);
-
+            // history.push(`/tweets/${num}`);
+            setOpen(false);
             setText("");
+            getTweetId(id);
         }
     };
 
@@ -79,7 +78,7 @@ const EditReply = () => {
                             <button
                                 className="delete-reply-btn"
                                 onClick={() => {
-                                    dispatch(removeReply(id));
+                                    dispatch(removeReply(replyId));
                                 }}
                             >
                                 Delete

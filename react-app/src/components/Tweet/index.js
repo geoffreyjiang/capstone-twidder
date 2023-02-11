@@ -40,9 +40,8 @@ const Tweets = () => {
                         </ul>
                     </div>
                 </div>
-                <div className="tweet-container">
-                    <CreateTweet />
-                </div>
+
+                <CreateTweet />
                 {tweets
                     ?.slice(0)
                     .reverse()

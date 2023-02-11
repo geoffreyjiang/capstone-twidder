@@ -1,17 +1,11 @@
 .create-tweet-container {
-    display: grid;
-    width: 350px;
-    max-height: 10000px;
-    border-left: none;
-    border-right: none;
-    border-bottom: none;
-    justify-content: center;
-    align-content: center;
+    display: inline-block;
 }
-.create-tweet-container > .tweet-form > .input-tweet > textarea,
-input {
+.input-tweet > input {
     width: 350px;
+    border: none;
 }
 .input-tweet {
     width: 350px;
+    display: inline-block;
 }

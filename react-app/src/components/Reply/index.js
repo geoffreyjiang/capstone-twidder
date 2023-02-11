@@ -17,7 +17,7 @@ const AllReplies = () => {
     useEffect(() => {
         dispatch(getReplies(id));
     }, [dispatch, id]);
-
+    console.log(replies);
     const data = replies
         ?.slice(0)
         .reverse()
@@ -38,14 +38,15 @@ const AllReplies = () => {
                                 {user.id == el.user_id ? (
                                     <>
                                         <div className="user-rmodal">
-                                            <i
+                                            {/* <i
                                                 class="fa-solid fa-ellipsis"
                                                 onClick={() =>
                                                     history.push(
                                                         `/reply/${el.id}`
                                                     )
                                                 }
-                                            ></i>
+                                            ></i> */}
+                                            <EditReplyModal replyId={el.id} />
                                         </div>
                                     </>
                                 ) : null}
@@ -67,14 +68,15 @@ const AllReplies = () => {
                                 {user.id == el.user_id ? (
                                     <>
                                         <div className="user-rmodal">
-                                            <i
+                                            {/* <i
                                                 class="fa-solid fa-ellipsis"
                                                 onClick={() =>
                                                     history.push(
                                                         `/reply/${el.id}`
                                                     )
                                                 }
-                                            ></i>
+                                            ></i> */}
+                                            <EditReplyModal replyId={el.id} />
                                         </div>
                                     </>
                                 ) : null}
