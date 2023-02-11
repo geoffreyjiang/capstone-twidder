@@ -47,10 +47,6 @@ const Tweets = () => {
                     ?.slice(0)
                     .reverse()
                     .map((el, i) => {
-                        // console.log(el.totalLikes);
-                        // console.log(el.likes);
-                        // console.log(el.firstName);
-                        // console.log(el);
                         return (
                             <div
                                 className="tweet-container"
@@ -58,20 +54,26 @@ const Tweets = () => {
                                 onClick={() => history.push(`/tweets/${el.id}`)}
                             >
                                 {el?.profile_pic ? (
-                                    <div className="user-things">
-                                        <div className="profile_pic">
-                                            <img
-                                                src={el.profile_pic}
-                                                className="tweet-user-img"
-                                                alt="no img"
-                                            ></img>
+                                    <>
+                                        <div className="user-things">
+                                            <div className="tweet-user-img-container">
+                                                <img
+                                                    src={el.profile_pic}
+                                                    className="tweet-user-img"
+                                                    alt="no img"
+                                                ></img>
+                                                <div className="username-container">
+                                                    <NavLink
+                                                        id="user-text"
+                                                        to={`/tweets/${el.id}`}
+                                                    >
+                                                        {el.firstName} @
+                                                        {el?.username}
+                                                    </NavLink>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div className="username-container">
-                                            <NavLink to={`/tweets/${el.id}`}>
-                                                {el.firstName} @{el?.username}
-                                            </NavLink>
-                                        </div>
-                                    </div>
+                                    </>
                                 ) : (
                                     <div className="user-things">
                                         <img

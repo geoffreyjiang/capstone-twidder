@@ -16,7 +16,6 @@ const SignUpForm = () => {
     const [sub, setSub] = useState(false);
     const user = useSelector((state) => state.session.user);
     const dispatch = useDispatch();
-
     useEffect(() => {
         const err = [];
         // if (!username.length) err.push("Username required");

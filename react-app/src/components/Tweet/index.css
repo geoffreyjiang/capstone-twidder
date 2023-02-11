@@ -29,6 +29,30 @@
     padding-right: 15px;
 }
 
+.tweet-user-img-container {
+    display: inline-block;
+    width: 80%;
+}
+
+.username-container {
+    display: inline-block;
+    padding-bottom: 10px;
+    vertical-align: top;
+    padding-top: 15px;
+    padding-left: 10px;
+}
+
+#user-text {
+    color: black;
+    opacity: 0.5;
+    text-decoration: none !important;
+}
+
+.tweet-container > .user-things {
+    display: inline-block;
+    width: 100%;
+}
+
 .tweet-container > .tweet-text > h4 {
     text-align: right;
     margin-right: 70px;
