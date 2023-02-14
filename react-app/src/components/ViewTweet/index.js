@@ -66,23 +66,28 @@ const ViewTweet = () => {
                         </div>
                     ) : (
                         <div className="user-things">
-                            <div className="user-modal">
-                                {user?.id === tweet?.user_id ? (
-                                    <>
-                                        <EditTweetModal />
-                                    </>
-                                ) : null}
+                            <div className="tweetId-userImg-container">
+                                <img
+                                    src={
+                                        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                                    }
+                                    className="tweet-user-img"
+                                    alt="no img"
+                                ></img>
+                                <div className="username-container">
+                                    {/* </div> */}
+                                    <NavLink to={`/tweets/${tweet.id}`}>
+                                        {tweet?.firstName} @{tweet?.username}
+                                    </NavLink>
+                                </div>
+                                <div className="user-modal">
+                                    {user?.id === tweet?.user_id ? (
+                                        <>
+                                            <EditTweetModal />
+                                        </>
+                                    ) : null}
+                                </div>
                             </div>
-                            <img
-                                src={
-                                    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                                }
-                                className="tweet-user-img"
-                                alt="no img"
-                            ></img>
-                            <NavLink to={`/tweets/${tweet?.id}`}>
-                                {tweet?.firstName} @{tweet?.username}
-                            </NavLink>
                         </div>
                     )}
                     <div className="tweet-text">

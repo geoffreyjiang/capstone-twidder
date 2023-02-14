@@ -2,11 +2,11 @@
     display: inline-block;
 }
 .input-tweet > input {
-    width: 350px;
+    width: 100%;
     border: none;
 }
 .input-tweet {
-    width: 350px;
+    width: 100%;
     display: inline-block;
 }
 
@@ -22,4 +22,21 @@
     border-radius: 16px;
     text-align: end;
     background-color: #26a7de;
+}
+.tweet-container > .user-things {
+    display: inline-block;
+    width: 100%;
+}
+
+.tweet-user-img {
+    display: inline-block;
+    width: 20%;
+    height: 50px;
+    border-radius: 50%;
+    padding-left: 5px;
+    padding-top: 5px;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
