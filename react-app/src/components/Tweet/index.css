@@ -23,10 +23,10 @@
     /* border-top: 1px solid black; */
     border: 1px solid rgb(235, 235, 235);
 }
-.tweet-container > .tweet-text > h3 {
-    text-align: center;
-    margin-left: 20px;
-    padding-right: 15px;
+.tweet-container > .tweet-text > p {
+    /* text-align: center; */
+    margin-left: 20%;
+    /* padding-right: 15px; */
 }
 
 .tweet-user-img-container {

@@ -97,7 +97,7 @@ const Tweets = () => {
                                 )}
                                 {el?.image ? (
                                     <div className="tweet-text">
-                                        <h3>{el?.body}</h3>
+                                        <p>{el?.body}</p>
                                         <img
                                             src={el?.image}
                                             className="tweet-img"
@@ -106,7 +106,7 @@ const Tweets = () => {
                                     </div>
                                 ) : (
                                     <div className="tweet-text">
-                                        <h3>{el?.body}</h3>
+                                        <p>{el?.body}</p>
                                         <h4>Likes:{el?.totalLikes}</h4>
                                     </div>
                                 )}
