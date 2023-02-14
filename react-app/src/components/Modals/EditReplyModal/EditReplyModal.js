@@ -6,7 +6,10 @@ const EditReplyModal = ({ replyId }) => {
     return (
         <>
             {/* <button onClick={() => setOpen(true)}>Edit</button> */}
-            <i class="fa-solid fa-ellipsis" onClick={() => setOpen(true)}></i>
+            <i
+                className="fa-solid fa-ellipsis"
+                onClick={() => setOpen(true)}
+            ></i>
 
             {open && (
                 <EModal onClose={() => setOpen(false)}>

@@ -19,7 +19,7 @@ const NavBar = () => {
                 <ul>
                     <li className="list-item">
                         <NavLink to="/" exact={true}>
-                            <i class="fa-solid fa-house"> Home</i>
+                            <i className="fa-solid fa-house"> Home</i>
                         </NavLink>
                         {/* <button
                         className="icon-btn"
@@ -29,10 +29,10 @@ const NavBar = () => {
                     </button> */}
                     </li>
                     <li className="list-item">
-                        <i class="fa-solid fa-hashtag"> Explore</i>{" "}
+                        <i className="fa-solid fa-hashtag"> Explore</i>{" "}
                     </li>
                     <li className="list-item">
-                        <i class="fa-solid fa-user"> Profile</i>
+                        <i className="fa-solid fa-user"> Profile</i>
                     </li>
                     <li className="list-item">
                         <AboutModal />

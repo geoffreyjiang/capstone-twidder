@@ -76,7 +76,7 @@ const ViewTweet = () => {
                                 ></img>
                                 <div className="username-container">
                                     {/* </div> */}
-                                    <NavLink to={`/tweets/${tweet.id}`}>
+                                    <NavLink to={`/tweets/${tweet?.id}`}>
                                         {tweet?.firstName} @{tweet?.username}
                                     </NavLink>
                                 </div>
@@ -90,9 +90,18 @@ const ViewTweet = () => {
                             </div>
                         </div>
                     )}
-                    <div className="tweet-text">
-                        <h1>{tweet?.body}</h1>
-                    </div>
+                    {tweet?.image ? (
+                        <div className="tweet-text">
+                            <h3>{tweet?.body}</h3>
+                            <img src={tweet?.image} className="tweet-img"></img>
+                            <h4>Likes:{tweet?.totalLikes}</h4>
+                        </div>
+                    ) : (
+                        <div className="tweet-text">
+                            <h3>{tweet?.body}</h3>
+                            <h4>Likes:{tweet?.totalLikes}</h4>
+                        </div>
+                    )}
                 </div>
 
                 {/* <div className="replyArea">

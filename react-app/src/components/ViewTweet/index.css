@@ -59,3 +59,14 @@
     left: 85%;
     transform: translateX(-100%);
 }
+
+.tweet-text > h3 {
+    text-align: center;
+    margin-left: 20px;
+    padding-right: 15px;
+}
+
+.tweet-text > h4 {
+    text-align: right;
+    margin-right: 70px;
+}

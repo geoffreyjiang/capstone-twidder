@@ -13,7 +13,7 @@ const LoginModal = () => {
                     <Modal onClose={() => setOpen(false)}>
                         {/* <i className="fa-brands fa-twitter fa-3x"></i> */}
                         <div className="login-header">
-                            <h1>Login to Twitter</h1>
+                            <h1>Login to Twidder</h1>
                         </div>
                         <LoginForm />
                     </Modal>

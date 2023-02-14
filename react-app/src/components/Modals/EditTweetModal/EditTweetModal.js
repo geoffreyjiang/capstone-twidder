@@ -15,7 +15,10 @@ const EditTweetModal = () => {
 
     return (
         <>
-            <i class="fa-solid fa-ellipsis" onClick={() => setOpen(true)}></i>
+            <i
+                className="fa-solid fa-ellipsis"
+                onClick={() => setOpen(true)}
+            ></i>
 
             {open && (
                 <EModal onClose={() => setOpen(false)}>
