@@ -18,7 +18,7 @@ const SignUpForm = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         const err = [];
-        if (!username.length < 4)
+        if (username.length < 4)
             err.push("Username must be atleast 4 characters");
         // if (!email.length) err.push("Email required");
 
@@ -34,6 +34,11 @@ const SignUpForm = () => {
     const onSignUp = async (e) => {
         e.preventDefault();
         setSub(true);
+        if (!profilePic)
+            setProfilePic(
+                "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+            );
+
         if (password === repeatPassword) {
             const data = dispatch(
                 signUp(

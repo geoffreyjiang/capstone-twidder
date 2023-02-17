@@ -18,88 +18,85 @@ const AllReplies = () => {
         dispatch(getReplies(id));
     }, [dispatch, id]);
     console.log(replies);
-    const data = replies
-        ?.slice(0)
-        .reverse()
-        .map((el, i) => {
-            return (
-                <div className="tweet-container" key={i}>
-                    {el?.profile_pic ? (
-                        <div className="user-things">
-                            <div className="tweet-user-img-container">
-                                <img
-                                    src={el.profile_pic}
-                                    className="tweet-user-img"
-                                    alt="no img"
-                                ></img>
-                                <div className="username-container">
-                                    {el.firstName} @{el?.username}
-                                </div>
-                                {user.id == el.user_id ? (
-                                    <>
-                                        <div className="user-rmodal">
-                                            {/* <i
-                                                class="fa-solid fa-ellipsis"
-                                                onClick={() =>
-                                                    history.push(
-                                                        `/reply/${el.id}`
-                                                    )
-                                                }
-                                            ></i> */}
-                                            <EditReplyModal replyId={el.id} />
-                                        </div>
-                                    </>
-                                ) : null}
-                            </div>
-                        </div>
-                    ) : (
-                        <div className="user-things">
-                            <div className="tweet-user-img-container">
-                                <img
-                                    src={
-                                        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                                    }
-                                    className="tweet-user-img"
-                                    alt="no img"
-                                ></img>
-                                <div className="username-container">
-                                    {el.firstName} @{el?.username}
-                                </div>
-                                {user.id == el.user_id ? (
-                                    <>
-                                        <div className="user-rmodal">
-                                            {/* <i
-                                                class="fa-solid fa-ellipsis"
-                                                onClick={() =>
-                                                    history.push(
-                                                        `/reply/${el.id}`
-                                                    )
-                                                }
-                                            ></i> */}
-                                            <EditReplyModal replyId={el.id} />
-                                        </div>
-                                    </>
-                                ) : null}
-                            </div>
-                        </div>
-                    )}
-                    {el?.image ? (
-                        <div className="tweet-text">
-                            <h3>{el?.body}</h3>
+    const data = replies.map((el, i) => {
+        return (
+            <div className="tweet-container" key={i}>
+                {el?.profile_pic ? (
+                    <div className="user-things">
+                        <div className="tweet-user-img-container">
                             <img
-                                src={el?.image}
-                                className="tweet-img"
-                                alt="img"
+                                src={el.profile_pic}
+                                className="tweet-user-img"
+                                alt="no img"
                             ></img>
-                            <h4>Likes:{el?.totalLikes}</h4>
+                            <div className="username-container">
+                                {el.firstName} @{el?.username}
+                            </div>
+                            {user.id == el.user_id ? (
+                                <>
+                                    <div className="user-rmodal">
+                                        {/* <i
+                                                class="fa-solid fa-ellipsis"
+                                                onClick={() =>
+                                                    history.push(
+                                                        `/reply/${el.id}`
+                                                    )
+                                                }
+                                            ></i> */}
+                                        <EditReplyModal replyId={el.id} />
+                                    </div>
+                                </>
+                            ) : null}
                         </div>
-                    ) : (
-                        <div className="tweet-text">
-                            <h3>{el?.body}</h3>
+                    </div>
+                ) : (
+                    <div className="user-things">
+                        <div className="tweet-user-img-container">
+                            <img
+                                src={
+                                    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                                }
+                                className="tweet-user-img"
+                                alt="no img"
+                            ></img>
+                            <div className="username-container">
+                                {el.firstName} @{el?.username}
+                            </div>
+                            {user.id == el.user_id ? (
+                                <>
+                                    <div className="user-rmodal">
+                                        {/* <i
+                                                class="fa-solid fa-ellipsis"
+                                                onClick={() =>
+                                                    history.push(
+                                                        `/reply/${el.id}`
+                                                    )
+                                                }
+                                            ></i> */}
+                                        <EditReplyModal replyId={el.id} />
+                                    </div>
+                                </>
+                            ) : null}
                         </div>
-                    )}
+                    </div>
+                )}
+                {el?.image ? (
+                    <div className="tweet-text">
+                        <h3>{el?.body}</h3>
+                        <img
+                            src={el?.image}
+                            className="tweet-img"
+                            alt="img"
+                        ></img>
+                        <h4>Likes:{el?.totalLikes}</h4>
+                    </div>
+                ) : (
+                    <div className="tweet-text">
+                        <h3>{el?.body}</h3>
+                    </div>
+                )}
 
-                    {/* <h3>{el.body}</h3>
+                {/* <h3>{el.body}</h3>
                 <div className="edit-modal">
                     {user.id == el.user_id ? (
                         <>
@@ -110,9 +107,9 @@ const AllReplies = () => {
                         </>
                     ) : null}
                 </div> */}
-                </div>
-            );
-        });
+            </div>
+        );
+    });
 
     return (
         <>
