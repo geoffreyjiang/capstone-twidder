@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./about.css";
-const AboutModal = ({ replyId }) => {
+const AboutModal = () => {
     const [open, setOpen] = useState(false);
     return (
         <>

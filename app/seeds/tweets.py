@@ -1,14 +1,15 @@
 from app.models import db, Tweet, environment, SCHEMA
+from datetime import datetime
 
 
 # Adds a demo user, you can add other users here if you want
 def seed_tweets():
     one = Tweet(
-        body='First tweet!', image='', user_id=2)
+        body='First tweet!', image='', user_id=2, created_at=datetime(2022, 12, 3, 10, 10, 10))
     two = Tweet(
-        body='Second tweet!', image='', user_id=3)
+        body='Second tweet!', image='', user_id=3, created_at=datetime(2023, 1, 3, 10, 10, 10))
     three = Tweet(
-        body='Third tweet!', image='', user_id=1)
+        body='Third tweet!', image='', user_id=1, created_at=datetime(2023, 2, 3, 10, 10, 10))
 
     db.session.add(one)
     db.session.add(two)
