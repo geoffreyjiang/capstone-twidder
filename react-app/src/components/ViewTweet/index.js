@@ -51,10 +51,20 @@ const ViewTweet = () => {
                                 ></img>
                                 <div className="username-container">
                                     {/* </div> */}
-                                    <NavLink to={`/tweets/${tweet.id}`}>
+                                    <NavLink
+                                        id="user-text"
+                                        to={`/tweets/${tweet.id}`}
+                                    >
                                         {tweet?.firstName} @{tweet?.username}
                                     </NavLink>
+                                    <div
+                                        className="vtweet-created"
+                                        id="user-text"
+                                    >
+                                        {tweet?.created_at}
+                                    </div>
                                 </div>
+
                                 <div className="user-modal">
                                     {user?.id === tweet?.user_id ? (
                                         <>
@@ -76,10 +86,20 @@ const ViewTweet = () => {
                                 ></img>
                                 <div className="username-container">
                                     {/* </div> */}
-                                    <NavLink to={`/tweets/${tweet?.id}`}>
+                                    <NavLink
+                                        id="user-text"
+                                        to={`/tweets/${tweet?.id}`}
+                                    >
                                         {tweet?.firstName} @{tweet?.username}
                                     </NavLink>
+                                    <div
+                                        className="vtweet-created"
+                                        id="user-text"
+                                    >
+                                        {tweet?.created_at}
+                                    </div>
                                 </div>
+
                                 <div className="user-modal">
                                     {user?.id === tweet?.user_id ? (
                                         <>

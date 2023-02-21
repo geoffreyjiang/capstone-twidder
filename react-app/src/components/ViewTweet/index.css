@@ -47,7 +47,7 @@
     vertical-align: top;
     margin-left: auto;
     position: relative;
-    left: 55%;
+    left: 45%;
 }
 
 .user-rmodal {
@@ -67,4 +67,11 @@
 .tweet-text > h4 {
     text-align: right;
     margin-right: 70px;
+}
+.vtweet-created {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: auto;
+    position: relative;
+    left: 100%;
 }

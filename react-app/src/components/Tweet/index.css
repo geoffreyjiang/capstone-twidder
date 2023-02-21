@@ -88,3 +88,12 @@
     justify-content: space-around;
     position: relative;
 }
+
+.tweet-created {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: auto;
+    position: relative;
+    left: 45%;
+    top: 10px;
+}

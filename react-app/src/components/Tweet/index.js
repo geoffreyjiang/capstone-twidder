@@ -70,6 +70,12 @@ const Tweets = () => {
                                                         {el?.username}
                                                     </NavLink>
                                                 </div>
+                                                <div
+                                                    className="tweet-created"
+                                                    id="user-text"
+                                                >
+                                                    {el.created_at}
+                                                </div>
                                             </div>
                                         </div>
                                     </>
