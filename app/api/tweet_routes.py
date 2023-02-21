@@ -2,7 +2,7 @@ from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import Tweet, db, Reply, Like
 from app.forms import TweetForm, ReplyForm, LikeForm
-import datetime
+from datetime import datetime
 # from app.models import Tweet, db
 
 
@@ -20,7 +20,7 @@ def get_tweets():
 @login_required
 def create_tweet():
     data = request.json
-    new_tweet = Tweet(**data,  user_id=current_user.id)
+    new_tweet = Tweet(**data,  user_id=current_user.id, created_at=datetime.now())
     db.session.add(new_tweet)
     db.session.commit()
 
