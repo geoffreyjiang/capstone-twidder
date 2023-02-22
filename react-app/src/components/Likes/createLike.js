@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { createReply } from "../../store/reply";
-import { createLike, editLikes } from "../../store/likes";
-const CreateLike = () => {
+import { createLike } from "../../store/likes";
+const CreateLike = ({ tweetId }) => {
     const user = useSelector((state) => state.session.user);
     // console.log(user);
     const { id } = useParams();
@@ -19,21 +19,17 @@ const CreateLike = () => {
         }
 
         const data = {
-            isLiked: like,
             user_id: user.id,
+            tweet_id: tweetId,
         };
-        dispatch(createLike());
+        dispatch(createLike(tweetId));
     };
     return (
         <>
             <div className="create-like-container">
                 <form className="like-form" onSubmit={handleSubmit}>
                     <div className="input-like">
-                        <input
-                            type="checkbox"
-                            value={like}
-                            onChange={(e) => setLike(!like)}
-                        ></input>
+                        <input type="checkbox" value={like}></input>
                     </div>
 
                     <div>

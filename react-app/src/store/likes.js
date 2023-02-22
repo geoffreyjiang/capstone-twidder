@@ -1,6 +1,6 @@
 const LOAD_LIKE = "likes/LOAD_LIKE";
-const ADD_LIKE = "likes/ADD_LIKE";
-const UPDATE_LIKE = "likes/UPDATE_LIKE";
+const ADD_LIKE = "like/ADD_LIKE";
+const DELETE_LIKE = "like/DELETE_LIKE";
 const GET_LIKE_ID = "like/GET_LIKE_ID";
 
 const loadLike = (like) => ({
@@ -8,17 +8,13 @@ const loadLike = (like) => ({
     like,
 });
 
-const loadLikeId = (like) => ({
-    type: GET_LIKE_ID,
-    like,
-});
-
 const addLike = (like) => ({
     type: ADD_LIKE,
     like,
 });
-const updateLike = (like) => ({
-    type: UPDATE_LIKE,
+
+const deleteLike = (like) => ({
+    type: DELETE_LIKE,
     like,
 });
 
@@ -30,43 +26,23 @@ export const getLikes = (id) => async (dispatch) => {
     }
 };
 
-export const createLike = (id, like) => async (dispatch) => {
-    console.log(like, "LIKE DUNKKKKKKKKKKKKKKK");
+export const createLike = (id) => async (dispatch) => {
     const res = await fetch(`/api/tweets/${id}/likes`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(like),
     });
     if (res.ok) {
         const data = await res.json();
-        dispatch(addLike(data));
-    }
-};
 
-export const editLikes = (like) => async (dispatch) => {
-    // const res = await fetch(`/api/likes/${like.id}`, {
-    //     method: "PUT",
-    //     headers: {
-    //         "Content-Type": "applicaiton/json",
-    //         body: JSON.stringify(like),
-    //     },
-    // });
-    // if (res.ok) {
-    //     const liked = await res.json();
-    //     dispatch(updateLike(liked));
-    // }
-    const res = await fetch(`/api/tweets/${like.tweet_id}/likes`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "applicaiton/json",
-            body: JSON.stringify(like),
-        },
-    });
-    if (res.ok) {
-        const liked = await res.json();
-        dispatch(updateLike(liked));
+        if (data.status === "deleted") {
+            dispatch(deleteLike(data.id));
+        } else {
+            dispatch(addLike(data));
+        }
+
+        return data;
     }
 };
 
@@ -74,13 +50,12 @@ const likeReducer = (state = {}, action) => {
     const newState = { ...state };
     switch (action.type) {
         case LOAD_LIKE:
-            return action.like;
-        case UPDATE_LIKE:
-            newState[action.like.id] = action.like;
-            return newState;
+            return { ...newState, ...action.like };
         case ADD_LIKE:
             newState[action.like.id] = action.like;
             return newState;
+        case DELETE_LIKE:
+            return Object.assign({}, newState, action.like);
         default:
             return state;
     }

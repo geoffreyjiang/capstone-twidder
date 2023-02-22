@@ -3,8 +3,10 @@ import { getTweets } from "../../store/tweets";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, Redirect } from "react-router-dom";
 import "./index.css";
+import { getLikes } from "../../store/likes";
 import CreateTweet from "./createTweet";
 import TopNav from "../Nav/topNav";
+import CreateLike from "../Likes/createLike";
 const Tweets = () => {
     const dispatch = useDispatch();
     const [like, setLike] = useState();
@@ -50,7 +52,7 @@ const Tweets = () => {
                             <div
                                 className="tweet-container"
                                 key={i}
-                                onClick={() => history.push(`/tweets/${el.id}`)}
+                                // onClick={() => history.push(`/tweets/${el.id}`)}
                             >
                                 {el?.profile_pic ? (
                                     <>
@@ -102,19 +104,25 @@ const Tweets = () => {
                                     </div>
                                 )}
                                 {el?.image ? (
-                                    <div className="tweet-text">
-                                        <p>{el?.body}</p>
-                                        <img
-                                            src={el?.image}
-                                            className="tweet-img"
-                                        ></img>
-                                        <h4>Likes:{el?.totalLikes}</h4>
-                                    </div>
+                                    <>
+                                        <div className="tweet-text">
+                                            <p>{el?.body}</p>
+                                            <img
+                                                src={el?.image}
+                                                className="tweet-img"
+                                            ></img>
+                                            <h4>Likes:{el?.totalLikes}</h4>
+                                        </div>
+                                        <CreateLike tweetId={el.id} />
+                                    </>
                                 ) : (
-                                    <div className="tweet-text">
-                                        <p>{el?.body}</p>
-                                        <h4>Likes:{el?.totalLikes}</h4>
-                                    </div>
+                                    <>
+                                        <div className="tweet-text">
+                                            <p>{el?.body}</p>
+                                            <h4>Likes:{el?.totalLikes}</h4>
+                                        </div>
+                                        <CreateLike tweetId={el.id} />
+                                    </>
                                 )}
                             </div>
                         );
