@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { createReply } from "../../store/reply";
 import { createLike } from "../../store/likes";
+import { getTweets } from "../../store/tweets";
 const CreateLike = ({ tweetId }) => {
     const user = useSelector((state) => state.session.user);
     // console.log(user);
@@ -23,6 +24,7 @@ const CreateLike = ({ tweetId }) => {
             tweet_id: tweetId,
         };
         dispatch(createLike(tweetId));
+        dispatch(getTweets());
     };
     return (
         <>
