@@ -111,17 +111,24 @@ const Tweets = () => {
                                                 src={el?.image}
                                                 className="tweet-img"
                                             ></img>
-                                            <h4>Likes:{el?.totalLikes}</h4>
+                                            {/* <h4>Likes:{el?.totalLikes}</h4> */}
                                         </div>
-                                        <CreateLike tweetId={el.id} />
+                                        <CreateLike
+                                            tweetId={el.id}
+                                            total={el.totalLikes}
+                                        />
                                     </>
                                 ) : (
                                     <>
                                         <div className="tweet-text">
                                             <p>{el?.body}</p>
-                                            <h4>Likes:{el?.totalLikes}</h4>
+                                            <h4>
+                                                <CreateLike
+                                                    tweetId={el.id}
+                                                    total={el.totalLikes}
+                                                />
+                                            </h4>
                                         </div>
-                                        <CreateLike tweetId={el.id} />
                                     </>
                                 )}
                             </div>

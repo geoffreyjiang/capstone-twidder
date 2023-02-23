@@ -4,7 +4,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { createReply } from "../../store/reply";
 import { createLike } from "../../store/likes";
 import { getTweets } from "../../store/tweets";
-const CreateLike = ({ tweetId }) => {
+const CreateLike = ({ tweetId, total }) => {
     const user = useSelector((state) => state.session.user);
     // console.log(user);
     const { id } = useParams();
@@ -15,10 +15,6 @@ const CreateLike = ({ tweetId }) => {
     const [like, setLike] = useState(false);
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!user) {
-            alert("Please login!");
-        }
-
         const data = {
             user_id: user.id,
             tweet_id: tweetId,
@@ -30,14 +26,11 @@ const CreateLike = ({ tweetId }) => {
         <>
             <div className="create-like-container">
                 <form className="like-form" onSubmit={handleSubmit}>
-                    <div className="input-like">
-                        <input type="checkbox" value={like}></input>
-                    </div>
-
                     <div>
                         <button className="submitBtn" type="submit">
-                            Post
+                            <i class="fa-regular fa-heart"></i>
                         </button>
+                        <h4>{total}</h4>
                     </div>
                 </form>
             </div>
