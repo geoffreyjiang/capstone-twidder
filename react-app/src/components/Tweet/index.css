@@ -97,3 +97,12 @@
     left: 45%;
     top: 10px;
 }
+
+.tweet-container-extra {
+    display: inline-block;
+    width: 100%;
+}
+
+.tweet-container-extra > h4 {
+    display: inline-block;
+}

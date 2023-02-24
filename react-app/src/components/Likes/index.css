@@ -1,0 +1,9 @@
+.likes {
+    justify-content: end;
+    display: flex;
+    margin-right: 25%;
+}
+
+.red-like {
+    color: red;
+}

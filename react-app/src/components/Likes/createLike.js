@@ -2,39 +2,56 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { createReply } from "../../store/reply";
-import { createLike } from "../../store/likes";
+import { createLike, getLikes } from "../../store/likes";
 import { getTweets } from "../../store/tweets";
-const CreateLike = ({ tweetId, total }) => {
+import "./index.css";
+const CreateLike = ({ tweetId, total, likedBy, tweet }) => {
     const user = useSelector((state) => state.session.user);
+    const likes = Object.values(useSelector((state) => state.likes));
+
     // console.log(user);
+    const [like, setLike] = useState();
+    const [className, setClassName] = useState();
+
     const { id } = useParams();
-    // const isLiked = useSelector((state) => console.log());
 
     const dispatch = useDispatch();
     const history = useHistory();
-    const [like, setLike] = useState(false);
     const handleSubmit = async (e) => {
         e.preventDefault();
         const data = {
             user_id: user.id,
             tweet_id: tweetId,
         };
+
         dispatch(createLike(tweetId));
         dispatch(getTweets());
     };
+    useEffect(() => {
+        dispatch(getLikes(tweetId));
+    }, [dispatch, tweetId]);
+    const myLikes = likes.filter((el) => el.user_id === user.id);
+    useEffect(() => {
+        if (total === 0) {
+            setLike(false);
+            setClassName(["fa-regular fa-heart"]);
+        }
+        likedBy.map((el) => {
+            if (el.user_id === user.id && total !== 0) {
+                setLike(true);
+                setClassName(["fa-solid fa-heart red-like"]);
+            } else {
+                setLike(false);
+                setClassName(["fa-regular fa-heart"]);
+            }
+        });
+    }, [dispatch, total, like, className]);
+
     return (
-        <>
-            <div className="create-like-container">
-                <form className="like-form" onSubmit={handleSubmit}>
-                    <div>
-                        <button className="submitBtn" type="submit">
-                            <i class="fa-regular fa-heart"></i>
-                        </button>
-                        <h4>{total}</h4>
-                    </div>
-                </form>
-            </div>
-        </>
+        <div className="likes">
+            <i className={className} onClick={handleSubmit}></i>
+            {total}
+        </div>
     );
 };
 

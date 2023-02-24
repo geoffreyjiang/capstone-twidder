@@ -113,21 +113,26 @@ const Tweets = () => {
                                             ></img>
                                             {/* <h4>Likes:{el?.totalLikes}</h4> */}
                                         </div>
-                                        <CreateLike
-                                            tweetId={el.id}
-                                            total={el.totalLikes}
-                                        />
+                                        <div className="tweet-container-extras">
+                                            <CreateLike
+                                                tweetId={el.id}
+                                                total={el.totalLikes}
+                                            />
+                                        </div>
                                     </>
                                 ) : (
                                     <>
                                         <div className="tweet-text">
                                             <p>{el?.body}</p>
-                                            <h4>
-                                                <CreateLike
-                                                    tweetId={el.id}
-                                                    total={el.totalLikes}
-                                                />
-                                            </h4>
+                                        </div>
+
+                                        <div className="tweet-container-extras">
+                                            <CreateLike
+                                                tweetId={el.id}
+                                                total={el.totalLikes}
+                                                likedBy={el.likes}
+                                                tweet={el}
+                                            />
                                         </div>
                                     </>
                                 )}
