@@ -11,21 +11,25 @@ const CreateLike = ({ tweetId, total, likedBy, tweet }) => {
         return Object.values(state.likes);
     });
     const [liked, setLiked] = useState();
-    const [totalLikes, setTotalLikes] = useState(total);
     const dispatch = useDispatch();
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const isLiked = likedBy.find((like) => like.user_id === user?.id);
+        if (isLiked) {
+            await handleDelete();
+        }
         const data = {
             user_id: user.id,
             tweet_id: tweetId,
         };
-        setLiked(true);
-        setTotalLikes(totalLikes + 1);
+        if (data) {
+            setLiked(true);
 
-        dispatch(createLike(tweetId));
-        // dispatch(getTweets());
+            await dispatch(createLike(tweetId));
+            await dispatch(getTweets());
+        }
     };
-    console.log(totalLikes);
+    // console.log(likes);
     useEffect(() => {
         if (likes) {
             const isLiked = likedBy.find((like) => like.user_id === user?.id);
@@ -36,14 +40,17 @@ const CreateLike = ({ tweetId, total, likedBy, tweet }) => {
             }
         }
     }, [dispatch, likedBy, user.id]);
-    // console.log(liked);
+    console.log(likedBy);
 
-    const handleDelete = () => {
-        const isLiked = likedBy.find((like) => like.user_id === user?.id);
-        setLiked(false);
-        setTotalLikes(totalLikes - 1);
+    const handleDelete = async () => {
+        const isLiked = likedBy.find(
+            (like) => like.user_id === user?.id && like.tweet_id === tweetId
+        );
+        console.log(isLiked);
         if (isLiked) {
-            dispatch(removeLike(isLiked.id));
+            setLiked(false);
+            await dispatch(removeLike(isLiked.id));
+            await dispatch(getTweets());
         }
     };
 
@@ -60,7 +67,7 @@ const CreateLike = ({ tweetId, total, likedBy, tweet }) => {
                             onClick={handleDelete}
                             className="fa-solid fa-heart red-like"
                         ></i>
-                        {totalLikes}
+                        {likedBy.length >= 0 && <div>{likedBy.length}</div>}
                     </div>
                 </>
             )}
@@ -72,7 +79,7 @@ const CreateLike = ({ tweetId, total, likedBy, tweet }) => {
                             onClick={handleSubmit}
                             className="fa-regular fa-heart"
                         ></i>
-                        {totalLikes}
+                        {likedBy.length > 0 && <div>{likedBy.length}</div>}
                     </div>
                 </>
             )}

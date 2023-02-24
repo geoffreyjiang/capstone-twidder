@@ -12,6 +12,7 @@ const Tweets = () => {
     const [like, setLike] = useState();
     const [id, setId] = useState("");
     const history = useHistory();
+    const [val] = useState(true);
     const [tweetId, setTweetId] = useState("");
     const user = useSelector((state) => state.session.user);
     const tweets = useSelector((store) => {
@@ -125,7 +126,7 @@ const Tweets = () => {
                                                 tweetId={el.id}
                                                 total={el.totalLikes}
                                                 likedBy={el.likes}
-                                                tweet={el}
+                                                tweet={val}
                                             />
                                         </div>
                                     </>
@@ -147,6 +148,7 @@ const Tweets = () => {
                                                 tweetId={el.id}
                                                 total={el.totalLikes}
                                                 likedBy={el.likes}
+                                                tweet={val}
                                             />
                                         </div>
                                     </>

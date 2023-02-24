@@ -101,6 +101,7 @@
 .tweet-container-extra {
     display: inline-block;
     width: 100%;
+    height: 25px;
 }
 
 .tweet-container-extra > h4 {
