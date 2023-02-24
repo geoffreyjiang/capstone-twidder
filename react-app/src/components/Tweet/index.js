@@ -147,7 +147,6 @@ const Tweets = () => {
                                                 tweetId={el.id}
                                                 total={el.totalLikes}
                                                 likedBy={el.likes}
-                                                tweet={el}
                                             />
                                         </div>
                                     </>

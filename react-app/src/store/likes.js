@@ -36,13 +36,16 @@ export const createLike = (id) => async (dispatch) => {
     if (res.ok) {
         const data = await res.json();
         console.log(data);
-        if (data.msg !== "deleted") {
-            dispatch(addLike(data));
-        } else {
-            dispatch(deleteLike(data.id));
-        }
+        dispatch(addLike(data));
+    }
+};
 
-        return data;
+export const removeLike = (id) => async (dispatch) => {
+    const res = await fetch(`/api/like/${id}`, {
+        method: "DELETE",
+    });
+    if (res.ok) {
+        dispatch(deleteLike(id));
     }
 };
 
@@ -56,7 +59,7 @@ const likeReducer = (state = {}, action) => {
             return newState;
         case DELETE_LIKE:
             delete newState[action.id];
-            return { ...newState };
+            return newState;
         default:
             return state;
     }

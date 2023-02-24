@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from app.models import Tweet, db, Reply, Like
 from app.forms import TweetForm, ReplyForm, LikeForm
 from datetime import datetime
+from ..utils import Print
 # from app.models import Tweet, db
 
 
@@ -103,20 +104,36 @@ def get_tweet_likes(id):
 @tweet_routes.route('/<int:id>/likes', methods=['POST'])
 def post_tweet_likes(id):
     current_user_id = int(current_user.get_id())
-    like = Like.query.filter(Like.user_id == current_user_id, Like.tweet_id == id).first()
-    if like:
-        db.session.delete(like)
-        db.session.commit()
-        return {"msg": "deleted"}
-    else:
-        like = Like(
+    like = Like(
         user_id=current_user_id,
         tweet_id=id
-        )
+    )
+    db.session.add(like)
+    db.session.commit()
+    return like.to_dict()
 
-        db.session.add(like)
-        db.session.commit()
-        return like.to_dict()
+
+
+
+
+
+
+# @tweet_routes.route('/<int:id>/likes', methods=['POST'])
+# def post_tweet_likes(id):
+#     current_user_id = int(current_user.get_id())
+#     like = Like.query.filter(Like.user_id == current_user_id, Like.tweet_id == id).first()
+#     if like:
+#         db.session.delete(like)
+#         db.session.commit()
+#         return {"status": "deleted"}
+#     else:
+#         like = Like(
+#         user_id=current_user_id,
+#         tweet_id=id
+#         )
+#         db.session.add(like)
+#         db.session.commit()
+#         return like.to_dict()
 
 
 

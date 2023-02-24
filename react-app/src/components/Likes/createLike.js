@@ -1,67 +1,82 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { createReply } from "../../store/reply";
-import { createLike, getLikes } from "../../store/likes";
+import { createLike, getLikes, removeLike } from "../../store/likes";
 import { getTweets } from "../../store/tweets";
 import "./index.css";
 const CreateLike = ({ tweetId, total, likedBy, tweet }) => {
     const user = useSelector((state) => state.session.user);
-    const likes = Object.values(useSelector((state) => state.likes));
-
-    const [className, setClassName] = useState({ color: "" });
-
-    const { id } = useParams();
-
+    const likes = useSelector((state) => {
+        return Object.values(state.likes);
+    });
+    const [liked, setLiked] = useState();
+    const [totalLikes, setTotalLikes] = useState(total);
     const dispatch = useDispatch();
-    const history = useHistory();
     const handleSubmit = async (e) => {
         e.preventDefault();
         const data = {
             user_id: user.id,
             tweet_id: tweetId,
         };
+        setLiked(true);
+        setTotalLikes(totalLikes + 1);
 
         dispatch(createLike(tweetId));
-        dispatch(getTweets());
+        // dispatch(getTweets());
     };
+    console.log(totalLikes);
+    useEffect(() => {
+        if (likes) {
+            const isLiked = likedBy.find((like) => like.user_id === user?.id);
+            if (isLiked) {
+                setLiked(true);
+            } else {
+                setLiked(false);
+            }
+        }
+    }, [dispatch, likedBy, user.id]);
+    // console.log(liked);
+
+    const handleDelete = () => {
+        const isLiked = likedBy.find((like) => like.user_id === user?.id);
+        setLiked(false);
+        setTotalLikes(totalLikes - 1);
+        if (isLiked) {
+            dispatch(removeLike(isLiked.id));
+        }
+    };
+
     useEffect(() => {
         dispatch(getLikes(tweetId));
     }, [dispatch, tweetId]);
-    const myLikes = likes.filter((el) => el.user_id === user.id);
-    // console.log(myLikes);
-    useEffect(() => {
-        const handleLike = () => {
-            if (total === 0) {
-                setClassName({ ...className, color: "fa-regular fa-heart" });
-            }
-            likedBy?.forEach((el) => {
-                if (el.user_id === user?.id && total !== 0) {
-                    setClassName({
-                        ...className,
-                        color: "fa-solid fa-heart red-like",
-                    });
-                } else {
-                    setClassName({
-                        ...className,
-                        color: "fa-regular fa-heart",
-                    });
-                }
-            });
-        };
-        if (likedBy) {
-            handleLike();
-        }
-    }, [dispatch, likedBy, setClassName, total, tweet]);
-    console.log(Object.values(className).toString());
+
     return (
-        <div className="likes">
-            <i
-                className={Object.values(className).toString()}
-                onClick={handleSubmit}
-            ></i>
-            {total}
-        </div>
+        <>
+            {liked && (
+                <>
+                    <div className="likes">
+                        <i
+                            onClick={handleDelete}
+                            className="fa-solid fa-heart red-like"
+                        ></i>
+                        {totalLikes}
+                    </div>
+                </>
+            )}
+
+            {!liked && (
+                <>
+                    <div className="likes">
+                        <i
+                            onClick={handleSubmit}
+                            className="fa-regular fa-heart"
+                        ></i>
+                        {totalLikes}
+                    </div>
+                </>
+            )}
+        </>
     );
 };
 
