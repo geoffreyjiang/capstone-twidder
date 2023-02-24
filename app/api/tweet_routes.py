@@ -107,7 +107,7 @@ def post_tweet_likes(id):
     if like:
         db.session.delete(like)
         db.session.commit()
-        return {"status": "deleted"}
+        return {"msg": "deleted"}
     else:
         like = Like(
         user_id=current_user_id,

@@ -5,13 +5,11 @@ import { createReply } from "../../store/reply";
 import { createLike, getLikes } from "../../store/likes";
 import { getTweets } from "../../store/tweets";
 import "./index.css";
-const CreateLike = ({ tweetId, total, likedBy }) => {
+const CreateLike = ({ tweetId, total, likedBy, tweet }) => {
     const user = useSelector((state) => state.session.user);
     const likes = Object.values(useSelector((state) => state.likes));
 
-    // console.log(user);
-    const [like, setLike] = useState();
-    const [className, setClassName] = useState();
+    const [className, setClassName] = useState({ color: "" });
 
     const { id } = useParams();
 
@@ -31,25 +29,37 @@ const CreateLike = ({ tweetId, total, likedBy }) => {
         dispatch(getLikes(tweetId));
     }, [dispatch, tweetId]);
     const myLikes = likes.filter((el) => el.user_id === user.id);
+    // console.log(myLikes);
     useEffect(() => {
-        if (total === 0) {
-            setLike(false);
-            setClassName(["fa-regular fa-heart"]);
-        }
-        likedBy.map((el) => {
-            if (el.user_id === user.id && total !== 0) {
-                setLike(true);
-                setClassName(["fa-solid fa-heart red-like"]);
-            } else {
-                setLike(false);
-                setClassName(["fa-regular fa-heart"]);
+        const handleLike = () => {
+            if (total === 0) {
+                setClassName({ ...className, color: "fa-regular fa-heart" });
             }
-        });
-    }, [dispatch, total, like, className]);
-
+            likedBy?.forEach((el) => {
+                if (el.user_id === user?.id && total !== 0) {
+                    setClassName({
+                        ...className,
+                        color: "fa-solid fa-heart red-like",
+                    });
+                } else {
+                    setClassName({
+                        ...className,
+                        color: "fa-regular fa-heart",
+                    });
+                }
+            });
+        };
+        if (likedBy) {
+            handleLike();
+        }
+    }, [dispatch, likedBy, setClassName, total, tweet]);
+    console.log(Object.values(className).toString());
     return (
         <div className="likes">
-            <i className={className} onClick={handleSubmit}></i>
+            <i
+                className={Object.values(className).toString()}
+                onClick={handleSubmit}
+            ></i>
             {total}
         </div>
     );

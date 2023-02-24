@@ -10,6 +10,7 @@ import EditTweetModal from "../Modals/EditTweetModal/EditTweetModal";
 import AllReplies from "../Reply";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams, useHistory } from "react-router-dom";
+import CreateLike from "../Likes/createLike";
 import "./index.css";
 const ViewTweet = () => {
     const dispatch = useDispatch();
@@ -33,6 +34,7 @@ const ViewTweet = () => {
         history.push("/");
     };
     // console.log(tweet.user_id);
+    // console.log(tweet);
     // console.log(user.id);
 
     return (
@@ -111,16 +113,35 @@ const ViewTweet = () => {
                         </div>
                     )}
                     {tweet?.image ? (
-                        <div className="tweet-text">
-                            <h3>{tweet?.body}</h3>
-                            <img src={tweet?.image} className="tweet-img"></img>
-                            <h4>Likes:{tweet?.totalLikes}</h4>
-                        </div>
+                        <>
+                            <div className="tweet-text">
+                                <h3>{tweet?.body}</h3>
+                                <img
+                                    src={tweet?.image}
+                                    className="tweet-img"
+                                ></img>
+                            </div>
+                            <div className="tweet-container-extras">
+                                <CreateLike
+                                    tweetId={tweet?.id}
+                                    total={tweet?.totalLikes}
+                                    likedBy={tweet?.likes}
+                                />
+                            </div>
+                        </>
                     ) : (
-                        <div className="tweet-text">
-                            <h3>{tweet?.body}</h3>
-                            <h4>Likes:{tweet?.totalLikes}</h4>
-                        </div>
+                        <>
+                            <div className="tweet-text">
+                                <h3>{tweet?.body}</h3>
+                            </div>
+                            <div className="tweet-container-extras">
+                                <CreateLike
+                                    tweetId={tweet?.id}
+                                    total={tweet?.totalLikes}
+                                    likedBy={tweet?.likes}
+                                />
+                            </div>
+                        </>
                     )}
                 </div>
 

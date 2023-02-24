@@ -16,17 +16,11 @@ def get_like_by_id(id):
     return like.to_dict()
 
 
-
-@like_route.route('/<int:id>', methods=['PUT'])
-@login_required
-def edit_like(id):
-    like = Like.query.get(id)
-    form = LikeForm()
-
-    like.isLiked = form.data['isLiked']
-    like.user_id = form.data['user_id']
-    like.tweet_id = form.data['tweet_id']
-
+@like_route.route('/<int:id>', methods=['DELETE'])
+def delete_like(id):
+    current_user_id = int(current_user.get_id())
+    like = Like.query.filter(Like.user_id == current_user_id, Like.tweet_id == id).first()
+    db.session.delete(like)
     db.session.commit()
+    return {"message": "deleted"}
 
-    return like.to_dict()

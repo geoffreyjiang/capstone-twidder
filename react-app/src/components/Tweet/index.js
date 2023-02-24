@@ -105,7 +105,14 @@ const Tweets = () => {
                                 )}
                                 {el?.image ? (
                                     <>
-                                        <div className="tweet-text">
+                                        <div
+                                            className="tweet-text"
+                                            onClick={() =>
+                                                history.push(
+                                                    `/tweets/${el?.id}`
+                                                )
+                                            }
+                                        >
                                             <p>{el?.body}</p>
                                             <img
                                                 src={el?.image}
@@ -117,6 +124,8 @@ const Tweets = () => {
                                             <CreateLike
                                                 tweetId={el.id}
                                                 total={el.totalLikes}
+                                                likedBy={el.likes}
+                                                tweet={el}
                                             />
                                         </div>
                                     </>
@@ -138,6 +147,7 @@ const Tweets = () => {
                                                 tweetId={el.id}
                                                 total={el.totalLikes}
                                                 likedBy={el.likes}
+                                                tweet={el}
                                             />
                                         </div>
                                     </>

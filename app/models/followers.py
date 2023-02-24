@@ -9,13 +9,12 @@ class Follow(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     follower_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
-    isFollowing = db.Column(db.Boolean)
 
     user_follow = db.relationship("User", foreign_keys=[user_id], back_populates='follow')
     user_follower = db.relationship("User", foreign_keys=[follower_id], back_populates='follower')
 
     def __repr__(self):
-        return f"<Reply id: {self.id}, user_id: {self.user_id}, follower_id: {self.follower_id}, isFollowing: {self.isFollowing}>"
+        return f"<Reply id: {self.id}, user_id: {self.user_id}, follower_id: {self.follower_id}>"
 
 
     def to_dict(self):
@@ -23,5 +22,4 @@ class Follow(db.Model):
             "id": self.id,
             "user_id": self.user_id,
             "follower_id": self.follower_id,
-            "isFollowing": self.isFollowing
         }
