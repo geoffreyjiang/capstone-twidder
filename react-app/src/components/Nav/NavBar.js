@@ -38,14 +38,12 @@ const NavBar = () => {
                         <AboutModal />
                     </li>
                 </ul>
-                <div className="list-end">
-                    {/* <img
+                {/* <img
                         src={sessionUser.profile_pic}
                         onClick={<LogOutModal />}
                     ></img> */}
-                    <LogOutModal />
-                    {/* <LogoutButton /> */}
-                </div>
+                <LogOutModal user={sessionUser} />
+                {/* <LogoutButton /> */}
             </>
         );
     } else {

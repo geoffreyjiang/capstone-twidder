@@ -2,6 +2,7 @@ import { React, useState } from "react";
 import { LogoutMod } from "../../../context/modal";
 import LogoutButton from "../../auth/LogoutButton";
 import { useSelector } from "react-redux";
+import "./index.css";
 const LogOutModal = () => {
     const [open, setOpen] = useState(false);
     const sessionUser = useSelector((state) => state.session.user);
@@ -14,7 +15,19 @@ const LogOutModal = () => {
 
     return (
         <>
-            <img src={img} onClick={() => setOpen(true)}></img>
+            <>
+                <div className="list-end" onClick={() => setOpen(true)}>
+                    <img src={img} className="user-logout"></img>
+                    <h3>{sessionUser.firstName}</h3>
+                </div>
+                <div className="navbar-username" onClick={() => setOpen(true)}>
+                    {" "}
+                    @ {sessionUser.username}
+                </div>
+                <div className="threeDots" onClick={() => setOpen(true)}>
+                    <i className="fa-solid fa-ellipsis"></i>
+                </div>
+            </>
             {open && (
                 <LogoutMod onClose={() => setOpen(false)}>
                     <LogoutButton setOpen={setOpen} />

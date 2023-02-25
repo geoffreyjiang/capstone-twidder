@@ -1,0 +1,16 @@
+.user-logout {
+    height: 90px;
+    width: 100px;
+    border-radius: 50%;
+    padding-left: 5px;
+    padding-top: 5px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.user-log-out > h4 {
+    display: inline-block;
+}
