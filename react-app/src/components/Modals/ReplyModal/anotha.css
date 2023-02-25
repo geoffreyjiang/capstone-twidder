@@ -1,0 +1,9 @@
+/* #replyIcon {
+    margin-left: 25%;
+    display: inline-block;
+} */
+
+.replyIcon {
+    display: inline-block;
+    margin-left: 15%;
+}

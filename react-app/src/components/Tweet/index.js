@@ -7,6 +7,8 @@ import { getLikes } from "../../store/likes";
 import CreateTweet from "./createTweet";
 import TopNav from "../Nav/topNav";
 import CreateLike from "../Likes/createLike";
+import CreateReplyModal from "../Modals/ReplyModal/CreateReplyModal";
+import CreateAllReplyModal from "../Modals/ReplyModal/AllTweetReplyModal";
 const Tweets = () => {
     const dispatch = useDispatch();
     const [like, setLike] = useState();
@@ -144,6 +146,9 @@ const Tweets = () => {
                                         </div>
 
                                         <div className="tweet-container-extras">
+                                            <CreateAllReplyModal
+                                                tweetId={el.id}
+                                            />
                                             <CreateLike
                                                 tweetId={el.id}
                                                 total={el.totalLikes}

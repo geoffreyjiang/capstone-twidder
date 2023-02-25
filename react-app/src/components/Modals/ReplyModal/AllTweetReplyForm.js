@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { createReply } from "../../store/reply";
-const CreateReply = ({ setOpen, tweetId }) => {
+import { createReply } from "../../../store/reply";
+const CreateAllReply = ({ setOpen, tweetId }) => {
     const user = useSelector((state) => state.session.user);
     // console.log(user);
     const { id } = useParams();
@@ -20,9 +20,9 @@ const CreateReply = ({ setOpen, tweetId }) => {
             body,
             tweet_id: id,
         };
-        let reply = dispatch(createReply(id, data));
+        let reply = dispatch(createReply(tweetId, data));
         if (reply) {
-            history.push(`/tweets/${id}`);
+            history.push(`/tweets/${tweetId}`);
             setBody("");
             setImage("");
             setOpen(false);
@@ -63,4 +63,4 @@ const CreateReply = ({ setOpen, tweetId }) => {
     );
 };
 
-export default CreateReply;
+export default CreateAllReply;

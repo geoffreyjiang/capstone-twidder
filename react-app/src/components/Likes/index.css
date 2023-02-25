@@ -1,9 +1,11 @@
-.likes {
-    justify-content: end;
-    display: flex;
-    margin-right: 25%;
-}
-
 .red-like {
     color: red;
+}
+
+.heartIcon {
+    margin-left: 60%;
+}
+
+#totalLikes {
+    display: inline-block;
 }

@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import { RModal } from "../../../context/modal";
 import CreateReply from "../../Reply/createReply";
 import "./index.css";
-const CreateReplyModal = () => {
+const CreateReplyModal = ({ tweetId }) => {
     const [open, setOpen] = useState(false);
     return (
         <>

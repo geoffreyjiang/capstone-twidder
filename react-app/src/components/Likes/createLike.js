@@ -32,14 +32,14 @@ const CreateLike = ({ tweetId, total, likedBy, tweet }) => {
     // console.log(likes);
     useEffect(() => {
         if (likes) {
-            const isLiked = likedBy.find((like) => like.user_id === user?.id);
+            const isLiked = likedBy?.find((like) => like.user_id === user?.id);
             if (isLiked) {
                 setLiked(true);
             } else {
                 setLiked(false);
             }
         }
-    }, [dispatch, likedBy, user.id]);
+    }, [dispatch, likedBy, user?.id]);
     console.log(likedBy);
 
     const handleDelete = async () => {
@@ -62,25 +62,28 @@ const CreateLike = ({ tweetId, total, likedBy, tweet }) => {
         <>
             {liked && (
                 <>
-                    <div className="likes">
-                        <i
-                            onClick={handleDelete}
-                            className="fa-solid fa-heart red-like"
-                        ></i>
-                        {likedBy.length >= 0 && <div>{likedBy.length}</div>}
-                    </div>
+                    <i
+                        onClick={handleDelete}
+                        id="heart"
+                        className="fa-solid fa-heart red-like heartIcon"
+                    ></i>
+                    {likedBy?.length >= 0 && (
+                        <div id="totalLikes">{likedBy?.length}</div>
+                    )}
                 </>
             )}
 
             {!liked && (
                 <>
-                    <div className="likes">
-                        <i
-                            onClick={handleSubmit}
-                            className="fa-regular fa-heart"
-                        ></i>
-                        {likedBy.length > 0 && <div>{likedBy.length}</div>}
-                    </div>
+                    <i
+                        onClick={handleSubmit}
+                        id="heart"
+                        className="fa-regular fa-heart heartIcon"
+                    >
+                        {likedBy?.length > 0 && (
+                            <div id="totalLikes">{likedBy?.length}</div>
+                        )}
+                    </i>
                 </>
             )}
         </>
