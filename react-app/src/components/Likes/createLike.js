@@ -14,7 +14,7 @@ const CreateLike = ({ tweetId, total, likedBy, tweet }) => {
     const dispatch = useDispatch();
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const isLiked = likedBy.find((like) => like.user_id === user?.id);
+        const isLiked = likedBy?.find((like) => like.user_id === user?.id);
         if (isLiked) {
             await handleDelete();
         }
@@ -43,7 +43,7 @@ const CreateLike = ({ tweetId, total, likedBy, tweet }) => {
     console.log(likedBy);
 
     const handleDelete = async () => {
-        const isLiked = likedBy.find(
+        const isLiked = likedBy?.find(
             (like) => like.user_id === user?.id && like.tweet_id === tweetId
         );
         console.log(isLiked);
