@@ -26,7 +26,12 @@
 .tweet-container > .tweet-text > p {
     /* text-align: center; */
     margin-left: 20%;
+    /* margin-bottom: 10%; */
     /* padding-right: 15px; */
+}
+
+.tweet-text {
+    margin-bottom: 5%;
 }
 
 .tweet-user-img-container {
@@ -101,7 +106,7 @@
 .tweet-container-extra {
     display: inline-block;
     width: 100%;
-    height: 25px;
+    height: 30px;
     flex-direction: row;
     justify-content: space-between;
 }

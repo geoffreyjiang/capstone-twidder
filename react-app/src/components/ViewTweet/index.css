@@ -18,7 +18,7 @@
     border-bottom: none;
     word-break: break-all;
     white-space: pre-wrap;
-    margin-top: 25px;
+    /* margin-top: 25px; */
     border: 1px solid rgb(235, 235, 235);
 }
 
