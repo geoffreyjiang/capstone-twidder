@@ -40,11 +40,13 @@ const NavBar = () => {
                         <AboutModal />
                     </li>
                 </ul>
+                <li>
+                    <LogOutModal user={sessionUser} />
+                </li>
                 {/* <img
                         src={sessionUser.profile_pic}
                         onClick={<LogOutModal />}
                     ></img> */}
-                <LogOutModal user={sessionUser} />
                 {/* <LogoutButton /> */}
             </>
         );

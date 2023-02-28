@@ -7,21 +7,19 @@
     width: 50%;
     height: 100%;
     padding: 10px;
-    margin-left: 19%;
+    margin-left: 20%;
 }
 
 .tweet-container {
     display: grid;
     width: 480px;
     max-height: 10000px;
-    border-left: none;
-    border-right: none;
-    border-bottom: none;
+    border-right: 1px solid rgb(235, 235, 235);
     word-break: break-all;
     white-space: pre-wrap;
     cursor: pointer;
     /* border-top: 1px solid black; */
-    border: 1px solid rgb(235, 235, 235);
+    border-bottom: 1px solid rgb(235, 235, 235);
 }
 .tweet-container > .tweet-text > p {
     /* text-align: center; */

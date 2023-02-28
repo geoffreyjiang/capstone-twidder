@@ -1,0 +1,43 @@
+.sessionUser-header {
+    margin-left: 26%;
+    /* height: 10%; */
+    width: 50%;
+    display: flex;
+}
+
+.back-arrow {
+    padding: 15px;
+    padding-top: 20px;
+    vertical-align: top;
+}
+
+.user-header {
+    display: inline-block;
+    /* padding-bottom: 5px; */
+    /* padding: 5px 0 0 25px; */
+}
+
+.user-header > h3 {
+    margin-bottom: 0 !important;
+}
+.user-header > p {
+    margin-top: 0 !important;
+}
+
+.tweet-user-section > .user-background {
+    width: 88%;
+    height: 200px;
+    position: relative;
+}
+
+.tweet-user-section {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    /* width: 50%; */
+    width: 50%;
+    height: 100%;
+    margin-left: 23%;
+    /* border-right: 1px solid rgb(235, 235, 235); */
+}
