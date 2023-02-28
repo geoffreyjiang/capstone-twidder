@@ -3,7 +3,6 @@ from flask_login import login_required, current_user
 from app.models import Tweet, db, Reply, Like
 from app.forms import TweetForm, ReplyForm, LikeForm
 from datetime import datetime
-from ..utils import Print
 # from app.models import Tweet, db
 
 

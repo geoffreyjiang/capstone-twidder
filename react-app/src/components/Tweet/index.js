@@ -3,19 +3,13 @@ import { getTweets } from "../../store/tweets";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, Redirect } from "react-router-dom";
 import "./index.css";
-import { getLikes } from "../../store/likes";
 import CreateTweet from "./createTweet";
 import TopNav from "../Nav/topNav";
 import CreateLike from "../Likes/createLike";
-import CreateReplyModal from "../Modals/ReplyModal/CreateReplyModal";
 import CreateAllReplyModal from "../Modals/ReplyModal/AllTweetReplyModal";
 const Tweets = () => {
     const dispatch = useDispatch();
-    const [like, setLike] = useState();
-    const [id, setId] = useState("");
     const history = useHistory();
-    const [val] = useState(true);
-    const [tweetId, setTweetId] = useState("");
     const user = useSelector((state) => state.session.user);
     const tweets = useSelector((store) => {
         return Object.values(store.tweets);
@@ -127,9 +121,7 @@ const Tweets = () => {
                                             />
                                             <CreateLike
                                                 tweetId={el.id}
-                                                total={el.totalLikes}
                                                 likedBy={el.likes}
-                                                tweet={val}
                                             />
                                         </div>
                                     </>
@@ -152,9 +144,7 @@ const Tweets = () => {
                                             />
                                             <CreateLike
                                                 tweetId={el.id}
-                                                total={el.totalLikes}
                                                 likedBy={el.likes}
-                                                tweet={val}
                                             />
                                         </div>
                                     </>

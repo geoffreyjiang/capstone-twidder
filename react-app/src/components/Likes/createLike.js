@@ -5,7 +5,7 @@ import { createReply } from "../../store/reply";
 import { createLike, getLikes, removeLike } from "../../store/likes";
 import { getTweets } from "../../store/tweets";
 import "./index.css";
-const CreateLike = ({ tweetId, total, likedBy, tweet }) => {
+const CreateLike = ({ tweetId, likedBy }) => {
     const user = useSelector((state) => state.session.user);
     const likes = useSelector((state) => {
         return Object.values(state.likes);

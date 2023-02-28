@@ -2,7 +2,6 @@ from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import  db, Reply, Like
 from app.forms import  LikeForm
-from ..utils import Print
 
 like_route = Blueprint('like', __name__, )
 
