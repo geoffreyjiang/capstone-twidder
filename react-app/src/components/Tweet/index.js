@@ -66,20 +66,18 @@ const Tweets = () => {
                                                     className="tweet-user-img"
                                                     alt="no img"
                                                 ></img>
-                                                <div className="username-container">
+                                                <div
+                                                    className="username-container"
+                                                    id="user-text"
+                                                >
                                                     <NavLink
                                                         id="user-text"
                                                         to={`/tweets/${el.id}`}
                                                     >
                                                         {el.firstName} @
-                                                        {el?.username}
+                                                        {el?.username} ·{" "}
+                                                        {el.created_at}
                                                     </NavLink>
-                                                </div>
-                                                <div
-                                                    className="tweet-created"
-                                                    id="user-text"
-                                                >
-                                                    {el.created_at}
                                                 </div>
                                             </div>
                                         </div>
@@ -124,6 +122,9 @@ const Tweets = () => {
                                             {/* <h4>Likes:{el?.totalLikes}</h4> */}
                                         </div>
                                         <div className="tweet-container-extras">
+                                            <CreateAllReplyModal
+                                                tweetId={el.id}
+                                            />
                                             <CreateLike
                                                 tweetId={el.id}
                                                 total={el.totalLikes}
