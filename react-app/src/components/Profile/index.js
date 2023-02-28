@@ -34,10 +34,13 @@ const UserProfile = () => {
                 </div>
             </div>
             <div className="tweet-user-section">
-                <img
-                    src="https://cdn.pixabay.com/photo/2022/06/27/18/56/grass-7288141__340.jpg"
-                    className="user-background"
-                ></img>
+                <div className="user-background-container">
+                    <img
+                        src="https://cdn.pixabay.com/photo/2022/06/27/18/56/grass-7288141__340.jpg"
+                        className="user-background"
+                    ></img>
+                </div>
+                <div className="user-tings-container"></div>
             </div>
         </>
     );

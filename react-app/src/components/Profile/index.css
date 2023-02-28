@@ -24,10 +24,14 @@
     margin-top: 0 !important;
 }
 
-.tweet-user-section > .user-background {
+.tweet-user-section > .user-background-container {
     width: 88%;
-    height: 200px;
+    /* height: 150px; */
     position: relative;
+}
+.tweet-user-section > .user-background-container > .user-background {
+    height: 200px;
+    width: 100%;
 }
 
 .tweet-user-section {
