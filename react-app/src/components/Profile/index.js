@@ -3,7 +3,7 @@ import { getTweets } from "../../store/tweets";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserById, getUsers } from "../../store/user";
-
+import ProfileNav from "./profileNav";
 import "./index.css";
 const UserProfile = () => {
     const dispatch = useDispatch();
@@ -45,16 +45,20 @@ const UserProfile = () => {
                         className="user-background"
                     ></img>
                 </div>
-                <div className="user-tings-container">
+                <div className="user-things-container">
                     <div className="profile-pic">
                         <img
                             src={user?.profile_pic}
                             className="user-profile-pic"
                         ></img>
                     </div>
-                    <div className="user-tings">
+                    <div className="user-things">
                         <h3>{user?.firstName}</h3>
                         <h4 id="user-text"> @{user?.username}</h4>
+                    </div>
+                    <div className="user-bio">
+                        <p>{user?.bio}</p>
+                        <h4 id="user-text">Followers {"|"} Following</h4>
                     </div>
                 </div>
             </div>

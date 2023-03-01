@@ -26,7 +26,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 30%;
+    width: 23%;
     height: 100%;
     /* background-color: #26a7de; */
     display: flex;
@@ -57,7 +57,7 @@ li {
     justify-content: end;
 } */
 .nav-items {
-    margin-left: 37%;
+    margin-left: 30%;
 }
 button {
     cursor: pointer;

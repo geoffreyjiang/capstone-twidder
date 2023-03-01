@@ -1,14 +1,12 @@
 import React from "react";
 import { NavLink, useHistory } from "react-router-dom";
-import LogoutButton from "../auth/LogoutButton";
-import "./nav.css";
+import "./index.css";
 import { useSelector, useDispatch } from "react-redux";
-import { login } from "../../store/session";
-import LoginModal from "../Modals/Login/LoginModal";
-import LogOutModal from "../Modals/Logout/LogoutModal";
-import AboutModal from "../Modals/AboutModal/AboutModal";
 
-const NavBar = () => {
+import LogOutModal from "../../Modals/Logout/LogoutModal";
+import AboutModal from "../../Modals/AboutModal/AboutModal";
+
+const ProfileNav = () => {
     const sessionUser = useSelector((state) => state.session.user);
     const history = useHistory();
     const dispatch = useDispatch();
@@ -29,10 +27,7 @@ const NavBar = () => {
                             <i className="fa-solid fa-hashtag"> Explore</i>{" "}
                         </li>
                         <li className="list-item">
-                            <NavLink
-                                to={`/user/${sessionUser.id}`}
-                                exact={true}
-                            >
+                            <NavLink to={`//${sessionUser.id}`} exact={true}>
                                 <i className="fa-solid fa-user"> Profile</i>
                             </NavLink>
                         </li>
@@ -49,4 +44,4 @@ const NavBar = () => {
     );
 };
 
-export default NavBar;
+export default ProfileNav;

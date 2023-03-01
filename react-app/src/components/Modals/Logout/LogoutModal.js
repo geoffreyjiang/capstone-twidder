@@ -16,12 +16,9 @@ const LogOutModal = () => {
     return (
         <>
             <>
-                <div className="list-end" onClick={() => setOpen(true)}>
+                <div className="modal-info" onClick={() => setOpen(true)}>
                     <img src={img} className="user-logout"></img>
-                    <h3>{sessionUser.firstName}</h3>
-                </div>
-                <div className="navbar-username" onClick={() => setOpen(true)}>
-                    @ {sessionUser.username}
+                    <h3>{sessionUser.firstName}</h3>@ {sessionUser.username}
                     <div className="threeDots" onClick={() => setOpen(true)}>
                         <i className="fa-solid fa-ellipsis"></i>
                     </div>

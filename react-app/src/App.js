@@ -15,6 +15,7 @@ import EditReply from "./components/Reply/editReply";
 import TopNav from "./components/Nav/topNav";
 import SplashPage from "./components/Splash";
 import UserProfile from "./components/Profile";
+import ProfileNav from "./components/Profile/profileNav";
 function App() {
     const [loaded, setLoaded] = useState(false);
     const dispatch = useDispatch();
@@ -32,6 +33,8 @@ function App() {
 
     return (
         <BrowserRouter>
+            <NavBar />
+
             <Switch>
                 <Route path="/" exact={true}>
                     <SplashPage />
@@ -49,22 +52,18 @@ function App() {
                     <User />
                 </ProtectedRoute>
                 <Route path="/tweets" exact={true}>
-                    <NavBar />
                     <Tweets />
                 </Route>
                 <Route path="/tweets/:id" exact={true}>
-                    <NavBar />
                     <ViewTweet />
                 </Route>
                 {/* <Route path="/tweets/:id/edit" exact={true}>
                     <EditTweet />
                 </Route> */}
                 <Route path="/reply/:id" exact={true}>
-                    <NavBar />
                     <EditReply />
                 </Route>
                 <Route path="/user/:id" exact={true}>
-                    <NavBar />
                     <UserProfile />
                 </Route>
             </Switch>

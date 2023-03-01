@@ -12,14 +12,14 @@
 
 .tweet-container {
     display: grid;
-    width: 75%;
+    width: 60%;
     max-height: 10000px;
     border-right: 1px solid rgb(235, 235, 235);
     word-break: break-all;
     white-space: pre-wrap;
     cursor: pointer;
     position: relative;
-    border-left: 1px solid rgb(235, 235, 235);
+    border-left: none;
 
     border-bottom: 1px solid rgb(235, 235, 235);
 }
