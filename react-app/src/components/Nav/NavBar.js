@@ -17,8 +17,10 @@ const NavBar = () => {
         <>
             <nav className="left-nav">
                 <div className="nav-items">
-                    <i className="fa-brands fa-twitter nav-icon fa-3x"></i>
-                    <h1>Twidder</h1>
+                    <div className="nav-icon">
+                        <i className="fa-brands fa-twitter fa-3x"></i>
+                        <h1>Twidder</h1>
+                    </div>
                     <ul>
                         <li className="list-item">
                             <NavLink to="/" exact={true}>
@@ -39,10 +41,8 @@ const NavBar = () => {
                         <li className="list-item">
                             <AboutModal />
                         </li>
-                    </ul>
-                    <li>
                         <LogOutModal user={sessionUser} />
-                    </li>
+                    </ul>
                 </div>
             </nav>
         </>
