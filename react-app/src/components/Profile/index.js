@@ -17,9 +17,7 @@ const UserProfile = () => {
     });
     const myTweets = tweets?.filter((el) => el.user_id === user?.id);
     // console.log(tweets);
-    console.log(user);
     // console.log(myTweets);
-    console.log(id);
     useEffect(() => {
         dispatch(getTweets());
         // dispatch(getUsers());
@@ -43,7 +41,7 @@ const UserProfile = () => {
             <div className="tweet-user-section">
                 <div className="user-background-container">
                     <img
-                        src="https://cdn.pixabay.com/photo/2022/06/27/18/56/grass-7288141__340.jpg"
+                        src={user?.background}
                         className="user-background"
                     ></img>
                 </div>

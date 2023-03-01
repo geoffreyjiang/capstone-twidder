@@ -4,11 +4,11 @@ from app.models import db, User, environment, SCHEMA
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo', email='demo@aa.io', password='password', firstName='demo', lastName="user", profile_pic='https://images.unsplash.com/photo-1675789652706-0f2a7a8fc5ee?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60', bio='yooo')
+        username='Demo', email='demo@aa.io', password='password', firstName='demo', lastName="user", profile_pic='https://images.unsplash.com/photo-1675789652706-0f2a7a8fc5ee?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60', bio='yooo', background='https://cdn.pixabay.com/photo/2023/02/05/17/25/leaves-7770035__340.jpg')
     marnie = User(
-        username='marnie', email='marnie@aa.io', password='password', firstName='marnie', lastName="user", profile_pic='https://images.unsplash.com/photo-1675789652706-0f2a7a8fc5ee?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60', bio='sup')
+        username='marnie', email='marnie@aa.io', password='password', firstName='marnie', lastName="user", profile_pic='https://images.unsplash.com/photo-1675789652706-0f2a7a8fc5ee?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60', bio='sup', background='https://cdn.pixabay.com/photo/2023/01/21/13/39/night-sky-7733876__340.jpg')
     bobbie = User(
-        username='elonmusk', email='bobbie@aa.io', password='password', firstName='Elon', lastName="user", profile_pic='https://cdn.pixabay.com/photo/2022/11/12/03/34/elon-reeve-musk-7586152__340.jpg', bio='aye')
+        username='elonmusk', email='bobbie@aa.io', password='password', firstName='Elon', lastName="user", profile_pic='https://cdn.pixabay.com/photo/2022/11/12/03/34/elon-reeve-musk-7586152__340.jpg', bio='aye', background='https://cdn.pixabay.com/photo/2022/06/30/20/10/lake-7294456__340.jpg')
 
     db.session.add(demo)
     db.session.add(marnie)

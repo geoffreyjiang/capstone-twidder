@@ -28,3 +28,4 @@ class SignUpForm(FlaskForm):
     lastName = StringField('lastName', validators=[DataRequired()])
     profile_pic  = StringField('profile_pic')
     bio = StringField('bio')
+    background = StringField('background')

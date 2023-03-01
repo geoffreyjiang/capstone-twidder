@@ -17,6 +17,7 @@ class User(db.Model, UserMixin):
     lastName = db.Column(db.String(50), nullable=False)
     profile_pic = db.Column(db.String(99999), nullable=True)
     bio = db.Column(db.String(140), nullable=True)
+    background = db.Column(db.String(99999), nullable=True)
 
 
     tweet = db.relationship('Tweet', back_populates='tweet_owner', cascade='all, delete')
@@ -44,5 +45,6 @@ class User(db.Model, UserMixin):
             'firstName': self.firstName,
             'lastName': self.lastName,
             'profile_pic': self.profile_pic,
-            'bio': self.bio
+            'bio': self.bio,
+            'background': self.background
         }

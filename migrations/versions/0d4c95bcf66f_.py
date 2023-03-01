@@ -45,7 +45,6 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('tweet_id', sa.Integer(), nullable=False),
-    sa.Column('isLiked', sa.Boolean(), nullable=True),
     sa.ForeignKeyConstraint(['tweet_id'], ['tweets.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
