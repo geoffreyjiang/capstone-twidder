@@ -63,7 +63,7 @@ function App() {
                     <NavBar />
                     <EditReply />
                 </Route>
-                <Route path="/me/:id" exact={true}>
+                <Route path="/user/:id" exact={true}>
                     <NavBar />
                     <UserProfile />
                 </Route>

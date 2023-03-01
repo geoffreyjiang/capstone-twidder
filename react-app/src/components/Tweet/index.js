@@ -66,7 +66,7 @@ const Tweets = () => {
                                                 >
                                                     <NavLink
                                                         id="user-text"
-                                                        to={`/tweets/${el.id}`}
+                                                        to={`/user/${el.user_id}`}
                                                     >
                                                         {el.firstName} @
                                                         {el?.username} ·{" "}

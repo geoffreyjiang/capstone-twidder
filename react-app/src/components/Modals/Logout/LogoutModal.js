@@ -21,11 +21,10 @@ const LogOutModal = () => {
                     <h3>{sessionUser.firstName}</h3>
                 </div>
                 <div className="navbar-username" onClick={() => setOpen(true)}>
-                    {" "}
                     @ {sessionUser.username}
-                </div>
-                <div className="threeDots" onClick={() => setOpen(true)}>
-                    <i className="fa-solid fa-ellipsis"></i>
+                    <div className="threeDots" onClick={() => setOpen(true)}>
+                        <i className="fa-solid fa-ellipsis"></i>
+                    </div>
                 </div>
             </>
             {open && (

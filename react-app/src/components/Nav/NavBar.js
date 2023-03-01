@@ -32,7 +32,7 @@ const NavBar = () => {
                         <i className="fa-solid fa-hashtag"> Explore</i>{" "}
                     </li>
                     <li className="list-item">
-                        <NavLink to={`/me/${sessionUser.id}`} exact={true}>
+                        <NavLink to={`/user/${sessionUser.id}`} exact={true}>
                             <i className="fa-solid fa-user"> Profile</i>
                         </NavLink>
                     </li>

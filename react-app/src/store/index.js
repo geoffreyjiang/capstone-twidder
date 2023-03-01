@@ -4,11 +4,13 @@ import session from "./session";
 import tweetReducer from "./tweets";
 import replyReducer from "./reply";
 import likeReducer from "./likes";
+import userReducer from "./user";
 const rootReducer = combineReducers({
     session,
     tweets: tweetReducer,
     replies: replyReducer,
     likes: likeReducer,
+    users: userReducer,
 });
 
 let enhancer;
