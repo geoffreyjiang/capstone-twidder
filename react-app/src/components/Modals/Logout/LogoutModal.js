@@ -18,8 +18,11 @@ const LogOutModal = () => {
             <>
                 <div className="modal-info" onClick={() => setOpen(true)}>
                     <img src={img} className="user-logout"></img>
-                    <h3>{sessionUser.firstName}</h3>@ {sessionUser.username}
                     <div className="threeDots" onClick={() => setOpen(true)}>
+                        <h3 id="user-text">{sessionUser.firstName}</h3>
+                    </div>
+                    <h3 id="nav-username">@{sessionUser.username}</h3>
+                    <div className="threeDots">
                         <i className="fa-solid fa-ellipsis"></i>
                     </div>
                 </div>
@@ -28,17 +31,6 @@ const LogOutModal = () => {
                 <LogoutMod onClose={() => setOpen(false)}>
                     <LogoutButton setOpen={setOpen} />
                 </LogoutMod>
-                // <>
-                //     <div id="modal">
-                //         <div
-                //             id="modal-background"
-                //             onClick={() => setOpen(false)}
-                //         />
-                //         <div id="modal-content">
-                //             <LoginForm setOpen={setOpen} />
-                //         </div>
-                //     </div>
-                // </>
             )}
         </>
     );

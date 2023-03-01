@@ -54,27 +54,28 @@
     width: 100%;
 }
 
-.user-things {
+.profile-user-things {
     margin-left: 13%;
     margin-top: 9%;
 }
 
-.user-things > h3 {
+.profile-user-things > h3 {
     margin-bottom: 0 !important;
 }
 
-.user-things > h4 {
+.profile-user-things > h4 {
     margin-top: 0 !important;
 }
 
 .user-profile-pic {
     border-radius: 100%;
     height: 130px;
-    object-fit: cover;
     width: 150px;
     margin-left: 4%;
     position: absolute;
     top: 215px;
+    object-fit: cover;
+    object-position: 50% 50%;
 }
 
 .user-bio {

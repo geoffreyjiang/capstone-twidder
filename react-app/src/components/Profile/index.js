@@ -52,7 +52,7 @@ const UserProfile = () => {
                             className="user-profile-pic"
                         ></img>
                     </div>
-                    <div className="user-things">
+                    <div className="profile-user-things">
                         <h3>{user?.firstName}</h3>
                         <h4 id="user-text"> @{user?.username}</h4>
                     </div>

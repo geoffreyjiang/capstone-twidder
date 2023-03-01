@@ -84,14 +84,19 @@ button {
 }
 
 .nav-icon {
-    padding-top: 25px;
-    margin-left: 30%;
+    /* padding-top: 25px; */
+    margin-left: 38%;
+}
+
+.nav-icon > i {
+    padding-top: 10px;
+    margin-left: 15px;
 }
 .navbar-username {
     position: absolute;
     bottom: 0;
     padding-bottom: 20px;
-    padding-left: 25%;
+    /* padding-left: 25%; */
     display: flex;
     cursor: pointer;
 }
@@ -100,7 +105,7 @@ button {
     position: absolute;
     bottom: 0;
     display: flex;
-    padding-left: 10%;
+    margin-left: 55px;
     cursor: pointer;
 }
 
@@ -108,5 +113,10 @@ button {
     display: flex;
     position: fixed;
     bottom: 0;
-    width: 100%;
+    width: 30%;
+}
+
+#nav-username {
+    margin-left: 10px;
+    padding-bottom: 10px;
 }
