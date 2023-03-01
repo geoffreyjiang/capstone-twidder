@@ -13,8 +13,10 @@ const SignUpForm = () => {
     const [bio, setBio] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
+    const [background, setBackground] = useState("");
     const [sub, setSub] = useState(false);
     const user = useSelector((state) => state.session.user);
+
     const dispatch = useDispatch();
     useEffect(() => {
         const err = [];
@@ -174,6 +176,17 @@ const SignUpForm = () => {
                         name="profilePic"
                         onChange={(e) => setProfilePic(e.target.value)}
                         value={profilePic}
+                        placeholder="optional"
+                    ></input>
+                </div>
+                <div>
+                    <label>Background</label>
+                    <br></br>
+                    <input
+                        type="text"
+                        name="background"
+                        onChange={(e) => setBackground(e.target.value)}
+                        value={background}
                         placeholder="optional"
                     ></input>
                 </div>
