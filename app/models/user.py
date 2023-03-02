@@ -1,8 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-
-
+from .followers import follow
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
@@ -23,8 +22,8 @@ class User(db.Model, UserMixin):
     tweet = db.relationship('Tweet', back_populates='tweet_owner', cascade='all, delete')
     reply = db.relationship('Reply', back_populates='reply_owner', cascade='all, delete')
     like = db.relationship('Like', back_populates='liked_user', cascade='all, delete')
-    # follow = db.relationship('Follow', back_populates='user_follow', foreign_keys='Follow.user_id')
-    # follower = db.relationship('Follow', back_populates='user_follower', foreign_keys='Follow.follower_id')
+    followers = db.relationship('User', secondary='follow', primaryjoin=(id == follow.c.follower_id), secondaryjoin=(id==follow.c.followed_id), backref=db.backref('followed_by', lazy='dynamic'), lazy='dynamic')
+
 
     @property
     def password(self):

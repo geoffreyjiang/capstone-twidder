@@ -1,25 +1,11 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
-class Follow(db.Model):
-    __tablename__ = 'followers'
 
-    if environment == "production":
-        __table_args__ = {'schema': SCHEMA}
+follow = db.Table(
+    'follow',
+    db.Column('follower_id', db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), primary_key=True),
+    db.Column('followed_id', db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), primary_key=True)
+)
 
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
-    follower_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
-
-    user_follow = db.relationship("User", foreign_keys=[user_id], back_populates='follow')
-    user_follower = db.relationship("User", foreign_keys=[follower_id], back_populates='follower')
-
-    def __repr__(self):
-        return f"<Reply id: {self.id}, user_id: {self.user_id}, follower_id: {self.follower_id}>"
-
-
-    def to_dict(self):
-        return {
-            "id": self.id,
-            "user_id": self.user_id,
-            "follower_id": self.follower_id,
-        }
+if environment == "production":
+    __table_args__ = {'schema': SCHEMA}

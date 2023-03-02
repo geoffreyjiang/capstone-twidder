@@ -38,7 +38,7 @@ const NavBar = () => {
                         </li>
                         <li className="list-item">
                             <NavLink
-                                to={`/user/${sessionUser.id}`}
+                                to={`/user/${sessionUser?.id}`}
                                 exact={true}
                             >
                                 <i className="fa-solid fa-user">
