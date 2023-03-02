@@ -12,7 +12,7 @@ const AboutModal = () => {
                 className="fa-solid fa-address-card about-icon"
                 onClick={() => setOpen(true)}
             >
-                About
+                <span className="list-item-label">About</span>
             </i>
 
             {open && (
