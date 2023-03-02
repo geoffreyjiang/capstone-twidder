@@ -24,18 +24,28 @@ const NavBar = () => {
                     <ul>
                         <li className="list-item">
                             <NavLink to="/" exact={true}>
-                                <i className="fa-solid fa-house"> Home</i>
+                                <i className="fa-solid fa-house">
+                                    <span className="list-item-label">
+                                        Home
+                                    </span>
+                                </i>
                             </NavLink>
                         </li>
                         <li className="list-item">
-                            <i className="fa-solid fa-hashtag"> Explore</i>{" "}
+                            <i className="fa-solid fa-hashtag">
+                                <span className="list-item-label">Explore</span>
+                            </i>
                         </li>
                         <li className="list-item">
                             <NavLink
                                 to={`/user/${sessionUser.id}`}
                                 exact={true}
                             >
-                                <i className="fa-solid fa-user"> Profile</i>
+                                <i className="fa-solid fa-user">
+                                    <span className="list-item-label">
+                                        Profile
+                                    </span>
+                                </i>
                             </NavLink>
                         </li>
                         <li className="list-item">
