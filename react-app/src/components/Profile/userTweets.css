@@ -1,0 +1,43 @@
+.tweet-profile-user-container {
+    width: 100%;
+    height: 100px;
+}
+
+.profile-tweet-user-section {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    /* width: 50%; */
+    width: 40%;
+    max-height: 60%;
+    margin-left: 28%;
+    border: 1px solid;
+}
+
+.tweet-profileUser-img {
+    display: inline-block;
+    width: 15%;
+    height: 100px;
+    /* padding-left: 10px; */
+    border-radius: 50%;
+    padding-top: 10px;
+
+    /* margin-left: 5%; */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    padding-bottom: 10px;
+}
+
+.tweet-profile-container-extras {
+    display: inline-block;
+    width: 100%;
+    height: 30px;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.profile-tweet-img {
+    max-height: 300px;
+}

@@ -15,7 +15,6 @@ import EditReply from "./components/Reply/editReply";
 import TopNav from "./components/Nav/topNav";
 import SplashPage from "./components/Splash";
 import UserProfile from "./components/Profile";
-import ProfileNav from "./components/Profile/profileNav";
 function App() {
     const [loaded, setLoaded] = useState(false);
     const dispatch = useDispatch();

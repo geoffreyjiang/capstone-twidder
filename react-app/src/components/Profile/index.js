@@ -3,7 +3,7 @@ import { getTweets } from "../../store/tweets";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserById, getUsers } from "../../store/user";
-import ProfileNav from "./profileNav";
+import UserTweets from "./userTweets";
 import "./index.css";
 const UserProfile = () => {
     const dispatch = useDispatch();
@@ -62,6 +62,7 @@ const UserProfile = () => {
                     </div>
                 </div>
             </div>
+            <UserTweets userId={id} />
         </>
     );
 };
