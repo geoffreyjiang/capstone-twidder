@@ -24,11 +24,14 @@ def user(id):
 
 
 #Follow
-@user_routes.route('/<int:id>/follow')
-def get_followers(id):
-    followers = following.query.all()
+# @user_routes.route('/<int:id>/follow')
+# def get_followers(id):
+#     print('----------------------------------------------------', following)
 
-    return {follow.id: follow.to_dict() for follow in followers}
+
+    # followers = following.query.all()
+
+    # return {follow.id: follow.to_dict() for follow in followers}
 
 
 

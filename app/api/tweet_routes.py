@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
-from app.models import Tweet, db, Reply, Like
+from app.models import Tweet, db, Reply, Like, User
 from app.forms import TweetForm, ReplyForm, LikeForm
 from datetime import datetime
 # from app.models import Tweet, db
@@ -12,7 +12,8 @@ tweet_routes = Blueprint('tweet', __name__, )
 @tweet_routes.route("")
 def get_tweets():
     tweets = Tweet.query.all()
-
+    users = User.query.all()
+    print(users[3].followed)
     return {tweet.id: tweet.to_dict() for tweet in tweets}
 
 

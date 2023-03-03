@@ -1,18 +1,16 @@
 """empty message
 
-Revision ID: 0d4c95bcf66f
-Revises:
-Create Date: 2023-02-08 21:03:40.142473
+Revision ID: c1b70be1ee58
+Revises: 
+Create Date: 2023-03-02 21:33:57.715579
 
 """
 from alembic import op
 import sqlalchemy as sa
-import os
-environment = os.getenv("FLASK_ENV")
-SCHEMA = os.environ.get('SCHEMA')
+
 
 # revision identifiers, used by Alembic.
-revision = '0d4c95bcf66f'
+revision = 'c1b70be1ee58'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -29,15 +27,24 @@ def upgrade():
     sa.Column('lastName', sa.String(length=50), nullable=False),
     sa.Column('profile_pic', sa.String(length=99999), nullable=True),
     sa.Column('bio', sa.String(length=140), nullable=True),
+    sa.Column('background', sa.String(length=99999), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
+    )
+    op.create_table('following',
+    sa.Column('main_id', sa.Integer(), nullable=False),
+    sa.Column('followed_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['followed_id'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['main_id'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('main_id', 'followed_id')
     )
     op.create_table('tweets',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('body', sa.String(), nullable=False),
     sa.Column('image', sa.String(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
@@ -59,11 +66,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE tweets SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE likes SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE replies SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 
@@ -72,5 +74,6 @@ def downgrade():
     op.drop_table('replies')
     op.drop_table('likes')
     op.drop_table('tweets')
+    op.drop_table('following')
     op.drop_table('users')
     # ### end Alembic commands ###

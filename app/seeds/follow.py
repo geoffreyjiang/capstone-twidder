@@ -2,7 +2,7 @@ from app.models import db, following, environment, SCHEMA
 
 def seed_follow():
     one = following(
-        follower_id=1,
+        main_id=1,
         followed_id=2
     )
 
