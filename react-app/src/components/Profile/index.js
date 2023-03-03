@@ -24,6 +24,8 @@ const UserProfile = () => {
         dispatch(getUserById(id));
     }, [dispatch]);
 
+    console.log(user?.followed.length);
+
     return (
         <>
             <div className="sessionUser-header">
@@ -58,7 +60,10 @@ const UserProfile = () => {
                     </div>
                     <div className="user-bio">
                         <p>{user?.bio}</p>
-                        <h4 id="user-text">Followers {"|"} Following</h4>
+
+                        <h4 id="user-text">
+                            {user?.followed.length} Followers {"|"} Following
+                        </h4>
                     </div>
                 </div>
             </div>
