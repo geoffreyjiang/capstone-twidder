@@ -1,7 +1,6 @@
-from flask import Blueprint, jsonify
-from flask_login import login_required
-from app.models import User
-
+from flask import Blueprint, jsonify, request
+from flask_login import login_required, current_user
+from app.models import User, db, following
 user_routes = Blueprint('users', __name__)
 
 
@@ -21,3 +20,31 @@ def user(id):
     """
     user = User.query.get(id)
     return user.to_dict()
+
+
+
+#Follow
+@user_routes.route('/<int:id>/follow')
+def get_followers(id):
+    followers = following.query.all()
+
+    return {follow.id: follow.to_dict() for follow in followers}
+
+
+
+@user_routes.route('/<int:id>/follow', methods=['POST'])
+def follow_user(id):
+    follower_id = current_user.get_id()
+    data = request.json
+
+    follower = User.query.get(follower_id)
+
+    followed_id = data['user_id']
+
+    followed = User.query.get(followed_id)
+
+    followed.followers.append(follower)
+
+
+    db.session.commit()
+    return { 'user': 'followed'}
