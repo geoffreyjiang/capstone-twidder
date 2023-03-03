@@ -22,7 +22,13 @@ class User(db.Model, UserMixin):
     tweet = db.relationship('Tweet', back_populates='tweet_owner', cascade='all, delete')
     reply = db.relationship('Reply', back_populates='reply_owner', cascade='all, delete')
     like = db.relationship('Like', back_populates='liked_user', cascade='all, delete')
-    followed = db.relationship('User', secondary=following, primaryjoin=(following.c.main_id == id), secondaryjoin=(following.c.followed_id == id), backref=db.backref('following', lazy='dynamic'))
+    followed = db.relationship('User',
+                            secondary=following,
+                            primaryjoin=(following.c.main_id == id),
+                            secondaryjoin=(following.c.followed_id == id),
+                            backref=db.backref('following', lazy='dynamic'),
+                            lazy='dynamic'
+                            )
 
     @property
     def password(self):
