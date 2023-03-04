@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from .followers import following
+from .followers import follows
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
@@ -22,13 +22,14 @@ class User(db.Model, UserMixin):
     tweet = db.relationship('Tweet', back_populates='tweet_owner', cascade='all, delete')
     reply = db.relationship('Reply', back_populates='reply_owner', cascade='all, delete')
     like = db.relationship('Like', back_populates='liked_user', cascade='all, delete')
-    follows = db.relationship('User',
-                            secondary=following,
-                            primaryjoin=(following.c.main_id == id),
-                            secondaryjoin=(following.c.followed_id == id),
-                            backref=db.backref('following', lazy='dynamic'),
-                            lazy='dynamic'
-                            )
+    followers = db.relationship(
+        'User',
+        secondary=follows,
+        primaryjoin=(follows.c.followed_id == id),
+        secondaryjoin=(follows.c.follower_id == id),
+        backref=db.backref('following', lazy='dynamic'),
+        lazy='dynamic'
+    )
 
     @property
     def password(self):
@@ -41,6 +42,12 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
+    def to_dict_follower(self):
+        return {
+            'id': self.id,
+        }
+
+
     def to_dict(self):
         return {
             'id': self.id,
@@ -51,5 +58,5 @@ class User(db.Model, UserMixin):
             'profile_pic': self.profile_pic,
             'bio': self.bio,
             'background': self.background,
-            # 'follower': [users.to_dict() for users in self.follows]
+            'following': [user.f_to_dict_basic() for user in self.following],
         }

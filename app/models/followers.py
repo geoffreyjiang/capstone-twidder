@@ -1,14 +1,12 @@
-from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .db import db, SCHEMA, environment, add_prefix_for_prod
 
 
 
-following = db.Table(
-    'following',
-    db.Column('main_id', db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), primary_key=True),
+follows = db.Table(
+    'follows',
+    db.Column('follower_id', db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), primary_key=True),
     db.Column('followed_id', db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), primary_key=True)
 )
 
-
 if environment == "production":
-    __table_args__ = {'schema': SCHEMA}
-
+     follows.schema = SCHEMA

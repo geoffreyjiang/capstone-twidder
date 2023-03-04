@@ -11,11 +11,11 @@ const deleteFollow = (user) => ({
     user,
 });
 
-export const createFollow = (sessionUser, id) => async (dispatch) => {
+export const createFollow = (id) => async (dispatch) => {
     const res = await fetch(`/api/users/${id}/follow`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        // body: JSON.stringify({ main_id: sessionUser, followed_id: id }),
+        body: JSON.stringify({ user_id: id }),
     });
 
     if (res.ok) {
