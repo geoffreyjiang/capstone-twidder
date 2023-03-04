@@ -5,12 +5,14 @@ import tweetReducer from "./tweets";
 import replyReducer from "./reply";
 import likeReducer from "./likes";
 import userReducer from "./user";
+import followReducer from "./follow";
 const rootReducer = combineReducers({
     session,
     tweets: tweetReducer,
     replies: replyReducer,
     likes: likeReducer,
     users: userReducer,
+    follow: followReducer,
 });
 
 let enhancer;

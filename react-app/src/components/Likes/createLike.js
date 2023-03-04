@@ -40,13 +40,13 @@ const CreateLike = ({ tweetId, likedBy }) => {
             }
         }
     }, [dispatch, likedBy, user?.id]);
-    console.log(likedBy);
+    // console.log(likedBy);
 
     const handleDelete = async () => {
         const isLiked = likedBy?.find(
             (like) => like.user_id === user?.id && like.tweet_id === tweetId
         );
-        console.log(isLiked);
+        // console.log(isLiked);
         if (isLiked) {
             setLiked(false);
             await dispatch(removeLike(isLiked.id));

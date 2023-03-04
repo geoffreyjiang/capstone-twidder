@@ -3,6 +3,7 @@ import { getTweets } from "../../store/tweets";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserById, getUsers } from "../../store/user";
+import { createFollow } from "../../store/follow";
 import UserTweets from "./userTweets";
 import "./index.css";
 const UserProfile = () => {
@@ -23,8 +24,6 @@ const UserProfile = () => {
         // dispatch(getUsers());
         dispatch(getUserById(id));
     }, [dispatch]);
-
-    console.log(user?.followed.length);
 
     return (
         <>
@@ -60,9 +59,28 @@ const UserProfile = () => {
                     </div>
                     <div className="user-bio">
                         <p>{user?.bio}</p>
+                        {sessionUser.id != user?.id ? (
+                            <>
+                                <div className="follow-btn">
+                                    <button
+                                        onClick={() =>
+                                            dispatch(createFollow(sessionUser.id, user?.id))
+                                        }
+                                    >
+                                        Follow
+                                    </button>
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                <div className="unfollowBtn">
+                                    <button>Unfollow</button>
+                                </div>
+                            </>
+                        )}
 
                         <h4 id="user-text">
-                            {user?.followed.length} Followers {"|"} Following
+                            {/* {user?.followed.length} Followers {"|"} Following */}
                         </h4>
                     </div>
                 </div>

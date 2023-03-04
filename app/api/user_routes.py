@@ -41,11 +41,7 @@ def follow_user(id):
     data = request.json
     main_id = data['user_id']
     follower = User.query.get(follower_id)
-
-    followed = User.query.get(main_id)
-
-    followed.followers.append(follower)
-
-
+    followed_user = User.query.get(main_id)
+    follower.followed.append(followed_user)
     db.session.commit()
-    return { 'user': followed.to_dict()}
+    return { 'user': "followed"}
