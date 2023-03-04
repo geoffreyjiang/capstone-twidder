@@ -3,7 +3,7 @@ import { getTweets } from "../../store/tweets";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserById, getUsers } from "../../store/user";
-import { createFollow } from "../../store/follow";
+import { createFollow, removeFollow } from "../../store/follow";
 import UserTweets from "./userTweets";
 import "./index.css";
 const UserProfile = () => {
@@ -24,6 +24,17 @@ const UserProfile = () => {
         // dispatch(getUsers());
         dispatch(getUserById(id));
     }, [dispatch]);
+
+    let userPic
+    if (!user?.profile_pic) userPic='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
+    else userPic = user?.profile_pic
+
+    let res = []
+    let isFollowing = user?.follower.forEach(el => {
+        res.push(el.id)
+    })
+
+    console.log(res.includes(sessionUser.id))
 
     return (
         <>
@@ -49,7 +60,7 @@ const UserProfile = () => {
                 <div className="user-things-container">
                     <div className="profile-pic">
                         <img
-                            src={user?.profile_pic}
+                            src={userPic}
                             className="user-profile-pic"
                         ></img>
                     </div>
@@ -59,7 +70,7 @@ const UserProfile = () => {
                     </div>
                     <div className="user-bio">
                         <p>{user?.bio}</p>
-                        {sessionUser.id != user?.id ? (
+                        {sessionUser.id != user?.id && !res.includes(sessionUser.id) ? (
                             <>
                                 <div className="follow-btn">
                                     <button
@@ -74,13 +85,13 @@ const UserProfile = () => {
                         ) : (
                             <>
                                 <div className="unfollowBtn">
-                                    <button>Unfollow</button>
+                                    <button onClick={()=> dispatch(removeFollow(sessionUser.id, user?.id))}>Unfollow</button>
                                 </div>
                             </>
                         )}
 
                         <h4 id="user-text">
-                            {/* {user?.followed.length} Followers {"|"} Following */}
+                            {user?.follower.length} Followers {"|"} Following
                         </h4>
                     </div>
                 </div>
