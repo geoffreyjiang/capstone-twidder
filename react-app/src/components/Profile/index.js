@@ -35,9 +35,6 @@ const UserProfile = () => {
             "https://cdn.pixabay.com/photo/201s5/10/05/22/37/blank-profile-picture-973460_960_720.png";
     else userPic = user?.profile_pic;
 
-    let f;
-    f = user?.follower.map((el) => el.id === sessionUser?.id);
-    console.log(f);
     useEffect(() => {
         if (user) {
             const isFollowing = user?.follower.find(
