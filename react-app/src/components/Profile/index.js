@@ -30,10 +30,10 @@ const UserProfile = () => {
     }, [dispatch]);
 
     let userPic;
-    if (!user?.profile_pic)
+    if (user?.profile_pic) userPic = user?.profile_pic;
+    else
         userPic =
             "https://cdn.pixabay.com/photo/201s5/10/05/22/37/blank-profile-picture-973460_960_720.png";
-    else userPic = user?.profile_pic;
 
     useEffect(() => {
         if (user) {
