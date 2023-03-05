@@ -58,5 +58,7 @@ class User(db.Model, UserMixin):
             'profile_pic': self.profile_pic,
             'bio': self.bio,
             'background': self.background,
-            'follower': [users.to_dict_follower() for users in self.follows]
+            'follower': [users.to_dict_follower() for users in self.follows],
+            'following': [users.to_dict_follower() for users in self.following]
+
         }

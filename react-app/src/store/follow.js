@@ -1,5 +1,11 @@
 const FOLLOW = "follow/FOLLOW";
 const UNFOLLOW = "follow/UNFOLLOW";
+const LOAD_FOLLOW = "follow/LOAD_FOLLOW";
+
+const loadFollow = (user) => ({
+    type: LOAD_FOLLOW,
+    user,
+});
 
 const addFollow = (user) => ({
     type: FOLLOW,
@@ -11,12 +17,19 @@ const deleteFollow = (user) => ({
     user,
 });
 
+export const getFollow = (id) => async (dispatch) => {
+    const res = await fetch(`/api/users/${id}/follow`);
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(loadFollow(data));
+    }
+};
+
 export const createFollow = (sessionUser, id) => async (dispatch) => {
     const res = await fetch(`/api/users/${id}/follow`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({id: sessionUser}),
-
+        body: JSON.stringify({ id: sessionUser }),
     });
 
     if (res.ok) {
@@ -27,28 +40,29 @@ export const createFollow = (sessionUser, id) => async (dispatch) => {
 
 export const removeFollow = (sessionUser, id) => async (dispatch) => {
     const res = await fetch(`/api/users/${id}/follow`, {
-        method: 'DELETE',
+        method: "DELETE",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({id: sessionUser}),
-    })
+        body: JSON.stringify({ id: sessionUser }),
+    });
     if (res.ok) {
         const data = await res.json();
 
         dispatch(deleteFollow(data));
     }
-}
-
+};
 
 const followReducer = (state = {}, action) => {
     const newState = { ...state };
 
     switch (action.type) {
+        case LOAD_FOLLOW:
+            return { ...newState, ...action.user };
         case FOLLOW:
             newState[action.user] = action.user;
             return newState;
         case UNFOLLOW:
-            delete newState[action.user]
-            return newState
+            delete newState[action.user];
+            return newState;
         default:
             return state;
     }

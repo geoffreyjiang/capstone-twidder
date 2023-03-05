@@ -52,6 +52,7 @@
 
 .user-things-container {
     width: 100%;
+    height: auto;
 }
 
 .profile-user-things {
@@ -80,4 +81,33 @@
 
 .user-bio {
     margin-left: 14%;
+}
+
+.follower-container {
+    display: flex;
+}
+
+.follow-div {
+    display: flex;
+    padding: 15px;
+}
+
+.follow-btn {
+    background-color: #ddd;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+    text-align: center;
+    height: 40px;
+    width: 70px;
+
+    background-color: rgb(58, 130, 138);
+}
+
+.followbtn-container {
+    margin-left: 90%;
+    height: 100%;
 }

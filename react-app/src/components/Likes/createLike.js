@@ -29,6 +29,7 @@ const CreateLike = ({ tweetId, likedBy }) => {
             await dispatch(getTweets());
         }
     };
+    // console.log(likedBy);
     // console.log(likes);
     useEffect(() => {
         if (likes) {

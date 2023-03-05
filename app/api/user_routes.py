@@ -25,13 +25,20 @@ def user(id):
 
 #Follow
 
+
+# @user_routes.route('/<int:id>/follow')
+# def get_follow(id):
+#     follow = following.query.all()
+
+#     return {follow.id: follow}
+
 @user_routes.route('/<int:id>/follow', methods=['POST'])
 def follow_user(id):
     follower = User.query.get(id)
     follow_user = User.query.get(current_user.get_id())
     follower.follows.append(follow_user)
     db.session.commit()
-    return { 'follower': follower.to_dict()}
+    return follower.to_dict()
 
 
 

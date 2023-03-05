@@ -3,7 +3,7 @@ import { getTweets } from "../../store/tweets";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserById, getUsers } from "../../store/user";
-import { createFollow, removeFollow } from "../../store/follow";
+import { createFollow, removeFollow, getFollow } from "../../store/follow";
 import UserTweets from "./userTweets";
 import "./index.css";
 const UserProfile = () => {
@@ -12,6 +12,10 @@ const UserProfile = () => {
     const { id } = useParams();
     const sessionUser = useSelector((state) => state.session.user);
     const user = useSelector((state) => state.users[id]);
+    const [btn, setBtn] = useState();
+    const [followers, setFollowers] = useState(
+        user?.follower.map((el) => el.id)
+    );
 
     const tweets = useSelector((store) => {
         return Object.values(store.tweets);
@@ -25,16 +29,30 @@ const UserProfile = () => {
         dispatch(getUserById(id));
     }, [dispatch]);
 
-    let userPic
-    if (!user?.profile_pic) userPic='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
-    else userPic = user?.profile_pic
+    let userPic;
+    if (!user?.profile_pic)
+        userPic =
+            "https://cdn.pixabay.com/photo/201s5/10/05/22/37/blank-profile-picture-973460_960_720.png";
+    else userPic = user?.profile_pic;
 
-    let res = []
-    let isFollowing = user?.follower.forEach(el => {
-        res.push(el.id)
-    })
-
-    console.log(res.includes(sessionUser.id))
+    let f;
+    f = user?.follower.map((el) => el.id === sessionUser?.id);
+    console.log(f);
+    useEffect(() => {
+        if (user) {
+            const isFollowing = user?.follower.find(
+                (el) => el.id === sessionUser?.id
+            );
+            if (sessionUser?.id === user?.id) {
+                document.getElementById("follow-btn").style.display = "none";
+            }
+            if (isFollowing) {
+                setBtn(true);
+            } else {
+                setBtn(false);
+            }
+        }
+    }, [dispatch, user?.follower, sessionUser?.id]);
 
     return (
         <>
@@ -59,40 +77,73 @@ const UserProfile = () => {
                 </div>
                 <div className="user-things-container">
                     <div className="profile-pic">
-                        <img
-                            src={userPic}
-                            className="user-profile-pic"
-                        ></img>
+                        <img src={userPic} className="user-profile-pic"></img>
                     </div>
+
+                    {!btn && (
+                        <>
+                            <div className="followbtn-container">
+                                <button
+                                    className="follow-btn"
+                                    id="follow-btn"
+                                    onClick={async () => {
+                                        await dispatch(
+                                            createFollow(
+                                                sessionUser.id,
+                                                user?.id
+                                            )
+                                        );
+
+                                        await dispatch(getUserById(id));
+                                    }}
+                                >
+                                    Follow
+                                </button>
+                            </div>
+                        </>
+                    )}
+
+                    {btn && (
+                        <div className="followbtn-container">
+                            <button
+                                className="follow-btn"
+                                id="follow-btn"
+                                onClick={async () => {
+                                    await dispatch(
+                                        removeFollow(sessionUser.id, user?.id)
+                                    );
+
+                                    await dispatch(getUserById(id));
+                                }}
+                            >
+                                Unfollow
+                            </button>
+                        </div>
+                    )}
                     <div className="profile-user-things">
                         <h3>{user?.firstName}</h3>
                         <h4 id="user-text"> @{user?.username}</h4>
                     </div>
                     <div className="user-bio">
                         <p>{user?.bio}</p>
-                        {sessionUser.id != user?.id && !res.includes(sessionUser.id) ? (
-                            <>
-                                <div className="follow-btn">
-                                    <button
-                                        onClick={() =>
-                                            dispatch(createFollow(sessionUser.id, user?.id))
-                                        }
-                                    >
-                                        Follow
-                                    </button>
-                                </div>
-                            </>
-                        ) : (
-                            <>
-                                <div className="unfollowBtn">
-                                    <button onClick={()=> dispatch(removeFollow(sessionUser.id, user?.id))}>Unfollow</button>
-                                </div>
-                            </>
-                        )}
 
-                        <h4 id="user-text">
-                            {user?.follower.length} Followers {"|"} Following
-                        </h4>
+                        <div className="follower-container">
+                            <h4>
+                                {user?.following.length >= 0 && (
+                                    <div className="follow-div">
+                                        {user?.following.length} {""}
+                                        Following
+                                    </div>
+                                )}
+                            </h4>
+                            <h4>
+                                {user?.follower.length >= 0 && (
+                                    <div className="follow-div">
+                                        {user?.follower.length} Followers
+                                    </div>
+                                )}
+                            </h4>
+                        </div>
                     </div>
                 </div>
             </div>
