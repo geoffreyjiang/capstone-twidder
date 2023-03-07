@@ -24,9 +24,9 @@ const UserProfile = () => {
     // console.log(tweets);
     // console.log(myTweets);
     useEffect(() => {
+        dispatch(getUserById(id));
         dispatch(getTweets());
         // dispatch(getUsers());
-        dispatch(getUserById(id));
     }, [dispatch]);
 
     let userPic;

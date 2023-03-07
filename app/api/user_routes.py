@@ -38,7 +38,7 @@ def follow_user(id):
     follow_user = User.query.get(current_user.get_id())
     follower.follows.append(follow_user)
     db.session.commit()
-    return follower.to_dict()
+    return { 'user': follower.to_dict()}
 
 
 
