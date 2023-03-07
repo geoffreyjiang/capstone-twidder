@@ -28,9 +28,9 @@ const UserTweets = ({ userId }) => {
     } else userImg = user?.profile_pic;
     return (
         <>
-            {myTweets.map((el) => {
+            {myTweets.map((el, i) => {
                 return (
-                    <div className="profile-tweet-user-section">
+                    <div className="profile-tweet-user-section" key={i}>
                         <div className="tweet-profile-user-container">
                             <div className="user-background-container">
                                 <div className="userTweets-container">

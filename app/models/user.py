@@ -44,7 +44,8 @@ class User(db.Model, UserMixin):
 
     def to_dict_follower(self):
         return {
-            "id": self.id
+            "id": self.id,
+            'username': self.username,
         }
 
 
