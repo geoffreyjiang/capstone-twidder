@@ -15,7 +15,12 @@ const Tweets = () => {
         return Object.values(store.tweets);
     });
     // const likes = useSelector((store) => Object.values(store.likes));
+    const followingTweet = user?.following.flatMap((el) => {
+        console.log(el.id);
+        return tweets.filter((tweet) => tweet.user_id === el.id);
+    });
 
+    console.log(followingTweet);
     useEffect(() => {
         dispatch(getTweets());
     }, [dispatch]);

@@ -1,7 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
-import { createReply } from "../../store/reply";
 import { createLike, getLikes, removeLike } from "../../store/likes";
 import { getTweets } from "../../store/tweets";
 import "./index.css";

@@ -15,7 +15,6 @@ const UserTweets = ({ userId }) => {
         return Object.values(store.tweets);
     });
     const myTweets = tweets?.filter((el) => el.user_id === user?.id);
-
     useEffect(() => {
         dispatch(getTweets());
         dispatch(getUserById(userId));
