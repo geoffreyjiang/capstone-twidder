@@ -26,28 +26,26 @@ export const getFollow = (id) => async (dispatch) => {
 };
 
 export const createFollow = (sessionUser, userId) => async (dispatch) => {
-    const res = await fetch(`/api/users/${userId}`, {
+    const res = await fetch(`/api/users/${userId}/follow`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        // body: JSON.stringify({ main_id: sessionUser }),
     });
 
     if (res.ok) {
         const data = await res.json();
-        console.log(data);
+        // console.log(data);
         dispatch(addFollow(data));
     }
 };
 
 export const removeFollow = (sessionUser, userId) => async (dispatch) => {
-    const res = await fetch(`/api/users/${userId}`, {
+    const res = await fetch(`/api/users/${userId}/follow`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
-        // body: JSON.stringify({ main_id: sessionUser }),
     });
     if (res.ok) {
         const data = await res.json();
-        console.log(data);
+        // console.log(data);
         dispatch(deleteFollow(data));
     }
 };
