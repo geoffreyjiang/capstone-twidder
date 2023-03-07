@@ -38,41 +38,41 @@ const CreateTweet = () => {
     return (
         <>
             <div className="create-tweet-container">
-                <div className="create-tweet-user-img-container">
-                    <img
-                        src={profPic}
-                        className="tweet-sessionUser-img"
-                        alt="img"
-                    ></img>
-                </div>
-                <form className="tweet-form" onSubmit={handleSubmit}>
-                    <div className="input-tweet">
-                        <input
-                            type="text"
-                            value={body}
-                            name="text"
-                            id="tweet-text"
-                            placeholder="What's happening?"
-                            required
-                            onChange={(e) => setBody(e.target.value)}
-                        ></input>
-                    </div>
+                <img
+                    src={profPic}
+                    className="tweet-sessionUser-img"
+                    alt="img"
+                ></img>
+                <div className="tweet-form">
+                    <form onSubmit={handleSubmit}>
+                        <div className="input-tweet">
+                            <input
+                                type="text"
+                                value={body}
+                                name="text"
+                                id="tweet-text"
+                                placeholder="What's happening?"
+                                required
+                                onChange={(e) => setBody(e.target.value)}
+                            ></input>
+                        </div>
 
-                    <div className="input-tweet">
-                        <input
-                            type="input"
-                            value={image}
-                            name="image"
-                            placeholder="img"
-                            onChange={(e) => setImage(e.target.value)}
-                        ></input>
-                    </div>
-                    <div>
-                        <button className="postTweet-btn" type="submit">
-                            Post
-                        </button>
-                    </div>
-                </form>
+                        <div className="input-tweet">
+                            <input
+                                type="input"
+                                value={image}
+                                name="image"
+                                placeholder="img"
+                                onChange={(e) => setImage(e.target.value)}
+                            ></input>
+                        </div>
+                        <div>
+                            <button className="postTweet-btn" type="submit">
+                                Post
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </>
     );

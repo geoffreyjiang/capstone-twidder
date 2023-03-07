@@ -22,7 +22,7 @@ const NavBar = () => {
                     <ul>
                         <li className="list-item">
                             <NavLink
-                                to={`/users/${sessionUser.id}/following`}
+                                to={`/users/${sessionUser?.id}/following`}
                                 style={{ textDecoration: "none" }}
                                 exact={true}
                             >
