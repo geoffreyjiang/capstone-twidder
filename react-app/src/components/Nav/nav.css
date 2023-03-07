@@ -118,6 +118,9 @@ button {
     width: 30%;
 }
 
+.list-item-label {
+    padding: 10px;
+}
 #nav-username {
     margin-left: 10px;
     padding-bottom: 10px;

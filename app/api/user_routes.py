@@ -1,6 +1,8 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import User, db, following
+from app.models import User, db, following, Tweet
+import sys
+
 user_routes = Blueprint('users', __name__)
 
 
@@ -32,13 +34,23 @@ def user(id):
 
 #     return {follow.id: follow}
 
+
+
+@user_routes.route('/<int:id>/following')
+def get_following_tweet(id):
+    user = User.query.get(id)
+    user_following = user.following
+    tweets = Tweet.query.all()
+    following_tweets = [tweet for tweet in tweets if tweet.user_id in [el.id for el in user_following]]
+    return {tweet.id: tweet.to_dict() for tweet in following_tweets}
+
 @user_routes.route('/<int:id>', methods=['POST'])
 def follow_user(id):
     follower = User.query.get(id)
     follow_user = User.query.get(current_user.get_id())
     follower.follows.append(follow_user)
     db.session.commit()
-    return {'user': 'followed'}
+    return {"user": "followed"}
 
 
 

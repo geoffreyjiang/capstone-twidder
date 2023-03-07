@@ -1,8 +1,11 @@
 import React from "react";
 import { NavLink, useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 import "./nav.css";
 const TopNav = () => {
+    const sessionUser = useSelector((state) => state.session.user);
+
     return (
         <nav className="top-nav">
             <ul>
@@ -12,7 +15,10 @@ const TopNav = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/following" exact={true}>
+                    <NavLink
+                        to={`/users/${sessionUser.id}/following`}
+                        exact={true}
+                    >
                         <a className="list-item-label">Follow</a>
                     </NavLink>
                 </li>

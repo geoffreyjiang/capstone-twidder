@@ -7,6 +7,7 @@ import CreateTweet from "./createTweet";
 import TopNav from "../Nav/topNav";
 import CreateLike from "../Likes/createLike";
 import CreateAllReplyModal from "../Modals/ReplyModal/AllTweetReplyModal";
+import { followingTweet } from "../../store/follow";
 const Tweets = () => {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -15,15 +16,19 @@ const Tweets = () => {
         return Object.values(store.tweets);
     });
     // const likes = useSelector((store) => Object.values(store.likes));
-    const followingTweet = user?.following.flatMap((el) => {
-        console.log(el.id);
-        return tweets.filter((tweet) => tweet.user_id === el.id);
-    });
+    // const followingTweet = user?.following.flatMap((el) => {
+    //     console.log(el.id);
+    //     return tweets.filter((tweet) => tweet.user_id === el.id);
+    // });
 
-    console.log(followingTweet);
     useEffect(() => {
+        const followingTweet = user?.following.flatMap((el) => {
+            console.log(el.id);
+            return tweets.filter((tweet) => tweet.user_id === el.id);
+        });
         dispatch(getTweets());
-    }, [dispatch]);
+        console.log(followingTweet);
+    }, [dispatch, user?.following]);
 
     if (!user) {
         return <Redirect to="/" />;

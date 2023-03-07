@@ -57,7 +57,7 @@ function App() {
                 <Route path="/tweets/:id" exact={true}>
                     <ViewTweet />
                 </Route>
-                <Route path="/following" exact={true}>
+                <Route path="/users/:id/following" exact={true}>
                     <FollowingTweets />
                 </Route>
                 <Route path="/reply/:id" exact={true}>

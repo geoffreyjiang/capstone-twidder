@@ -1,6 +1,7 @@
 const FOLLOW = "follow/FOLLOW";
 const UNFOLLOW = "follow/UNFOLLOW";
 const LOAD_FOLLOW = "follow/LOAD_FOLLOW";
+const SET_FOLLOWING_TWEETS = "follow/SET_FOLLOWING_TWEETS";
 
 const loadFollow = (user) => ({
     type: LOAD_FOLLOW,
@@ -10,6 +11,11 @@ const loadFollow = (user) => ({
 const addFollow = (user) => ({
     type: FOLLOW,
     user,
+});
+
+const setFollowingTweets = (followingTweet) => ({
+    type: SET_FOLLOWING_TWEETS,
+    payload: followingTweet,
 });
 
 const deleteFollow = (user) => ({
@@ -22,6 +28,14 @@ export const getFollow = (id) => async (dispatch) => {
     if (res.ok) {
         const data = await res.json();
         dispatch(loadFollow(data));
+    }
+};
+
+export const followingTweet = (id) => async (dispatch) => {
+    const res = await fetch(`/api/users/${id}/following`);
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(setFollowingTweets(data));
     }
 };
 
@@ -62,6 +76,8 @@ const followReducer = (state = {}, action) => {
         case UNFOLLOW:
             delete newState[action.user];
             return newState;
+        case SET_FOLLOWING_TWEETS:
+            return { ...newState, ...action.payload };
         default:
             return state;
     }

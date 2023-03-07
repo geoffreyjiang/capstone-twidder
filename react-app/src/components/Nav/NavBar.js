@@ -9,7 +9,7 @@ import AboutModal from "../Modals/AboutModal/AboutModal";
 const NavBar = () => {
     const sessionUser = useSelector((state) => state.session.user);
     const history = useHistory();
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     return (
         <>
@@ -21,29 +21,33 @@ const NavBar = () => {
                     </div>
                     <ul>
                         <li className="list-item">
-                            <NavLink to="/tweets" exact={true}>
-                                <i className="fa-solid fa-house">
-                                    <span className="list-item-label">
-                                        Home
-                                    </span>
-                                </i>
+                            <NavLink
+                                to={`/users/${sessionUser.id}/following`}
+                                style={{ textDecoration: "none" }}
+                                exact={true}
+                            >
+                                <i className="fa-solid fa-house"></i>
+                                <span className="list-item-label">Home</span>
                             </NavLink>
                         </li>
                         <li className="list-item">
-                            <i className="fa-solid fa-hashtag">
+                            <NavLink
+                                to="/tweets"
+                                style={{ textDecoration: "none" }}
+                                exact={true}
+                            >
+                                <i className="fa-solid fa-hashtag"></i>
                                 <span className="list-item-label">Explore</span>
-                            </i>
+                            </NavLink>
                         </li>
                         <li className="list-item">
                             <NavLink
                                 to={`/user/${sessionUser?.id}`}
                                 exact={true}
+                                style={{ textDecoration: "none" }}
                             >
-                                <i className="fa-solid fa-user">
-                                    <span className="list-item-label">
-                                        Profile
-                                    </span>
-                                </i>
+                                <i className="fa-solid fa-user"></i>
+                                <span className="list-item-label">Profile</span>
                             </NavLink>
                         </li>
                         <li className="list-item">
