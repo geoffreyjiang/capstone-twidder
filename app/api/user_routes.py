@@ -32,20 +32,20 @@ def user(id):
 
 #     return {follow.id: follow}
 
-@user_routes.route('/<int:id>/follow', methods=['POST'])
+@user_routes.route('/<int:id>', methods=['POST'])
 def follow_user(id):
     follower = User.query.get(int(id))
     follow_user = User.query.get(current_user.get_id())
     follower.follows.append(follow_user)
     db.session.commit()
-    return { 'user': 'followed'}
+    return { 'user': follower.to_dict()}
 
 
 
-@user_routes.route('/<int:id>/follow', methods=['DELETE'])
+@user_routes.route('/<int:id>', methods=['DELETE'])
 def unfollow_user(id):
     follower = User.query.get(int(id))
     follow_user = User.query.get(current_user.get_id())
     follower.follows.remove(follow_user)
     db.session.commit()
-    return {"message": "unfollowed"}
+    return {"message": "user unfollowed"}
