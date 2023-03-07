@@ -25,8 +25,8 @@ export const getFollow = (id) => async (dispatch) => {
     }
 };
 
-export const createFollow = (sessionUser, id) => async (dispatch) => {
-    const res = await fetch(`/api/users/${id}`, {
+export const createFollow = (sessionUser, userId) => async (dispatch) => {
+    const res = await fetch(`/api/users/${userId}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: sessionUser }),
@@ -38,8 +38,8 @@ export const createFollow = (sessionUser, id) => async (dispatch) => {
     }
 };
 
-export const removeFollow = (sessionUser, id) => async (dispatch) => {
-    const res = await fetch(`/api/users/${id}`, {
+export const removeFollow = (sessionUser, userId) => async (dispatch) => {
+    const res = await fetch(`/api/users/${userId}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: sessionUser }),
