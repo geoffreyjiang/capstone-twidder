@@ -29,7 +29,7 @@ export const createFollow = (sessionUser, userId) => async (dispatch) => {
     const res = await fetch(`/api/users/${userId}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ main_id: sessionUser }),
+        // body: JSON.stringify({ main_id: sessionUser }),
     });
 
     if (res.ok) {
@@ -43,7 +43,7 @@ export const removeFollow = (sessionUser, userId) => async (dispatch) => {
     const res = await fetch(`/api/users/${userId}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ main_id: sessionUser }),
+        // body: JSON.stringify({ main_id: sessionUser }),
     });
     if (res.ok) {
         const data = await res.json();
