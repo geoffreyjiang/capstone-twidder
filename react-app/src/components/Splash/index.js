@@ -17,12 +17,11 @@ const SplashPage = () => {
         <>
             <div className="splash-container">
                 <div className="splash-img-container">
-                    {/* <div className="splash-img">
-                        <img
-                            src="https://images.unsplash.com/photo-1617653017137-7f8ceffe96af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGJsdWUlMjBiaXJkfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-                            alt="img"
-                        ></img>
-                    </div> */}
+                    <img
+                        src="https://images.unsplash.com/photo-1617653017137-7f8ceffe96af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGJsdWUlMjBiaXJkfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                        alt="img"
+                        className="splash-img"
+                    ></img>
                 </div>
                 <div className="splash-things">
                     <i className="fa-brands fa-twitter fa-3x"></i>

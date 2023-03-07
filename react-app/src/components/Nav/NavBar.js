@@ -1,10 +1,8 @@
 import React from "react";
 import { NavLink, useHistory } from "react-router-dom";
-import LogoutButton from "../auth/LogoutButton";
 import "./nav.css";
 import { useSelector, useDispatch } from "react-redux";
-import { login } from "../../store/session";
-import LoginModal from "../Modals/Login/LoginModal";
+
 import LogOutModal from "../Modals/Logout/LogoutModal";
 import AboutModal from "../Modals/AboutModal/AboutModal";
 
@@ -23,7 +21,7 @@ const NavBar = () => {
                     </div>
                     <ul>
                         <li className="list-item">
-                            <NavLink to="/" exact={true}>
+                            <NavLink to="/tweets" exact={true}>
                                 <i className="fa-solid fa-house">
                                     <span className="list-item-label">
                                         Home

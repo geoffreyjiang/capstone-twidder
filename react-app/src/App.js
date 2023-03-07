@@ -15,6 +15,7 @@ import EditReply from "./components/Reply/editReply";
 import TopNav from "./components/Nav/topNav";
 import SplashPage from "./components/Splash";
 import UserProfile from "./components/Profile";
+import FollowingTweets from "./components/Tweet/FollowingTweets/followingTweets";
 function App() {
     const [loaded, setLoaded] = useState(false);
     const dispatch = useDispatch();
@@ -56,9 +57,9 @@ function App() {
                 <Route path="/tweets/:id" exact={true}>
                     <ViewTweet />
                 </Route>
-                {/* <Route path="/tweets/:id/edit" exact={true}>
-                    <EditTweet />
-                </Route> */}
+                <Route path="/following" exact={true}>
+                    <FollowingTweets />
+                </Route>
                 <Route path="/reply/:id" exact={true}>
                     <EditReply />
                 </Route>

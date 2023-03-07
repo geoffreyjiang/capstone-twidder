@@ -16,10 +16,12 @@ nav > ul > li {
 
 * {
     box-sizing: border-box;
+    font-style: Helvetica Neue;
 }
 
 body {
     margin: 0;
+    font-style: Helvetica Neue;
 }
 
 .left-nav {

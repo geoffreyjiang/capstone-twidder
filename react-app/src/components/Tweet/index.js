@@ -32,22 +32,12 @@ const Tweets = () => {
         <>
             <div className="tweet-section">
                 <div className="tweet-container">
-                    <div className="top-nav">
-                        <ul>
-                            <div className="top">
-                                <li>All</li>
-                            </div>
-                            ||
-                            <div className="top">
-                                <li>Following</li>
-                            </div>
-                        </ul>
-                    </div>
+                    <TopNav />
                 </div>
 
                 <CreateTweet />
                 {tweets
-                    ?.slice(0)
+                    ?.slice()
                     .reverse()
                     .map((el, i) => {
                         return (
