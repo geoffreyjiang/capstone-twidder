@@ -22,12 +22,12 @@ const Tweets = () => {
     // });
 
     useEffect(() => {
-        const followingTweet = user?.following.flatMap((el) => {
-            console.log(el.id);
-            return tweets.filter((tweet) => tweet.user_id === el.id);
-        });
+        // const followingTweet = user?.following.flatMap((el) => {
+        //     console.log(el.id);
+        //     return tweets.filter((tweet) => tweet.user_id === el.id);
+        // });
         dispatch(getTweets());
-        console.log(followingTweet);
+        // console.log(followingTweet);
     }, [dispatch, user?.following]);
 
     if (!user) {
@@ -36,10 +36,6 @@ const Tweets = () => {
     return (
         <>
             <div className="tweet-section">
-                <div className="tweet-container">
-                    <TopNav />
-                </div>
-
                 <CreateTweet />
                 {tweets
                     ?.slice()

@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, redirect
 from flask_login import login_required, current_user
 from app.models import User, db, following, Tweet
 import sys
@@ -50,7 +50,7 @@ def follow_user(id):
     follow_user = User.query.get(current_user.get_id())
     follower.follows.append(follow_user)
     db.session.commit()
-    return {"user": "followed"}
+    return {'followed': follower.to_dict()}
 
 
 

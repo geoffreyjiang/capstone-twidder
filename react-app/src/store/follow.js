@@ -48,7 +48,7 @@ export const createFollow = (sessionUser, id) => async (dispatch) => {
     if (res.ok) {
         const data = await res.json();
         // console.log(data);
-        dispatch(addFollow(data));
+        // dispatch(addFollow(data));
     }
 };
 
@@ -72,10 +72,10 @@ const followReducer = (state = {}, action) => {
             return { ...newState, ...action.user };
         case FOLLOW:
             newState[action.user] = action.user;
-            return newState;
+            return { ...newState, ...action.payload };
         case UNFOLLOW:
             delete newState[action.user];
-            return newState;
+            return { ...newState, ...action.payload };
         case SET_FOLLOWING_TWEETS:
             return { ...newState, ...action.payload };
         default:

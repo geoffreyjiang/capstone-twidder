@@ -49,8 +49,8 @@ const UserTweets = ({ userId }) => {
                                                     to={`/user/${user?.id}`}
                                                 >
                                                     {user?.firstName} @
-                                                    {user?.username} ·{" "}
-                                                    {user?.created_at}
+                                                    {user?.username} ·
+                                                    {el?.created_at}
                                                 </NavLink>
                                             </div>
                                         </div>

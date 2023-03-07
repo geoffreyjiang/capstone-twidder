@@ -1,7 +1,8 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { createLike, getLikes, removeLike } from "../../store/likes";
 import { getTweets } from "../../store/tweets";
+import { followingTweet } from "../../store/follow";
 import "./index.css";
 const CreateLike = ({ tweetId, likedBy }) => {
     const user = useSelector((state) => state.session.user);
@@ -25,6 +26,7 @@ const CreateLike = ({ tweetId, likedBy }) => {
 
             await dispatch(createLike(tweetId));
             await dispatch(getTweets());
+            await dispatch(followingTweet(user?.id));
         }
     };
     // console.log(likedBy);
@@ -50,6 +52,7 @@ const CreateLike = ({ tweetId, likedBy }) => {
             setLiked(false);
             await dispatch(removeLike(isLiked.id));
             await dispatch(getTweets());
+            await dispatch(followingTweet(user?.id));
         }
     };
 

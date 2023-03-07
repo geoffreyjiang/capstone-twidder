@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getTweets } from "../../store/tweets";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserById, getUsers } from "../../store/user";
+import { getUserById } from "../../store/user";
 import { createFollow, removeFollow, followingTweet } from "../../store/follow";
 import UserTweets from "./userTweets";
 import "./index.css";
@@ -13,9 +13,6 @@ const UserProfile = () => {
     const sessionUser = useSelector((state) => state.session.user);
     const user = useSelector((state) => state.users[id]);
     const [btn, setBtn] = useState();
-    const [followers, setFollowers] = useState(
-        user?.follower.map((el) => el.id)
-    );
 
     const tweets = useSelector((store) => {
         return Object.values(store.tweets);
@@ -90,13 +87,11 @@ const UserProfile = () => {
                                                 user?.id
                                             )
                                         );
-                                        await dispatch(
-                                            followingTweet(
-                                                sessionUser.following,
-                                                tweets
-                                            )
-                                        );
+
                                         await dispatch(getUserById(id));
+                                        await dispatch(
+                                            followingTweet(sessionUser?.id)
+                                        );
                                     }}
                                 >
                                     Follow
@@ -114,12 +109,8 @@ const UserProfile = () => {
                                     await dispatch(
                                         removeFollow(sessionUser?.id, user?.id)
                                     );
-                                    await dispatch(
-                                        followingTweet(
-                                            sessionUser.following,
-                                            tweets
-                                        )
-                                    );
+
+                                    dispatch(followingTweet(sessionUser?.id));
                                     await dispatch(getUserById(id));
                                 }}
                             >

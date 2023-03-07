@@ -1,12 +1,18 @@
 .create-tweet-container {
-    display: inline-block;
+    display: flex;
+    width: 100%;
+    max-height: 10000px;
+    cursor: pointer;
+    position: relative;
+    border: 1px solid;
 }
 .input-tweet > input {
-    width: 100%;
+    width: 80%;
     border: none;
+    display: inline-block;
 }
 .input-tweet {
-    width: 100%;
+    width: 80%;
     display: inline-block;
 }
 
@@ -23,10 +29,6 @@
     text-align: end;
     background-color: #26a7de;
 }
-.tweet-container > .user-things {
-    display: inline-block;
-    width: 100%;
-}
 
 .tweet-sessionUser-img {
     display: inline-block;
@@ -39,4 +41,24 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+}
+
+@media (max-width: 1314px) {
+    .create-tweet-user-img-container {
+        width: 20%;
+        height: 100%;
+    }
+
+    .tweet-sessionUser-img {
+        display: inline-block;
+        width: 20%;
+        height: 70%;
+        border-radius: 50%;
+        padding-left: 5px;
+        padding-top: 5px;
+
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+    }
 }
