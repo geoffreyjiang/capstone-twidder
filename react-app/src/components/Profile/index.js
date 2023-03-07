@@ -86,7 +86,7 @@ const UserProfile = () => {
                                     onClick={async () => {
                                         await dispatch(
                                             createFollow(
-                                                sessionUser.id,
+                                                sessionUser?.id,
                                                 user?.id
                                             )
                                         );
@@ -107,7 +107,7 @@ const UserProfile = () => {
                                 id="follow-btn"
                                 onClick={async () => {
                                     await dispatch(
-                                        removeFollow(sessionUser.id, user?.id)
+                                        removeFollow(sessionUser?.id, user?.id)
                                     );
 
                                     await dispatch(getUserById(id));
