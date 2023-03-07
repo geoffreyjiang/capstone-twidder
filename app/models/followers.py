@@ -9,6 +9,6 @@ following = db.Table(
 )
 
 if environment == "production":
-    following.schema = {'schema': SCHEMA}
+    following.schema = SCHEMA
 
 
