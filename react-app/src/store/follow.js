@@ -95,12 +95,6 @@ const followReducer = (state = {}, action) => {
         case SET_FOLLOWING_TWEETS:
             return { ...newState, ...action.payload };
         case DEL_FOLLOWING_TWEETS:
-            // Object.values(newState).forEach((el)=>console.log(el.id))
-            // action.payload.unfollowed
-            // delete newState[action.payload];
-
-            // return { ...newState, ...action.payload };
-
             const { unfollowed } = action.payload;
             const filteredState = Object.fromEntries(
                 Object.entries(newState).filter(
