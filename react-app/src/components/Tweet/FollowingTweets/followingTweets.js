@@ -22,7 +22,7 @@ const FollowingTweets = () => {
         return Object.values(store.follow);
     });
     // console.log(following);
-    console.log([...myTweets, ...following]);
+    // console.log([...myTweets, ...following]);
     let followingTweets = [...myTweets, ...following].sort((a, b) => {
         const dateA = new Date(`${a.sort_date}`);
         const dateB = new Date(`${b.sort_date}`);
