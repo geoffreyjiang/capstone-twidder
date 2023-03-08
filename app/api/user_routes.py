@@ -27,15 +27,6 @@ def user(id):
 
 #Follow
 
-
-# @user_routes.route('/<int:id>/follow')
-# def get_follow(id):
-#     follow = following.query.all()
-
-#     return {follow.id: follow}
-
-
-
 @user_routes.route('/<int:id>/following')
 def get_following_tweet(id):
     user = User.query.get(id)
@@ -48,12 +39,6 @@ def get_following_tweet(id):
 @user_routes.route('/<int:id>/following', methods=['DELETE'])
 def delete_following_tweets(id):
     user = User.query.get(id)
-    # user_following = user.following
-    # tweets = Tweet.query.all()
-    # following_tweets = [tweet for tweet in tweets if tweet.user_id in [el.id for el in user_following]]
-    # for tweet in following_tweets:
-    #     db.session.delete(tweet)
-    # db.session.commit()
     return {'unfollowed': user.id}
 
 @user_routes.route('/<int:id>', methods=['POST'])

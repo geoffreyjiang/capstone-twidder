@@ -12,7 +12,6 @@ import Tweets from "./components/Tweet";
 import ViewTweet from "./components/ViewTweet";
 // import EditTweet from "./components/EditTweetModal/tweetForm";
 import EditReply from "./components/Reply/editReply";
-import TopNav from "./components/Nav/topNav";
 import SplashPage from "./components/Splash";
 import UserProfile from "./components/Profile";
 import FollowingTweets from "./components/Tweet/FollowingTweets/followingTweets";

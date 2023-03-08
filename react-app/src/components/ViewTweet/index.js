@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-    getTweets,
-    getTweetId,
-    editTweet,
-    removeTweet,
-} from "../../store/tweets";
-import { getLikes, editLikes } from "../../store/likes";
+import { getTweets, getTweetId, removeTweet } from "../../store/tweets";
 import EditTweetModal from "../Modals/EditTweetModal/EditTweetModal";
 import AllReplies from "../Reply";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,10 +10,7 @@ const ViewTweet = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
     const tweet = useSelector((store) => store.tweets[id]);
-    const likes = useSelector((store) => Object.values(store.likes));
     const user = useSelector((state) => state.session.user);
-    // const [like, setLike] = useState(likes.isLiked);
-    const [editBody, setEditBody] = useState(tweet?.body);
     const history = useHistory();
 
     useEffect(() => {
@@ -44,15 +35,12 @@ const ViewTweet = () => {
                     {tweet?.profile_pic ? (
                         <div className="user-things">
                             <div className="tweetId-userImg-container">
-                                {/* <div className="profile_pic"> */}
-
                                 <img
                                     src={tweet.profile_pic}
                                     className="tweet-user-img"
                                     alt="no img"
                                 ></img>
                                 <div className="username-container">
-                                    {/* </div> */}
                                     <NavLink
                                         id="user-text"
                                         to={`/tweets/${tweet.id}`}
@@ -87,7 +75,7 @@ const ViewTweet = () => {
                                     alt="no img"
                                 ></img>
                                 <div className="username-container">
-                                    {/* </div> */}
+                                    ={" "}
                                     <NavLink
                                         id="user-text"
                                         to={`/tweets/${tweet?.id}`}
@@ -145,9 +133,6 @@ const ViewTweet = () => {
                     )}
                 </div>
 
-                {/* <div className="replyArea">
-                    <AllReplies />
-                </div> */}
                 <AllReplies />
             </div>
         </>

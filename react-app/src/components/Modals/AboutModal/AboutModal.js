@@ -1,7 +1,5 @@
 import { Modal } from "../../../context/modal";
-import { useHistory } from "react-router-dom";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
 import "./about.css";
 const AboutModal = () => {
     const [open, setOpen] = useState(false);

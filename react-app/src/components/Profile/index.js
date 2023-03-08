@@ -29,7 +29,7 @@ const UserProfile = () => {
         dispatch(getUserById(id));
         dispatch(getTweets());
         // dispatch(getUsers());
-    }, [dispatch]);
+    }, [dispatch, id]);
 
     let userPic;
     if (user?.profile_pic) userPic = user?.profile_pic;

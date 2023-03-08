@@ -1,14 +1,13 @@
 import React from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import "./nav.css";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import LogOutModal from "../Modals/Logout/LogoutModal";
 import AboutModal from "../Modals/AboutModal/AboutModal";
 
 const NavBar = () => {
     const sessionUser = useSelector((state) => state.session.user);
-    const history = useHistory();
     // const dispatch = useDispatch();
 
     return (
