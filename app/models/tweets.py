@@ -11,8 +11,7 @@ class Tweet(db.Model):
     body = db.Column(db.String, nullable=False)
     image = db.Column(db.String, nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
-    created_at = db.Column(db.DateTime, default=datetime.now().strftime("%b %d"), nullable=True)
-
+    created_at = db.Column(db.DateTime, default=datetime.now().strftime("%b %d %Y"), nullable=True)
     tweet_owner = db.relationship("User", back_populates="tweet")
     tweet_liked = db.relationship("Like", back_populates='liked_tweet', cascade='all, delete')
     tweet_reply = db.relationship('Reply', back_populates='reply_tweet', cascade='all, delete')
@@ -40,6 +39,8 @@ class Tweet(db.Model):
             'likes': [like.to_dict() for like in self.tweet_liked],
             "likedBy": [like.to_dict()['user_id'] for like in self.tweet_liked],
             "profile_pic": self.tweet_owner.to_dict()['profile_pic'],
-            'created_at': self.created_at.strftime("%b %d")
+            'created_at': self.created_at.strftime("%b %d"),
+            'sort_date': self.created_at.strftime("%b %d %Y")
+
         }
 

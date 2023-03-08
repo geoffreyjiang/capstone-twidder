@@ -3,7 +3,12 @@ import { getTweets } from "../../store/tweets";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserById } from "../../store/user";
-import { createFollow, removeFollow, followingTweet } from "../../store/follow";
+import {
+    createFollow,
+    removeFollow,
+    followingTweet,
+    deleteFollowingTweet,
+} from "../../store/follow";
 import UserTweets from "./userTweets";
 import "./index.css";
 const UserProfile = () => {
@@ -89,9 +94,7 @@ const UserProfile = () => {
                                         );
 
                                         await dispatch(getUserById(id));
-                                        await dispatch(
-                                            followingTweet(sessionUser?.id)
-                                        );
+                                        await dispatch(followingTweet(id));
                                     }}
                                 >
                                     Follow
@@ -109,8 +112,10 @@ const UserProfile = () => {
                                     await dispatch(
                                         removeFollow(sessionUser?.id, user?.id)
                                     );
+                                    await dispatch(
+                                        deleteFollowingTweet(user?.id)
+                                    );
 
-                                    dispatch(followingTweet(sessionUser?.id));
                                     await dispatch(getUserById(id));
                                 }}
                             >

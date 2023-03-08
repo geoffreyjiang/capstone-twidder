@@ -45,27 +45,25 @@ const CreateTweet = () => {
                 ></img>
                 <div className="tweet-form">
                     <form onSubmit={handleSubmit}>
-                        <div className="input-tweet">
-                            <input
-                                type="text"
-                                value={body}
-                                name="text"
-                                id="tweet-text"
-                                placeholder="What's happening?"
-                                required
-                                onChange={(e) => setBody(e.target.value)}
-                            ></input>
-                        </div>
+                        <input
+                            className="input-tweet"
+                            type="text"
+                            value={body}
+                            name="text"
+                            id="tweet-text"
+                            placeholder="What's happening?"
+                            required
+                            onChange={(e) => setBody(e.target.value)}
+                        ></input>
 
-                        <div className="input-tweet">
-                            <input
-                                type="input"
-                                value={image}
-                                name="image"
-                                placeholder="img"
-                                onChange={(e) => setImage(e.target.value)}
-                            ></input>
-                        </div>
+                        <input
+                            className="input-tweet"
+                            type="input"
+                            value={image}
+                            name="image"
+                            placeholder="img"
+                            onChange={(e) => setImage(e.target.value)}
+                        ></input>
                         <div>
                             <button className="postTweet-btn" type="submit">
                                 Post

@@ -50,6 +50,7 @@ class User(db.Model, UserMixin):
 
 
     def to_dict(self):
+
         return {
             'id': self.id,
             'username': self.username,
@@ -59,7 +60,7 @@ class User(db.Model, UserMixin):
             'profile_pic': self.profile_pic,
             'bio': self.bio,
             'background': self.background,
+            # 'allTweets': [tweets.to_dict() for tweets in self.tweet],
             'follower': [users.to_dict_follower() for users in self.follows],
             'following': [users.to_dict_follower() for users in self.following]
-
         }
