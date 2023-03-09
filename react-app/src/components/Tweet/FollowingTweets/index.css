@@ -1,12 +1,10 @@
-.tweet-section {
+/* .tweet-section {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    /* width: 50%; */
     width: 50%;
     height: 100%;
-    /* padding: 10px; */
     margin-left: 20%;
 }
 
@@ -19,25 +17,13 @@
     white-space: pre-wrap;
     cursor: pointer;
     position: relative;
-
-    /* border-left: none; */
-    /* border-right: 1px solid rgb(235, 235, 235); */
     border-bottom: 1px solid #aab8c2;
     border-right: 1px solid #aab8c2;
-
-    /* border: 1px solid; */
 }
 .tweet-container > .tweet-text > p {
-    /* text-align: center; */
     margin-left: 15%;
     font-size: 20px;
-    /* margin-bottom: 10%; */
-    /* padding-right: 15px; */
 }
-
-/* .tweet-text {
-    margin-bottom: 5%;
-} */
 
 .tweet-user-img-container {
     display: inline-block;
@@ -46,7 +32,6 @@
 
 .username-container {
     display: inline-block;
-    /* padding-bottom: 10px; */
     vertical-align: top;
     padding-top: 15px;
     margin-top: 5%;
@@ -74,7 +59,6 @@
     width: 15%;
     height: 100px;
     border-radius: 50%;
-    /* padding-left: 10px; */
     padding-top: 10px;
 
     margin-left: 5%;
@@ -87,12 +71,7 @@
 .tweet-img {
     max-width: 70%;
     max-height: 500px;
-    /* position: relative; */
     margin-left: 75px;
-    /* justify-content: center;
-    display: flex;
-    align-items: center;
-    flex-direction: column; */
 }
 
 .tweet-container > .top-nav > ul {
@@ -133,8 +112,4 @@
     .tweet-container {
         width: 100%;
     }
-
-    /* .tweet-section {
-        margin-left: 10%;
-    } */
-}
+} */

@@ -17,29 +17,32 @@ const FollowingTweets = () => {
         return Object.values(store.tweets);
     });
     const myTweets = tweets?.filter((el) => el.user_id === user?.id);
-
     const following = useSelector((store) => {
         return Object.values(store.follow);
     });
-    // console.log(following);
+
     // console.log([...myTweets, ...following]);
-    let followingTweets = [...myTweets, ...following].sort((a, b) => {
+
+    let sortedFollowing = following.sort((a, b) => {
         const dateA = new Date(`${a.sort_date}`);
         const dateB = new Date(`${b.sort_date}`);
         return dateB - dateA;
     });
-    console.log(followingTweets);
     useEffect(() => {
         dispatch(getTweets());
         dispatch(followingTweet(id));
     }, [dispatch]);
 
+    console.log(sortedFollowing);
     return (
         <>
             <div className="tweet-section">
+                <div className="home-header">
+                    <h2>Home</h2>
+                </div>
                 <CreateTweet />
-                {following.length >= 0 &&
-                    followingTweets.map((el, i) => {
+                {sortedFollowing &&
+                    sortedFollowing.map((el, i) => {
                         let profPic;
                         if (el.profile_pic) profPic = el.profile_pic;
                         else

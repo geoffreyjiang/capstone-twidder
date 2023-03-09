@@ -36,6 +36,9 @@ const Tweets = () => {
     return (
         <>
             <div className="tweet-section">
+                <div className="home-header">
+                    <h2>Explore</h2>
+                </div>
                 <CreateTweet />
                 {tweets
                     ?.slice()

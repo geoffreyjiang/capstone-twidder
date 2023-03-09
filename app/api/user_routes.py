@@ -27,13 +27,31 @@ def user(id):
 
 #Follow
 
+# @user_routes.route('/<int:id>/following')
+# def get_following_tweet(id):
+#     user = User.query.get(id)
+#     user_following = user.following
+#     tweets = Tweet.query.all()
+#     curr_user = User.query.get(current_user.get_id())
+#     userTweets = Tweet.query.filter(Tweet.user_id == curr_user.id)
+#     following_tweets = [tweet for tweet in tweets if tweet.user_id in [el.id for el in user_following]]
+#     return ({tweet.id: tweet.to_dict() for tweet in following_tweets})
+
 @user_routes.route('/<int:id>/following')
 def get_following_tweet(id):
     user = User.query.get(id)
     user_following = user.following
     tweets = Tweet.query.all()
+    curr_user = User.query.get(current_user.get_id())
+
+    userTweets = Tweet.query.filter(Tweet.user_id == curr_user.id)
     following_tweets = [tweet for tweet in tweets if tweet.user_id in [el.id for el in user_following]]
-    return {tweet.id: tweet.to_dict() for tweet in following_tweets}
+
+    following_tweet_dict = {tweet.id: tweet.to_dict() for tweet in following_tweets}
+    user_tweet_dict = {userTweet.id: userTweet.to_dict() for userTweet in userTweets}
+    following_tweet_dict.update(user_tweet_dict)
+
+    return following_tweet_dict
 
 
 @user_routes.route('/<int:id>/following', methods=['DELETE'])

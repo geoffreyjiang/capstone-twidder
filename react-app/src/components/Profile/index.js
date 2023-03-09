@@ -95,6 +95,7 @@ const UserProfile = () => {
 
                                         await dispatch(getUserById(id));
                                         await dispatch(followingTweet(id));
+                                        await dispatch(getTweets());
                                     }}
                                 >
                                     Follow
@@ -117,6 +118,8 @@ const UserProfile = () => {
                                     );
 
                                     await dispatch(getUserById(id));
+
+                                    await dispatch(getTweets());
                                 }}
                             >
                                 Unfollow
