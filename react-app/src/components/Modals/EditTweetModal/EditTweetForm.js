@@ -92,7 +92,6 @@ const EditTweet = ({ setOpen }) => {
                                 dispatch(removeTweet(id));
                                 // history.push("/tweets");
                                 history.push("/tweets");
-                                dispatch(getTweets());
                             }}
                         >
                             Delete
