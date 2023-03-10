@@ -76,7 +76,7 @@ const ViewTweet = () => {
                                 <div className="username-container">
                                     <NavLink
                                         id="user-text"
-                                        to={`/tweets/${tweet.id}`}
+                                        to={`/tweets/${tweet?.id}`}
                                     >
                                         {tweet?.firstName} @{tweet?.username}·{" "}
                                         {tweet?.created_at}

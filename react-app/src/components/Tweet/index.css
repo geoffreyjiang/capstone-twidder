@@ -20,7 +20,7 @@
 }
 .tweet-img {
     border-radius: 10px;
-    max-height: 400px;
+    max-height: 350px;
     object-fit: cover;
 }
 
@@ -33,7 +33,7 @@
 
 .all-tweet-img {
     border-radius: 10px;
-    max-height: 400px;
+    max-height: 350px;
     object-fit: cover;
 }
 

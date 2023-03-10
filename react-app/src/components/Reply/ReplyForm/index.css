@@ -1,4 +1,4 @@
-.create-tweet-container {
+.create-reply-container {
     display: flex;
     width: 68%;
     height: 145px;
@@ -7,21 +7,29 @@
     border-bottom: 1px solid #e1e8ed;
     border-right: 1px solid #e1e8ed;
 }
-.input-tweet > input {
+
+.replyId-form {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.input-reply > input {
     width: 100%;
     border: none;
 }
-.input-tweet {
+.input-reply {
     width: 98%;
     margin-left: 2%;
     height: 40px;
     border: none;
     background-color: transparent;
 }
+
 .input-tweet:focus-visible {
     outline: none;
 }
-.postTweet-btn {
+
+.reply-btn {
     border: none;
     color: black;
     padding: 10px 20px;
@@ -38,15 +46,10 @@
     font-size: 14px;
 }
 
-.tweet-form {
-    width: 100%;
-    margin-top: 20px;
-}
-
-.tweet-sessionUser-img {
+.reply-sessionUser-img {
     display: inline-block;
-    width: 100px;
-    height: 87px;
+    width: 87px;
+    height: 60px;
     border-radius: 50%;
     padding-left: 5px;
     padding-top: 5px;
@@ -56,28 +59,4 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-}
-/* .create-tweet-user-img-container {
-    width: 40%;
-    height: 100%;
-} */
-
-@media (max-width: 1314px) {
-    /* .create-tweet-user-img-container {
-        width: 20%;
-        height: 100%;
-    } */
-
-    .tweet-sessionUser-img {
-        display: inline-block;
-        width: 20%;
-        height: 70px;
-        border-radius: 50%;
-        padding-left: 5px;
-        padding-top: 5px;
-
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
-    }
 }

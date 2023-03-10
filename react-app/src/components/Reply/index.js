@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getReplies, removeReply } from "../../store/reply";
 import CreateReplyModal from "../Modals/ReplyModal/CreateReplyModal";
 import EditReplyModal from "../Modals/EditReplyModal/EditReplyModal";
+import CreateReplyForm from "./ReplyForm/replyForm";
 const AllReplies = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
@@ -113,7 +114,7 @@ const AllReplies = () => {
 
     return (
         <>
-            <CreateReplyModal />
+            <CreateReplyForm />
             {data}
         </>
     );

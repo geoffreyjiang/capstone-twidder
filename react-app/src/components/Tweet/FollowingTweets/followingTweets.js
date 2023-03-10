@@ -38,8 +38,8 @@ const FollowingTweets = () => {
                     <h2>Home</h2>
                 </div>
                 <CreateTweet />
-                {sortedFollowing &&
-                    sortedFollowing.map((el, i) => {
+                {following &&
+                    following.map((el, i) => {
                         let profPic;
                         if (el.profile_pic) profPic = el.profile_pic;
                         else
