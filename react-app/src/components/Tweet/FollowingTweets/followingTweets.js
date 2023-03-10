@@ -6,7 +6,7 @@ import { followingTweet } from "../../../store/follow";
 import CreateTweet from "../createTweet";
 import CreateLike from "../../Likes/createLike";
 import CreateAllReplyModal from "../../Modals/ReplyModal/AllTweetReplyModal";
-import UserTweets from "../../Profile/userTweets";
+import { getLikes } from "../../../store/likes";
 import "./index.css";
 const FollowingTweets = () => {
     const dispatch = useDispatch();
@@ -16,12 +16,9 @@ const FollowingTweets = () => {
     const tweets = useSelector((store) => {
         return Object.values(store.tweets);
     });
-    const myTweets = tweets?.filter((el) => el.user_id === user?.id);
     const following = useSelector((store) => {
         return Object.values(store.follow);
     });
-
-    // console.log([...myTweets, ...following]);
 
     let sortedFollowing = following.sort((a, b) => {
         const dateA = new Date(`${a.sort_date}`);
@@ -29,11 +26,11 @@ const FollowingTweets = () => {
         return dateB - dateA;
     });
     useEffect(() => {
+        // dispatch(getLikes())
         dispatch(getTweets());
         dispatch(followingTweet(id));
     }, [dispatch]);
 
-    console.log(sortedFollowing);
     return (
         <>
             <div className="tweet-section">
@@ -43,6 +40,8 @@ const FollowingTweets = () => {
                 <CreateTweet />
                 {sortedFollowing &&
                     sortedFollowing.map((el, i) => {
+                        console.log(el);
+
                         let profPic;
                         if (el.profile_pic) profPic = el.profile_pic;
                         else
@@ -85,20 +84,13 @@ const FollowingTweets = () => {
                                                         }
                                                     >
                                                         <p>{el?.body}</p>
-                                                        <img
-                                                            src={el?.image}
-                                                            className="tweet-img"
-                                                        ></img>
+                                                        <div className="tweet-img-container">
+                                                            <img
+                                                                src={el?.image}
+                                                                className="tweet-img"
+                                                            ></img>
+                                                        </div>
                                                         {/* <h4>Likes:{el?.totalLikes}</h4> */}
-                                                    </div>
-                                                    <div className="tweet-container-extras">
-                                                        <CreateAllReplyModal
-                                                            tweetId={el.id}
-                                                        />
-                                                        <CreateLike
-                                                            tweetId={el?.id}
-                                                            likedBy={el.likes}
-                                                        />
                                                     </div>
                                                 </>
                                             ) : (
@@ -113,18 +105,17 @@ const FollowingTweets = () => {
                                                     >
                                                         <p>{el?.body}</p>
                                                     </div>
-
-                                                    <div className="tweet-container-extras">
-                                                        <CreateAllReplyModal
-                                                            tweetId={el.id}
-                                                        />
-                                                        <CreateLike
-                                                            tweetId={el?.id}
-                                                            likedBy={el.likes}
-                                                        />
-                                                    </div>
                                                 </>
                                             )}
+                                        </div>
+                                        <div className="tweet-container-extras">
+                                            <CreateAllReplyModal
+                                                tweetId={el?.id}
+                                            />
+                                            <CreateLike
+                                                tweetId={el?.id}
+                                                likedBy={el?.likes}
+                                            />
                                         </div>
                                     </div>
                                 </>

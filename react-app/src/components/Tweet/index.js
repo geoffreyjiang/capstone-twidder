@@ -15,19 +15,9 @@ const Tweets = () => {
     const tweets = useSelector((store) => {
         return Object.values(store.tweets);
     });
-    // const likes = useSelector((store) => Object.values(store.likes));
-    // const followingTweet = user?.following.flatMap((el) => {
-    //     console.log(el.id);
-    //     return tweets.filter((tweet) => tweet.user_id === el.id);
-    // });
 
     useEffect(() => {
-        // const followingTweet = user?.following.flatMap((el) => {
-        //     console.log(el.id);
-        //     return tweets.filter((tweet) => tweet.user_id === el.id);
-        // });
         dispatch(getTweets());
-        // console.log(followingTweet);
     }, [dispatch, user?.following]);
 
     if (!user) {
@@ -44,6 +34,7 @@ const Tweets = () => {
                     ?.slice()
                     .reverse()
                     .map((el, i) => {
+                        console.log(el);
                         return (
                             <div
                                 className="tweet-container"

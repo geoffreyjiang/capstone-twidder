@@ -26,6 +26,7 @@ const CreateLike = ({ tweetId, likedBy }) => {
 
             await dispatch(createLike(tweetId));
             await dispatch(getTweets());
+            await dispatch(followingTweet(user.id));
         }
     };
     // console.log(likedBy);
@@ -51,6 +52,7 @@ const CreateLike = ({ tweetId, likedBy }) => {
             setLiked(false);
             await dispatch(removeLike(isLiked.id));
             await dispatch(getTweets());
+            await dispatch(followingTweet(user.id));
         }
     };
 
