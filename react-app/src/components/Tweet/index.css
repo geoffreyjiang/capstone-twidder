@@ -5,7 +5,7 @@
     align-items: center;
     width: 50%;
     height: 100%;
-    margin-left: 25%;
+    margin-left: 22%;
 }
 
 .home-header {
@@ -26,7 +26,7 @@
 }
 .tweet-container {
     display: grid;
-    width: 80%;
+    width: 68%;
     /* max-height: 500px; */
     word-break: break-all;
     white-space: pre-wrap;
