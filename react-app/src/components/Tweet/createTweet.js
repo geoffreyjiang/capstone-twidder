@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { followingTweet } from "../../store/follow";
 import { createTweet, getTweets } from "../../store/tweets";
 import "./create.css";
 const CreateTweet = () => {
@@ -22,8 +23,10 @@ const CreateTweet = () => {
         };
         let newTweet = dispatch(createTweet(data));
         if (newTweet) {
-            history.push(`/`);
-            // dispatch(getTweets());
+            // history.push(`/`);
+            dispatch(getTweets());
+            dispatch(followingTweet(user?.id));
+
             setBody("");
             setImage("");
         }

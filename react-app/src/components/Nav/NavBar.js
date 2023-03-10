@@ -22,8 +22,12 @@ const NavBar = () => {
                         <li className="list-item">
                             <NavLink
                                 to={`/users/${sessionUser?.id}/following`}
-                                style={{ textDecoration: "none" }}
-                                exact={true}
+                                style={{
+                                    textDecoration: "none",
+                                    color: "white",
+                                }}
+                                exact
+                                activeClassName="underline"
                             >
                                 <i className="fa-solid fa-house"></i>
                                 <span className="list-item-label">Home</span>
@@ -32,8 +36,12 @@ const NavBar = () => {
                         <li className="list-item">
                             <NavLink
                                 to="/tweets"
-                                style={{ textDecoration: "none" }}
-                                exact={true}
+                                style={{
+                                    textDecoration: "none",
+                                    color: "white",
+                                }}
+                                exact
+                                activeClassName="underline"
                             >
                                 <i className="fa-solid fa-hashtag"></i>
                                 <span className="list-item-label">Explore</span>
@@ -42,8 +50,12 @@ const NavBar = () => {
                         <li className="list-item">
                             <NavLink
                                 to={`/user/${sessionUser?.id}`}
-                                exact={true}
-                                style={{ textDecoration: "none" }}
+                                exact
+                                activeClassName="underline"
+                                style={{
+                                    textDecoration: "none",
+                                    color: "white",
+                                }}
                             >
                                 <i className="fa-solid fa-user"></i>
                                 <span className="list-item-label">Profile</span>
