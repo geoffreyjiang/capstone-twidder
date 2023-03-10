@@ -15,6 +15,7 @@ import EditReply from "./components/Reply/editReply";
 import SplashPage from "./components/Splash";
 import UserProfile from "./components/Profile";
 import FollowingTweets from "./components/Tweet/FollowingTweets/followingTweets";
+import LatestNews from "./components/News";
 function App() {
     const [loaded, setLoaded] = useState(false);
     const dispatch = useDispatch();
@@ -64,6 +65,9 @@ function App() {
                 </Route>
                 <Route path="/user/:id" exact={true}>
                     <UserProfile />
+                </Route>
+                <Route path="/news" exact={true}>
+                    <LatestNews />
                 </Route>
             </Switch>
         </BrowserRouter>

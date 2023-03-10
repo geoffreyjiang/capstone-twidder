@@ -6,6 +6,8 @@ import "./index.css";
 import CreateTweet from "./createTweet";
 import CreateLike from "../Likes/createLike";
 import CreateAllReplyModal from "../Modals/ReplyModal/AllTweetReplyModal";
+import { getNews } from "../../store/news";
+// import LatestNews from "../News";
 const Tweets = () => {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -16,6 +18,7 @@ const Tweets = () => {
 
     useEffect(() => {
         dispatch(getTweets());
+        dispatch(getNews());
     }, [dispatch, user?.following]);
 
     if (!user) {
@@ -27,12 +30,14 @@ const Tweets = () => {
                 <div className="home-header">
                     <h2>Explore</h2>
                 </div>
+                {/* <div className="tweet-container">
+                    <LatestNews />
+                </div> */}
                 <CreateTweet />
                 {tweets
                     ?.slice()
                     .reverse()
                     .map((el, i) => {
-                        console.log(el);
                         let profPic;
                         if (el?.profile_pic) profPic = el?.profile_pic;
                         else

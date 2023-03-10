@@ -27,9 +27,9 @@ const FollowingTweets = () => {
     });
     useEffect(() => {
         // dispatch(getLikes())
-        dispatch(getTweets());
         dispatch(followingTweet(id));
-    }, [dispatch]);
+        dispatch(getTweets());
+    }, [dispatch, id]);
 
     return (
         <>
