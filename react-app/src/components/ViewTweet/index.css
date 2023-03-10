@@ -6,20 +6,22 @@
     width: 50%;
     height: 100%;
     /* padding: 10px; */
-    margin-left: 20%;
+    margin-left: 22%;
 }
 
 .tweet-id-container {
     display: grid;
-    width: 480px;
-    max-height: 10000px;
+    width: 68%;
+    /* max-height: 10000px; */
     border-left: none;
     border-right: none;
     border-bottom: none;
     word-break: break-all;
     white-space: pre-wrap;
+    border-top: none;
+
     /* margin-top: 25px; */
-    border: 1px solid rgb(235, 235, 235);
+    border: 1px solid #e1e8ed;
 }
 
 .tweet-id-container > .tweet-text > h1 {
@@ -47,7 +49,7 @@
     vertical-align: top;
     margin-left: auto;
     position: relative;
-    left: 45%;
+    left: 53%;
 }
 
 .user-rmodal {
@@ -59,8 +61,7 @@
 }
 
 .tweet-text > h3 {
-    text-align: center;
-    margin-left: 20px;
+    margin-left: 30px;
     padding-right: 15px;
 }
 
@@ -76,10 +77,37 @@
     left: 100%;
 }
 
-.tweet-container-extra {
-    display: inline-block;
+.tweetId-container-extras {
     width: 100%;
-    height: 25px;
     flex-direction: row;
-    justify-content: space-between;
+    display: flex;
+    margin-left: 15%;
+}
+
+.tweetid-header {
+    margin-left: 30%;
+    /* height: 10%; */
+    width: 34%;
+    display: flex;
+    border-right: 1px solid #e1e8ed;
+}
+
+.back-arrow {
+    padding: 15px;
+    padding-top: 20px;
+    vertical-align: top;
+}
+
+.tweetId-text {
+    margin-left: 30px;
+    padding-right: 15px;
+}
+
+.tweetId-text > h2 {
+    margin-left: 70px;
+}
+
+.tweetId-just-text {
+    /* display: flex; */
+    text-align: center;
 }

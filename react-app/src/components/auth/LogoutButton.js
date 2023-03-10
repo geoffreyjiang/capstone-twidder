@@ -6,10 +6,6 @@ import "./logout.css";
 const LogoutButton = ({ setOpen }) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const onLogout = async (e) => {
-        history.push("/");
-        dispatch(logout());
-    };
 
     return (
         <>
@@ -17,10 +13,22 @@ const LogoutButton = ({ setOpen }) => {
                 <h1>Log Out?</h1>
             </div>
             <div className="logout-btn-container">
-                <button className="logout-btn" onClick={onLogout}>
+                <button
+                    className="logout-btn"
+                    onClick={() => {
+                        dispatch(logout());
+                        setOpen(false);
+                        history.push("/");
+                    }}
+                >
                     Logout
                 </button>
-                <button className="logout-btn" onClick={() => setOpen(false)}>
+                <button
+                    className="logout-btn"
+                    onClick={() => {
+                        setOpen(false);
+                    }}
+                >
                     Cancel
                 </button>
             </div>

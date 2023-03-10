@@ -31,11 +31,17 @@ const UserProfile = () => {
         // dispatch(getUsers());
     }, [dispatch, id]);
 
-    let userPic;
-    if (user?.profile_pic) userPic = user?.profile_pic;
+    let userImg;
+
+    if (!user?.profile_pic) {
+        userImg =
+            "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
+    } else userImg = user?.profile_pic;
+    let backgroundPic;
+    if (user?.background) backgroundPic = user?.background;
     else
-        userPic =
-            "https://cdn.pixabay.com/photo/201s5/10/05/22/37/blank-profile-picture-973460_960_720.png";
+        backgroundPic =
+            "https://cdn.pixabay.com/photo/2018/04/14/18/06/twitter-3319619__340.jpg";
 
     useEffect(() => {
         if (user) {
@@ -69,14 +75,11 @@ const UserProfile = () => {
             </div>
             <div className="tweet-user-section">
                 <div className="user-background-container">
-                    <img
-                        src={user?.background}
-                        className="user-background"
-                    ></img>
+                    <img src={backgroundPic} className="user-background"></img>
                 </div>
                 <div className="user-things-container">
                     <div className="profile-pic">
-                        <img src={userPic} className="user-profile-pic"></img>
+                        <img src={userImg} className="user-profile-pic"></img>
                     </div>
 
                     {!btn && (
@@ -153,6 +156,7 @@ const UserProfile = () => {
                     </div>
                 </div>
             </div>
+            <div className="rborder"></div>
             <UserTweets userId={id} />
         </>
     );

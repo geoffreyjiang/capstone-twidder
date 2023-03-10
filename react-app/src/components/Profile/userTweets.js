@@ -63,10 +63,13 @@ const UserTweets = ({ userId }) => {
                             onClick={() => history.push(`/tweets/${el?.id}`)}
                         >
                             <p>{el?.body}</p>
-                            <img
-                                src={el?.image}
-                                className="profile-tweet-img"
-                            ></img>
+                            <div className="all-tweet-img-container">
+                                <img
+                                    src={el?.image}
+                                    className="all-tweet-img"
+                                ></img>
+                            </div>
+
                             {/* <h4>Likes:{el?.totalLikes}</h4> */}
                         </div>
 

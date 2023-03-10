@@ -19,17 +19,21 @@ const ViewTweet = () => {
         // dispatch(getLikes(id));
     }, [dispatch]);
 
-    const deleteTweet = () => {
-        dispatch(removeTweet(tweet.id));
-        dispatch(getTweets());
-        history.push("/");
-    };
     // console.log(tweet.user_id);
     // console.log(tweet);
     // console.log(user.id);
 
     return (
         <>
+            <div className="tweetid-header">
+                <div className="back-arrow">
+                    <i
+                        className="fa-solid fa-arrow-left fa-2x"
+                        onClick={() => history.push("/tweets")}
+                    ></i>
+                </div>
+                <h2>Explore</h2>
+            </div>
             <div className="tweet-id-section">
                 <div className="tweet-id-container">
                     {tweet?.profile_pic ? (
@@ -45,14 +49,9 @@ const ViewTweet = () => {
                                         id="user-text"
                                         to={`/tweets/${tweet.id}`}
                                     >
-                                        {tweet?.firstName} @{tweet?.username}
-                                    </NavLink>
-                                    <div
-                                        className="vtweet-created"
-                                        id="user-text"
-                                    >
+                                        {tweet?.firstName} @{tweet?.username}·{" "}
                                         {tweet?.created_at}
-                                    </div>
+                                    </NavLink>
                                 </div>
 
                                 <div className="user-modal">
@@ -75,19 +74,13 @@ const ViewTweet = () => {
                                     alt="no img"
                                 ></img>
                                 <div className="username-container">
-                                    ={" "}
                                     <NavLink
                                         id="user-text"
-                                        to={`/tweets/${tweet?.id}`}
+                                        to={`/tweets/${tweet.id}`}
                                     >
-                                        {tweet?.firstName} @{tweet?.username}
-                                    </NavLink>
-                                    <div
-                                        className="vtweet-created"
-                                        id="user-text"
-                                    >
+                                        {tweet?.firstName} @{tweet?.username}·{" "}
                                         {tweet?.created_at}
-                                    </div>
+                                    </NavLink>
                                 </div>
 
                                 <div className="user-modal">
@@ -102,37 +95,31 @@ const ViewTweet = () => {
                     )}
                     {tweet?.image ? (
                         <>
-                            <div className="tweet-text">
-                                <h3>{tweet?.body}</h3>
-                                <img
-                                    src={tweet?.image}
-                                    className="tweet-img"
-                                ></img>
-                            </div>
-                            <div className="tweet-container-extras">
-                                <CreateLike
-                                    tweetId={tweet?.id}
-                                    total={tweet?.totalLikes}
-                                    likedBy={tweet?.likes}
-                                />
+                            <div className="tweetId-text">
+                                <h2>{tweet?.body}</h2>
+                                <div className="all-tweet-img-container">
+                                    <img
+                                        src={tweet?.image}
+                                        className="tweet-img"
+                                    ></img>
+                                </div>
                             </div>
                         </>
                     ) : (
                         <>
-                            <div className="tweet-text">
-                                <h3>{tweet?.body}</h3>
-                            </div>
-                            <div className="tweet-container-extras">
-                                <CreateLike
-                                    tweetId={tweet?.id}
-                                    total={tweet?.totalLikes}
-                                    likedBy={tweet?.likes}
-                                />
+                            <div className="tweetId-just-text">
+                                <h2>{tweet?.body}</h2>
                             </div>
                         </>
                     )}
+                    <div className="tweetId-container-extras">
+                        <CreateLike
+                            tweetId={tweet?.id}
+                            total={tweet?.totalLikes}
+                            likedBy={tweet?.likes}
+                        />
+                    </div>
                 </div>
-
                 <AllReplies />
             </div>
         </>

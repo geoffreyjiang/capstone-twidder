@@ -9,7 +9,7 @@ const SignUpForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [repeatPassword, setRepeatPassword] = useState("");
-    const [profilePic, setProfilePic] = useState("");
+    const [profilePic, setProfilePic] = useState();
     const [bio, setBio] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -36,10 +36,6 @@ const SignUpForm = () => {
     const onSignUp = async (e) => {
         e.preventDefault();
         setSub(true);
-        if (!profilePic)
-            setProfilePic(
-                "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-            );
 
         if (password === repeatPassword) {
             const data = dispatch(

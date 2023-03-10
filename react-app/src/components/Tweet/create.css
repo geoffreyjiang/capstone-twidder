@@ -4,8 +4,8 @@
     height: 145px;
     cursor: pointer;
     position: relative;
-    border-bottom: 1px solid #aab8c2;
-    border-right: 1px solid #aab8c2;
+    border-bottom: 1px solid rgb(235, 235, 235);
+    border-right: 1px solid rgb(235, 235, 235);
 }
 .input-tweet > input {
     width: 100%;
