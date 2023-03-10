@@ -1,9 +1,8 @@
-import { useParams, Link, useHistory } from "react-router-dom";
+import { useParams, NavLink, useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 // import { getBusinesses } from "../../store/business";
-import { getReplies, removeReply } from "../../store/reply";
-import CreateReplyModal from "../Modals/ReplyModal/CreateReplyModal";
+import { getReplies } from "../../store/reply";
 import EditReplyModal from "../Modals/EditReplyModal/EditReplyModal";
 import CreateReplyForm from "./ReplyForm/replyForm";
 const AllReplies = () => {
@@ -30,20 +29,18 @@ const AllReplies = () => {
                                 className="tweet-user-img"
                                 alt="no img"
                             ></img>
-                            <div className="username-container">
-                                {el.firstName} @{el?.username}
+                            <div className="username-container" id="user-text">
+                                <NavLink
+                                    id="user-text"
+                                    to={`/user/${el.user_id}`}
+                                >
+                                    {el.firstName} @{el?.username} ·{" "}
+                                    {el.created_at}
+                                </NavLink>
                             </div>
                             {user.id == el.user_id ? (
                                 <>
                                     <div className="user-rmodal">
-                                        {/* <i
-                                                class="fa-solid fa-ellipsis"
-                                                onClick={() =>
-                                                    history.push(
-                                                        `/reply/${el.id}`
-                                                    )
-                                                }
-                                            ></i> */}
                                         <EditReplyModal replyId={el.id} />
                                     </div>
                                 </>
@@ -60,20 +57,18 @@ const AllReplies = () => {
                                 className="tweet-user-img"
                                 alt="no img"
                             ></img>
-                            <div className="username-container">
-                                {el.firstName} @{el?.username}
+                            <div className="username-container" id="user-text">
+                                <NavLink
+                                    id="user-text"
+                                    to={`/user/${el.user_id}`}
+                                >
+                                    {el.firstName} @{el?.username} ·{" "}
+                                    {el.created_at}
+                                </NavLink>
                             </div>
                             {user.id == el.user_id ? (
                                 <>
                                     <div className="user-rmodal">
-                                        {/* <i
-                                                class="fa-solid fa-ellipsis"
-                                                onClick={() =>
-                                                    history.push(
-                                                        `/reply/${el.id}`
-                                                    )
-                                                }
-                                            ></i> */}
                                         <EditReplyModal replyId={el.id} />
                                     </div>
                                 </>
@@ -83,31 +78,20 @@ const AllReplies = () => {
                 )}
                 {el?.image ? (
                     <div className="tweet-text">
-                        <h3>{el?.body}</h3>
-                        <img
-                            src={el?.image}
-                            className="tweet-img"
-                            alt="img"
-                        ></img>
-                        <h4>Likes:{el?.totalLikes}</h4>
+                        <p>{el?.body}</p>
+                        <div className="all-tweet-img-container">
+                            <img
+                                src={el?.image}
+                                className="tweet-img"
+                                alt="img"
+                            ></img>
+                        </div>
                     </div>
                 ) : (
                     <div className="tweet-text">
-                        <h3>{el?.body}</h3>
+                        <p>{el?.body}</p>
                     </div>
                 )}
-
-                {/* <h3>{el.body}</h3>
-                <div className="edit-modal">
-                    {user.id == el.user_id ? (
-                        <>
-                            <i
-                                class="fa-solid fa-ellipsis"
-                                onClick={() => history.push(`/reply/${el.id}`)}
-                            ></i>
-                        </>
-                    ) : null}
-                </div> */}
             </div>
         );
     });

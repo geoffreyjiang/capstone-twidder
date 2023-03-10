@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { getTweets } from "../../store/tweets";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, Redirect } from "react-router-dom";
 import "./index.css";
 import CreateTweet from "./createTweet";
-import TopNav from "../Nav/topNav";
 import CreateLike from "../Likes/createLike";
 import CreateAllReplyModal from "../Modals/ReplyModal/AllTweetReplyModal";
-import { followingTweet } from "../../store/follow";
 const Tweets = () => {
     const dispatch = useDispatch();
     const history = useHistory();
