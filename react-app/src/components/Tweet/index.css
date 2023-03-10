@@ -9,8 +9,14 @@
 }
 
 .home-header {
-    width: 60%;
-    margin-left: 10px;
+    width: 68%;
+
+    /* margin-left: 10px; */
+    border-right: 1px solid #aab8c2;
+}
+
+.home-header > h2 {
+    margin-left: 30px;
 }
 .tweet-img {
     border-radius: 10px;
@@ -21,9 +27,23 @@
 .tweet-img-container {
     display: flex;
     justify-content: center;
-    width: 120%;
+    width: 130%;
     padding-bottom: 15px;
 }
+
+.all-tweet-img {
+    border-radius: 10px;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.all-tweet-img-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 15px;
+}
+
 .tweet-container {
     display: grid;
     width: 68%;
@@ -39,6 +59,8 @@
 .tweet-text > p {
     margin-left: 23%;
     font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 5px;
 }
 
 .tweet-user-img-container {

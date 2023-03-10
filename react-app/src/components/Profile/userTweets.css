@@ -12,7 +12,7 @@
     width: 40%;
     max-height: 60%;
     margin-left: 30%;
-    border: 1px solid;
+    border: 1px solid #aab8c2;
 }
 
 .tweet-profileUser-img {
@@ -40,4 +40,9 @@
 
 .profile-tweet-img {
     max-height: 300px;
+}
+
+.userTweets-container {
+    margin-left: 20px;
+    margin-top: 10px;
 }

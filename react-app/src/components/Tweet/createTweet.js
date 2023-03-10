@@ -61,7 +61,7 @@ const CreateTweet = () => {
                             type="input"
                             value={image}
                             name="image"
-                            placeholder="img"
+                            placeholder="(Optional Image Url)"
                             onChange={(e) => setImage(e.target.value)}
                         ></input>
                         <div>

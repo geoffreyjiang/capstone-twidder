@@ -40,8 +40,6 @@ const FollowingTweets = () => {
                 <CreateTweet />
                 {sortedFollowing &&
                     sortedFollowing.map((el, i) => {
-                        console.log(el);
-
                         let profPic;
                         if (el.profile_pic) profPic = el.profile_pic;
                         else
@@ -90,7 +88,6 @@ const FollowingTweets = () => {
                                                                 className="tweet-img"
                                                             ></img>
                                                         </div>
-                                                        {/* <h4>Likes:{el?.totalLikes}</h4> */}
                                                     </div>
                                                 </>
                                             ) : (

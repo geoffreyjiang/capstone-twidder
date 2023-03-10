@@ -35,59 +35,37 @@ const Tweets = () => {
                     .reverse()
                     .map((el, i) => {
                         console.log(el);
+                        let profPic;
+                        if (el?.profile_pic) profPic = el?.profile_pic;
+                        else
+                            profPic =
+                                "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
                         return (
-                            <div
-                                className="tweet-container"
-                                key={i}
-                                // onClick={() => history.push(`/tweets/${el.id}`)}
-                            >
-                                {el?.profile_pic ? (
-                                    <>
-                                        <div className="user-things">
-                                            <div className="tweet-user-img-container">
-                                                <img
-                                                    src={el.profile_pic}
-                                                    className="tweet-user-img"
-                                                    alt="no img"
-                                                ></img>
-                                                <div
-                                                    className="username-container"
-                                                    id="user-text"
-                                                >
-                                                    <NavLink
-                                                        id="user-text"
-                                                        to={`/user/${el.user_id}`}
-                                                    >
-                                                        {el.firstName} @
-                                                        {el?.username} ·{" "}
-                                                        {el.created_at}
-                                                    </NavLink>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </>
-                                ) : (
+                            <div className="tweet-container" key={i}>
+                                <>
                                     <div className="user-things">
                                         <div className="tweet-user-img-container">
                                             <img
-                                                src={
-                                                    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                                                }
+                                                src={profPic}
                                                 className="tweet-user-img"
                                                 alt="no img"
                                             ></img>
-                                            <div className="username-container">
+                                            <div
+                                                className="username-container"
+                                                id="user-text"
+                                            >
                                                 <NavLink
-                                                    to={`/tweets/${el?.id}`}
                                                     id="user-text"
+                                                    to={`/user/${el.user_id}`}
                                                 >
                                                     {el.firstName} @
-                                                    {el?.username}
+                                                    {el?.username} ·{" "}
+                                                    {el.created_at}
                                                 </NavLink>
                                             </div>
                                         </div>
                                     </div>
-                                )}
+                                </>
                                 {el?.image ? (
                                     <>
                                         <div
@@ -99,20 +77,12 @@ const Tweets = () => {
                                             }
                                         >
                                             <p>{el?.body}</p>
-                                            <img
-                                                src={el?.image}
-                                                className="tweet-img"
-                                            ></img>
-                                            {/* <h4>Likes:{el?.totalLikes}</h4> */}
-                                        </div>
-                                        <div className="tweet-container-extras">
-                                            <CreateAllReplyModal
-                                                tweetId={el.id}
-                                            />
-                                            <CreateLike
-                                                tweetId={el.id}
-                                                likedBy={el.likes}
-                                            />
+                                            <div className="all-tweet-img-container">
+                                                <img
+                                                    src={el?.image}
+                                                    className="all-tweet-img"
+                                                ></img>
+                                            </div>
                                         </div>
                                     </>
                                 ) : (
@@ -127,18 +97,15 @@ const Tweets = () => {
                                         >
                                             <p>{el?.body}</p>
                                         </div>
-
-                                        <div className="tweet-container-extras">
-                                            <CreateAllReplyModal
-                                                tweetId={el.id}
-                                            />
-                                            <CreateLike
-                                                tweetId={el.id}
-                                                likedBy={el.likes}
-                                            />
-                                        </div>
                                     </>
                                 )}
+                                <div className="tweet-container-extras">
+                                    <CreateAllReplyModal tweetId={el.id} />
+                                    <CreateLike
+                                        tweetId={el.id}
+                                        likedBy={el.likes}
+                                    />
+                                </div>
                             </div>
                         );
                     })}

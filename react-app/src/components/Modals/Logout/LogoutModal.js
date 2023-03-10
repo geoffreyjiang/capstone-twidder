@@ -18,13 +18,13 @@ const LogOutModal = () => {
             <>
                 <div className="modal-info" onClick={() => setOpen(true)}>
                     <img src={img} className="user-logout"></img>
-                    <div className="threeDots" onClick={() => setOpen(true)}>
+                    {/* <div className="threeDots" onClick={() => setOpen(true)}>
                         <h3 id="user-text">{sessionUser?.firstName}</h3>
                     </div>
                     <h3 id="nav-username">@{sessionUser?.username}</h3>
                     <div className="threeDots">
                         <i className="fa-solid fa-ellipsis"></i>
-                    </div>
+                    </div> */}
                 </div>
             </>
             {open && (

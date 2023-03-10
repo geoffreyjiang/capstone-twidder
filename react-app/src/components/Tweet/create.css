@@ -1,6 +1,6 @@
 .create-tweet-container {
     display: flex;
-    width: 60%;
+    width: 68%;
     height: 145px;
     cursor: pointer;
     position: relative;
@@ -31,8 +31,12 @@
     /* margin: 4px 2px; */
     cursor: pointer;
     border-radius: 16px;
-    margin-left: 75%;
-    justify-content: end; /* background-color: #26a7de; */
+    margin-left: 80%;
+    width: 80px;
+    justify-content: end;
+    background-color: #1da1f2;
+    color: white;
+    font-size: 14px;
 }
 
 .tweet-form {
