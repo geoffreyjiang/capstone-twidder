@@ -38,7 +38,7 @@ const CreateReplyForm = () => {
     // console.log(user);
     return (
         <>
-            <div className="create-reply-container">
+            <div className="create-replyModal-container">
                 <img
                     src={profPic}
                     className="reply-sessionUser-img"

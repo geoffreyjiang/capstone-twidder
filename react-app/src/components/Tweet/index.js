@@ -7,6 +7,7 @@ import CreateTweet from "./createTweet";
 import CreateLike from "../Likes/createLike";
 import CreateAllReplyModal from "../Modals/ReplyModal/AllTweetReplyModal";
 import { getNews } from "../../store/news";
+import LatestNews from "../News";
 // import LatestNews from "../News";
 const Tweets = () => {
     const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const Tweets = () => {
 
     useEffect(() => {
         dispatch(getTweets());
-        dispatch(getNews());
+        // dispatch(getNews());
     }, [dispatch, user?.following]);
 
     if (!user) {
@@ -34,6 +35,7 @@ const Tweets = () => {
                     <LatestNews />
                 </div> */}
                 <CreateTweet />
+
                 {tweets
                     ?.slice()
                     .reverse()
