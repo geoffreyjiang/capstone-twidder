@@ -37,7 +37,7 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(tweet_routes, url_prefix='/api/tweets')
 app.register_blueprint(reply_route, url_prefix='/api/reply')
 app.register_blueprint(like_route, url_prefix='/api/like')
-app.register_blueprint(news_routes, url_prefix='/api/news')
+# app.register_blueprint(news_routes, url_prefix='/api/news')
 
 
 db.init_app(app)
