@@ -6,7 +6,6 @@ import replyReducer from "./reply";
 import likeReducer from "./likes";
 import userReducer from "./user";
 import followReducer from "./follow";
-import newsReducer from "./news";
 const rootReducer = combineReducers({
     session,
     tweets: tweetReducer,
@@ -14,7 +13,6 @@ const rootReducer = combineReducers({
     likes: likeReducer,
     users: userReducer,
     follow: followReducer,
-    news: newsReducer,
 });
 
 let enhancer;

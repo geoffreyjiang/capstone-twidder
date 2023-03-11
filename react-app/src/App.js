@@ -66,9 +66,6 @@ function App() {
                 <Route path="/user/:id" exact={true}>
                     <UserProfile />
                 </Route>
-                <Route path="/news" exact={true}>
-                    <LatestNews />
-                </Route>
             </Switch>
         </BrowserRouter>
     );
