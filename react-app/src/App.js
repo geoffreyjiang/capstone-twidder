@@ -15,7 +15,6 @@ import EditReply from "./components/Reply/editReply";
 import SplashPage from "./components/Splash";
 import UserProfile from "./components/Profile";
 import FollowingTweets from "./components/Tweet/FollowingTweets/followingTweets";
-import LatestNews from "./components/News";
 function App() {
     const [loaded, setLoaded] = useState(false);
     const dispatch = useDispatch();

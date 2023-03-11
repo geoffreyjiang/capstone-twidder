@@ -38,87 +38,92 @@ const FollowingTweets = () => {
                     <h2>Home</h2>
                 </div>
                 <CreateTweet />
-                {following &&
-                    following.map((el, i) => {
-                        let profPic;
-                        if (el.profile_pic) profPic = el.profile_pic;
-                        else
-                            profPic =
-                                "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
+                {sortedFollowing &&
+                    sortedFollowing
+                        .slice()
+                        .reverse()
+                        .map((el, i) => {
+                            let profPic;
+                            if (el.profile_pic) profPic = el.profile_pic;
+                            else
+                                profPic =
+                                    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
 
-                        return (
-                            <div className="tweet-container" key={i}>
-                                <>
-                                    <div className="user-things">
-                                        <div className="tweet-user-img-container">
-                                            <img
-                                                src={profPic}
-                                                className="tweet-user-img"
-                                                alt="no img"
-                                            ></img>
-                                            {el && (
-                                                <div
-                                                    className="username-container"
-                                                    id="user-text"
-                                                >
-                                                    <NavLink
+                            return (
+                                <div className="tweet-container" key={i}>
+                                    <>
+                                        <div className="user-things">
+                                            <div className="tweet-user-img-container">
+                                                <img
+                                                    src={profPic}
+                                                    className="tweet-user-img"
+                                                    alt="no img"
+                                                ></img>
+                                                {el && (
+                                                    <div
+                                                        className="username-container"
                                                         id="user-text"
-                                                        to={`/user/${el.user_id}`}
                                                     >
-                                                        {el.firstName} @
-                                                        {el?.username} ·{" "}
-                                                        {el.created_at}
-                                                    </NavLink>
-                                                </div>
-                                            )}
-                                            {el?.image ? (
-                                                <>
-                                                    <div
-                                                        className="tweet-text"
-                                                        onClick={() =>
-                                                            history.push(
-                                                                `/tweets/${el?.id}`
-                                                            )
-                                                        }
-                                                    >
-                                                        <p>{el?.body}</p>
-                                                        <div className="tweet-img-container">
-                                                            <img
-                                                                src={el?.image}
-                                                                className="tweet-img"
-                                                            ></img>
+                                                        <NavLink
+                                                            id="user-text"
+                                                            to={`/user/${el.user_id}`}
+                                                        >
+                                                            {el.firstName} @
+                                                            {el?.username} ·{" "}
+                                                            {el.created_at}
+                                                        </NavLink>
+                                                    </div>
+                                                )}
+                                                {el?.image ? (
+                                                    <>
+                                                        <div
+                                                            className="tweet-text"
+                                                            onClick={() =>
+                                                                history.push(
+                                                                    `/tweets/${el?.id}`
+                                                                )
+                                                            }
+                                                        >
+                                                            <p>{el?.body}</p>
+                                                            <div className="tweet-img-container">
+                                                                <img
+                                                                    src={
+                                                                        el?.image
+                                                                    }
+                                                                    className="tweet-img"
+                                                                ></img>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </>
-                                            ) : (
-                                                <>
-                                                    <div
-                                                        className="tweet-text"
-                                                        onClick={() =>
-                                                            history.push(
-                                                                `/tweets/${el?.id}`
-                                                            )
-                                                        }
-                                                    >
-                                                        <p>{el?.body}</p>
-                                                    </div>
-                                                </>
-                                            )}
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <div
+                                                            className="tweet-text"
+                                                            onClick={() =>
+                                                                history.push(
+                                                                    `/tweets/${el?.id}`
+                                                                )
+                                                            }
+                                                        >
+                                                            <p>{el?.body}</p>
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </div>
+                                            <div className="tweet-container-extras">
+                                                <CreateAllReplyModal
+                                                    tweetId={el?.id}
+                                                />
+                                                <CreateLike
+                                                    tweetId={el?.id}
+                                                    likedBy={el?.likes}
+                                                />
+                                            </div>
                                         </div>
-                                        <div className="tweet-container-extras">
-                                            <CreateAllReplyModal
-                                                tweetId={el?.id}
-                                            />
-                                            <CreateLike
-                                                tweetId={el?.id}
-                                                likedBy={el?.likes}
-                                            />
-                                        </div>
-                                    </div>
-                                </>
-                            </div>
-                        );
-                    })}
+                                    </>
+                                </div>
+                            );
+                        })}
             </div>
         </>
     );
