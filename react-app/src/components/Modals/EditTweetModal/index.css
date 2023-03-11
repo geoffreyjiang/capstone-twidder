@@ -23,10 +23,11 @@
 }
 
 .editTweet-btn {
-    background-color: #ddd;
+    background-color: #1da1f2;
     border: none;
     color: black;
     padding: 10px 20px;
+    color: white;
     text-decoration: none;
     display: inline-block;
     margin: 4px 2px;

@@ -9,8 +9,9 @@
 }
 
 .login-btn {
-    background-color: #ddd;
+    background-color: #1da1f2;
     border: none;
+    color: white;
     color: black;
     padding: 10px 20px;
     text-decoration: none;
