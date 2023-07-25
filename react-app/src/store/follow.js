@@ -3,6 +3,7 @@ const UNFOLLOW = "follow/UNFOLLOW";
 const LOAD_FOLLOW = "follow/LOAD_FOLLOW";
 const SET_FOLLOWING_TWEETS = "follow/SET_FOLLOWING_TWEETS";
 const DEL_FOLLOWING_TWEETS = "follow/DEL_FOLLOWING_TWEETS";
+
 const loadFollow = (user) => ({
     type: LOAD_FOLLOW,
     user,
@@ -64,7 +65,7 @@ export const createFollow = (sessionUser, id) => async (dispatch) => {
     if (res.ok) {
         const data = await res.json();
         // console.log(data);
-        // dispatch(addFollow(data));
+        dispatch(addFollow(data));
     }
 };
 
@@ -76,7 +77,7 @@ export const removeFollow = (sessionUser, id) => async (dispatch) => {
     if (res.ok) {
         const data = await res.json();
         // console.log(data);
-        // dispatch(deleteFollow(data));
+        dispatch(deleteFollow(data));
     }
 };
 

@@ -27,6 +27,7 @@ greenlet = "==1.1.0"
 Mako = "==1.1.4"
 datetime = "*"
 requests = "*"
+boto3 = "*"
 
 [dev-packages]
 
